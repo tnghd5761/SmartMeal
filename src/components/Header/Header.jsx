@@ -1,6 +1,6 @@
-import React from "react";
+import React from "react"
 import Logo from '../../img/Logo.png'
-import Button from "../Button/Button";
+import Button from "../Button/Button"
 
 import './Header.scss'
 
