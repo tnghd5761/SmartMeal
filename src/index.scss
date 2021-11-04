@@ -3,5 +3,19 @@
   margin: 0;
   padding: 0;
   outline: none;
+  font-family: NotoSansKRMedium;
 }
 
+body{
+  min-width: 1000px;
+}
+
+@font-face {
+  font-family: 'NotoSansKRMedium';
+  src: url('./fonts/NotoSansKRMedium.otf');
+}
+
+@font-face {
+  font-family: 'NotoSansKRRegular';
+  src: url('./fonts/NotoSansKRRegular.otf');
+}
