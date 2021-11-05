@@ -1,0 +1,59 @@
+.header-component{
+  
+    .header-first-section{
+        border-bottom: 2px solid #9DF3C4;
+        
+
+        .header-logo-search{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            margin-top: 30px;
+
+            .logo{
+                width: 250px;
+                margin-left: 40px;
+            }
+
+            .search{
+                text-align: center;
+
+                input {
+                    width: 400px;
+                    border-radius: 20px;
+                    border: 2px solid #9DF3C4;
+                    margin: 10px 0;
+                    padding: 10px 12px;
+                }
+                input:focus {
+                    outline:none;
+                }
+
+                .fa-search {
+                    position: relative;
+                    right: 30px;
+                    margin: 0;
+                    color: #9DF3C4;
+                }
+            }
+        }
+    }
+
+    .header-second-section{
+        display: flex;
+        justify-content: flex-end;
+        margin: 10px 20px 10px 0px;
+        
+        .button-container{
+            margin-right: 20px;
+        }
+    }
+
+    .header-menu-bar{
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 2px solid #AAAAAA;
+        padding: 15px 200px 15px 200px;
+
+    }
+}
