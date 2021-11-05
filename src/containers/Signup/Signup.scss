@@ -1,23 +1,56 @@
-.login-container{
+.signup-container{
     display: flex;
 
     .block-container{
         width: fit-content;
         margin: 100px auto;
         
-        .login-desc{
+        .signup-desc{
             color: #3E7C17;
             font-size: 24px;
             font-family: NotoSansKRBold;
         }
+
+        .signup-id-container{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+
+            .button-container{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: #9CC094;
+                border-radius: 40px;
+                width: 60px;
+                height: 22px;
+            }
+        }
         
-        .login-sub-desc{
+        .signup-sub-desc{
             color: #9CC094;
             font-size: 12px;
             margin-bottom: 30px;
             font-family: NotoSansKRBold;
         }
-        
+
+        .signup-nickname-container{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+
+            .button-container{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: #9CC094;
+                border-radius: 40px;
+                width: 60px;
+                height: 22px;
+            }
+
+        }
+
         .id-password-desc{
             font-size: 15px;
             font-family: NotoSansKRRegular;
@@ -31,14 +64,14 @@
             width: 250px;
         }
         
-        .login-find-button{
+        .signup-find-button{
             margin-top: 30px;
             display: flex;
             justify-content: flex-end;
             font-family: NotoSansKRBold;
         }
         
-        .login-button{
+        .signup-button{
             display: flex;
             justify-content: center;
             

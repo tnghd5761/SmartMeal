@@ -17,10 +17,10 @@ const Header = () => {
                 </div>
             <div>
             <div className="header-second-section">
-                    <Button text="로그인" link="/login" color="#666666"/>
-                    <Button text="회원가입" color="#666666"/>
-                    <Button text="장바구니" color="#666666"/>
-                    <Button text="마이페이지" color="#666666"/>
+                    <Button text="로그인" link="/login" size="13px" color="#666666"/>
+                    <Button text="회원가입" link="/signup" size="13px" color="#666666"/>
+                    <Button text="장바구니" size="13px" color="#666666"/>
+                    <Button text="마이페이지" size="13px" color="#666666"/>
                 </div>
             </div>
             </div>
