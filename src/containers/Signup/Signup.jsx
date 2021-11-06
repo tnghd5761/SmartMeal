@@ -27,6 +27,16 @@ const Signup = () => {
                     <Button text="중복확인" size="12px" color="#ffffff"/>
                 </div>
                 <input />
+                <div className="signup-first-term">
+                    <input type="checkbox" />
+                    <p>[필수] 회원가입 약관동의</p>
+                    <i class="fas fa-search-plus"></i>
+                </div>
+                <div className="signup-second-term">
+                    <input type="checkbox" />
+                    <p>[필수] 개인정보처리방침 동의</p>
+                    <i class="fas fa-search-plus"></i>
+                </div>
                 <div className="signup-button">
                     <Button text="회원가입" size="22px" color="#ffffff"/>
                 </div>

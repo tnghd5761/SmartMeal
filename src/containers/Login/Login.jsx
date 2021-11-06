@@ -19,7 +19,7 @@ const Login = () => {
                     <input />
                 </div>
                 <div className="login-find-button">
-                    <Button color="#9CC094" text="아이디(이메일)/비밀번호 찾기>" size="11px"/>
+                    <Button color="#9CC094" text="아이디(이메일)/비밀번호 찾기>" size="12px"/>
                 </div>
                 <div className="login-button">
                     <Button text="로그인" size="22px" color="#ffffff"/>

@@ -24,6 +24,7 @@
                 border-radius: 40px;
                 width: 60px;
                 height: 22px;
+                font-family: NotoSansKRRegular;
             }
         }
         
@@ -47,6 +48,7 @@
                 border-radius: 40px;
                 width: 60px;
                 height: 22px;
+                font-family: NotoSansKRRegular;
             }
 
         }
@@ -61,16 +63,52 @@
             border: none;
             border-bottom: 1px solid #7F7C82;
             margin: 10px 0px 20px;
-            width: 250px;
+            width: 100%;
         }
         
-        .signup-find-button{
-            margin-top: 30px;
+        .signup-first-term{
             display: flex;
-            justify-content: flex-end;
-            font-family: NotoSansKRBold;
+            flex-direction: row;
+            align-items: center;
+            margin: 30px auto 10px;
+
+            input{
+                width: fit-content;
+                margin: 10px 5px 10px 0px;
+            }
+
+            p{
+                font-size: 15px;
+                font-family: NotoSansKRRegular;
+                width: 220px;
+            }
+
+            i{
+                color: #3E7C17;
+            }
         }
         
+        .signup-second-term{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            
+            input{
+                width: fit-content;
+                margin: 10px 5px 10px 0px;
+            }
+
+            p{
+                font-size: 15px;
+                font-family: NotoSansKRRegular;
+                width: 220px;
+            }
+
+            i{
+                color: #3E7C17;
+            }
+        }
+
         .signup-button{
             display: flex;
             justify-content: center;
@@ -84,6 +122,7 @@
                 font-family: NotoSansKRBold;
             }
         }
+
     }
 
 }
