@@ -1,9 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import Block from '../../components/Block/Block'
 import Button from "../../components/Button/Button";
 import './Signup.scss'
 
 const Signup = () => {
+
+    const [isFirstTermToggle, setIsFirstTermToggle] = useState(false)
+    const [isSecondTermToggle, setIsSecondTermToggle] = useState(false)
+
+    const handleFirstTermToggleShow = (prev) => {
+        setIsFirstTermToggle(prev=>!prev)
+    }
+
+    const handleSecondTermToggleShow = (prev) => {
+        setIsSecondTermToggle(prev=>!prev)
+    }
+
     return (
         <div className="signup-container">
             <Block>
@@ -30,13 +42,21 @@ const Signup = () => {
                 <div className="signup-first-term">
                     <input type="checkbox" />
                     <p>[필수] 회원가입 약관동의</p>
-                    <i class="fas fa-search-plus"></i>
+                    {!isFirstTermToggle?<i onClick={handleFirstTermToggleShow} class="fas fa-search-plus"></i>:
+                    <i onClick={handleFirstTermToggleShow} class="fas fa-search-minus"></i>}
                 </div>
+                {isFirstTermToggle&&<Block color="#ffffff">
+                    <p>약관 추가 예정</p>
+                </Block>}
                 <div className="signup-second-term">
                     <input type="checkbox" />
                     <p>[필수] 개인정보처리방침 동의</p>
-                    <i class="fas fa-search-plus"></i>
+                    {!isSecondTermToggle?<i onClick={handleSecondTermToggleShow} class="fas fa-search-plus"></i>:
+                    <i onClick={handleSecondTermToggleShow} class="fas fa-search-minus"></i>}
                 </div>
+                {isSecondTermToggle&&<Block color="#ffffff">
+                    <p>약관 추가 예정</p>
+                </Block>}
                 <div className="signup-button">
                     <Button text="회원가입" size="22px" color="#ffffff"/>
                 </div>
