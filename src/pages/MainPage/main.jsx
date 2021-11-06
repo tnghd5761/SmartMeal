@@ -1,4 +1,5 @@
 import React from 'react';
+import { Grid, Box } from '@material-ui/core';
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
