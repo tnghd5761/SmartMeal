@@ -55,7 +55,7 @@ export const checkIsDuplicateUsername = (user_name) => async (dispatch) => {
         body:JSON.stringify({ user_name })
       }
   
-      const res = await fetch(`users/check_id`, config)
+      const res = await fetch(`users/check_name`, config)
   
       if(res.status === 200) {
         dispatch({ 
