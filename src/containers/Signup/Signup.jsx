@@ -101,8 +101,7 @@ const Signup = ({history}) => {
         dispatch(resetErrorSuccess())
         setTimeout(() => {
         setFormError(prevState => '')  
-        }, 500);
-        
+        }, 500);  
     }
 
     return (
@@ -182,7 +181,12 @@ const Signup = ({history}) => {
                             <p>약관 추가 예정</p>
                         </Block>}
                         <div className="signup-button">
-                            <Button text="회원가입" size="22px" color="#ffffff"/>
+                            <Button 
+                                text="회원가입" 
+                                size="22px" 
+                                color="#ffffff"
+                                type={(modalOpen==="open" || formError)? "" : "submit"}      
+                            />
                         </div>
                     </form>
                 </Block>

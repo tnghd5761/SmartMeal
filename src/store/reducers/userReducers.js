@@ -42,6 +42,7 @@ const userReducer = (state = initialState, action) => {
         case USER_DUPLICATE_USERNAME_SUCCESS:
             return {
                 ...state,
+                loading: false,
                 success: action.success,
                 error: null,
                 isUsernameDupChecked: true
