@@ -1,4 +1,4 @@
-import { USER_REGISTER_REQUEST, USER_REGISTER_SUCCESS, USER_REGISTER_FAIL, USER_DUPLICATE_USERNAME_REQUEST, USER_DUPLICATE_USERNAME_SUCCESS, USER_DUPLICATE_USERNAME_FAIL, USER_DUPLICATE_EMAIL_REQUEST, USER_DUPLICATE_EMAIL_SUCCESS, USER_DUPLICATE_EMAIL_FAIL, USER_RESET_EMAIL_DUPLICATE_CHECK, USER_RESET_USERNAME_DUPLICATE_CHECK, USER_ERROR_SUCCESS_RESET } from "../constants/userConstants"
+import { USER_REGISTER_REQUEST, USER_REGISTER_SUCCESS, USER_REGISTER_FAIL, USER_DUPLICATE_USERNAME_REQUEST, USER_DUPLICATE_USERNAME_SUCCESS, USER_DUPLICATE_USERNAME_FAIL, USER_DUPLICATE_EMAIL_REQUEST, USER_DUPLICATE_EMAIL_SUCCESS, USER_DUPLICATE_EMAIL_FAIL, USER_RESET_EMAIL_DUPLICATE_CHECK, USER_RESET_USERNAME_DUPLICATE_CHECK, USER_ERROR_SUCCESS_RESET, USER_LOGIN_REQUEST, USER_LOGIN_SUCCESS, USER_LOGIN_FAIL } from "../constants/userConstants"
 
 
 const initialState = {
@@ -91,6 +91,27 @@ const userReducer = (state = initialState, action) => {
                 ...state,
                 success: null,
                 error: null
+            }
+        case USER_LOGIN_REQUEST:
+            return {
+                ...state,
+                loading: true,
+                success: null,
+                error: null,
+            }
+        case USER_LOGIN_SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                success: true,
+                error: null,
+            }
+        case USER_LOGIN_FAIL:
+            return {
+                ...state,
+                loading: false,
+                success: null,
+                error: action.error,
             }
         default:
             return state

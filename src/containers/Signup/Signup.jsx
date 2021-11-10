@@ -16,6 +16,7 @@ const Signup = ({history}) => {
     const [username, setUsername] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [term,setTerm] = useState(false)
     const [confirmPassword, setconfirmPassword] = useState('')
     const [formError, setFormError] = useState('')
     const [modalOpen, setModalOpen] = useState('close')
@@ -61,6 +62,10 @@ const Signup = ({history}) => {
         dispatch(resetUsernameDuplicateCheck())
     }
 
+    const handleTermChecked = (e) => {
+        setTerm(e.target.checked)
+    }
+
     const handleSubmit = async (e) => {
         e.preventDefault()
         setModalOpen('open')
@@ -71,6 +76,10 @@ const Signup = ({history}) => {
         if(!isUsernameDupChecked) {
           setFormError("닉네임 중복확인을. 하지 않으셨습니다")
           return
+        }
+        if(!term){
+            setFormError("약관에 동의를. 하지 않으셨습니다")
+            return
         }
         if(!checkPasswordValidation(password)){
           setFormError("비밀번호는 숫자, 영어, 특수문자를. 포함하며 8자 이상이어야 합니다")
@@ -88,6 +97,7 @@ const Signup = ({history}) => {
         }
     
         dispatch(signup(submittedUserData))
+
       }
 
     const handleModalClick = () => {
@@ -163,7 +173,10 @@ const Signup = ({history}) => {
                             onChange={handleUserInputChange}
                         />
                         <div className="signup-first-term">
-                            <input type="checkbox" />
+                            <input 
+                                type="checkbox" 
+                                onChange={handleTermChecked}
+                            />
                             <p>[필수] 회원가입 약관동의</p>
                             {!isFirstTermToggle?<i onClick={handleFirstTermToggleShow} class="fas fa-search-plus"></i>:
                             <i onClick={handleFirstTermToggleShow} class="fas fa-search-minus"></i>}
