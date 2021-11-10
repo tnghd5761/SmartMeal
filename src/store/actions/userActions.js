@@ -15,7 +15,7 @@ export const signup = (submittedUserData) => async (dispatch) => {
         body:JSON.stringify(submittedUserData)
       }
   
-      const res = await fetch(`/users/signup`, config)
+      const res = await fetch(`/users/sign_up`, config)
   
       if(res.status === 200) {
         dispatch({
