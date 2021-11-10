@@ -91,8 +91,8 @@ const Signup = ({history}) => {
         }
     
         const submittedUserData = {
-            username,
-            email,
+            user_name: username,
+            user_id: email,
             password,
         }
     
