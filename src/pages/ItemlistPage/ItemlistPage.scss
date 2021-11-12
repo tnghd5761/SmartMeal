@@ -1,0 +1,54 @@
+.listpage_container{
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	align-content: center;
+
+	.filter_container{
+		margin-top: 30px;
+		padding-top: 10px;
+		padding-bottom: 10px;
+		width: 1200px;
+		background-color: #E9F7FB;
+
+		.filter_title{
+			color: #1979FF;
+			font-size: 1.2em;
+			font-family: "Noto Sans KR", Arial;
+			font-weight: bold;
+		}
+		.category_container{
+			padding-left: 20px;
+		}
+		.filter_name{
+			text-align: center;
+			width: 120px;
+			font-family: "Noto Sans KR", Arial;
+			font-weight: 600;
+			border-right: solid #AAAAAA 2px;
+		}
+		.filter_info{
+			text-align: center;
+			width: 480px;
+
+			.filter_slider{
+				width: 400px;
+			}
+		}
+		.slider_input{
+			text-align: right;
+			padding-right: 3px;
+			width: 100px;
+		}
+	}
+	.list_container{
+		width: 1200px;
+
+		.item_priority{
+			margin-top: 50px;
+			text-align: right;
+			margin-right: 30px;
+		}
+	}
+}
