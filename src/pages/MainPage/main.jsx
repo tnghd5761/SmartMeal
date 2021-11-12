@@ -21,12 +21,14 @@ function main() {
 		dots: true,
 		infinite: true,
 		speed: 500,
+		autoplay: true,
+		autoplaySpeed: 2000,
 		slidesToShow: 1,
 		slidesToScroll:1
 	};
 	return (
-		<div className="main-container">
-			<div className="promotion-container">
+		<div className="main_container">
+			<div className="promotion_container">
 				<Slider {...settings}>
 					<div>
 						<img src="https://wiseux.speedgabia.com/imdak/contents/main_banner_promotion/20210831_1630394465.jpg" />
@@ -36,8 +38,13 @@ function main() {
 					</div>
 				</Slider>
 			</div>
-			<div className="prefer-container">
-				인기상품
+			<div className="prefer_container">
+				<div className="prefer_title">
+					<div className="black">SMART</div>
+					&nbsp;
+					<div className="blue">인기</div>
+					<div className="black">상품</div>
+				</div>
 				<ItemList list={prac_list} />
 			</div>
 		</div>

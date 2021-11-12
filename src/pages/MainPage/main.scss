@@ -1,6 +1,25 @@
-.main-container{
+.main_container{
 	
-	.promotion-container{
+	.promotion_container{
 		margin-bottom: 100px;
+	}
+	.prefer_container{
+		margin-bottom: 60px;
+
+		.prefer_title{
+			display: flex;
+			margin-left: 40px;
+			font-family: "Noto Sans KR", Arial;
+			font-size: 1.6em;
+			margin-bottom: 20px;
+
+			.blue{
+				color: #1979FF;
+				font-weight: 700;
+			}
+			.black{
+				font-weight: 550;
+			}
+		}
 	}
 }
