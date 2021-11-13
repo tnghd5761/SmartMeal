@@ -9,7 +9,7 @@ import { checkEmailValidation, checkUsernameValidation } from "../../utils/authU
 import './Login.scss'
 
 
-const Login = () => {
+const Login = ({history}) => {
 
     const [password, setPassword] = useState('')
     const [userInput, setUserInput] = useState('')
@@ -42,6 +42,7 @@ const Login = () => {
         
     
         dispatch(login(submittedUserData))
+        history.push('/')
     }
 
     const handleModalClick = () => {

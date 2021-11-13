@@ -1,4 +1,4 @@
-import { USER_REGISTER_REQUEST, USER_REGISTER_SUCCESS, USER_REGISTER_FAIL, USER_DUPLICATE_USERNAME_REQUEST, USER_DUPLICATE_USERNAME_SUCCESS, USER_DUPLICATE_USERNAME_FAIL, USER_DUPLICATE_EMAIL_REQUEST, USER_DUPLICATE_EMAIL_SUCCESS, USER_DUPLICATE_EMAIL_FAIL, USER_RESET_EMAIL_DUPLICATE_CHECK, USER_RESET_USERNAME_DUPLICATE_CHECK, USER_ERROR_SUCCESS_RESET, USER_LOGIN_FAIL, USER_LOGIN_SUCCESS, USER_LOGIN_REQUEST,  } from "../constants/userConstants"
+import { USER_REGISTER_REQUEST, USER_REGISTER_SUCCESS, USER_REGISTER_FAIL, USER_DUPLICATE_USERNAME_REQUEST, USER_DUPLICATE_USERNAME_SUCCESS, USER_DUPLICATE_USERNAME_FAIL, USER_DUPLICATE_EMAIL_REQUEST, USER_DUPLICATE_EMAIL_SUCCESS, USER_DUPLICATE_EMAIL_FAIL, USER_RESET_EMAIL_DUPLICATE_CHECK, USER_RESET_USERNAME_DUPLICATE_CHECK, USER_ERROR_SUCCESS_RESET, USER_LOGIN_FAIL, USER_LOGIN_SUCCESS, USER_LOGIN_REQUEST, USER_LOGOUT_REQUEST, USER_LOGOUT_SUCCESS, USER_LOGOUT_FAIL,  } from "../constants/userConstants"
 
 // @desc      Sign up
 // @request   /users/signup
@@ -163,6 +163,46 @@ export const login = (submittedUserData) => async (dispatch) => {
       })
   }
 }
+
+// @desc      Login
+// @request   /users/logout
+// @response  
+export const logout = () => async (dispatch) => {
+  try {
+    
+    dispatch({ type: USER_LOGOUT_REQUEST })
+      
+    const config = {
+      method:'GET',
+      headers:{
+        'Content-Type': 'application/json'
+      },
+    }
+    
+    const res = await fetch(`users/logout`, config)
+
+    if(res.status === 200) {
+      dispatch({type: USER_LOGOUT_SUCCESS})
+      dispatch({type: USER_ERROR_SUCCESS_RESET})
+      dispatch({type: USER_RESET_EMAIL_DUPLICATE_CHECK})
+      dispatch({type: USER_RESET_USERNAME_DUPLICATE_CHECK})
+    } else if (res.status === 401){
+      dispatch({
+        type: USER_LOGOUT_FAIL,
+        error: "로그아웃이 실패했습니다. "
+      })
+    } else {
+      throw new Error()
+    }
+
+  } catch (err) {
+    dispatch({
+        type: USER_LOGIN_FAIL,
+        error: "에러가 발생했습니다. 다시 시도해주세요" 
+      })
+  }
+}
+
 
 // @desc      For reset error, success in reducer
 export const resetErrorSuccess = () => (dispatch) => {
