@@ -14,7 +14,6 @@ const Header = ({history}) => {
 
     const handleLogout = () => {
         dispatch(logout())
-        history.push('/')
     }
 
 

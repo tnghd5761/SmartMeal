@@ -164,7 +164,7 @@ export const login = (submittedUserData) => async (dispatch) => {
   }
 }
 
-// @desc      Login
+// @desc      Logout
 // @request   /users/logout
 // @response  
 export const logout = () => async (dispatch) => {
@@ -179,25 +179,16 @@ export const logout = () => async (dispatch) => {
       },
     }
     
-    const res = await fetch(`users/logout`, config)
+    await fetch(`users/logout`, config)
+    dispatch({type: USER_LOGOUT_SUCCESS})
+    dispatch({type: USER_ERROR_SUCCESS_RESET})
+    dispatch({type: USER_RESET_EMAIL_DUPLICATE_CHECK})
+    dispatch({type: USER_RESET_USERNAME_DUPLICATE_CHECK})
 
-    if(res.status === 200) {
-      dispatch({type: USER_LOGOUT_SUCCESS})
-      dispatch({type: USER_ERROR_SUCCESS_RESET})
-      dispatch({type: USER_RESET_EMAIL_DUPLICATE_CHECK})
-      dispatch({type: USER_RESET_USERNAME_DUPLICATE_CHECK})
-    } else if (res.status === 401){
-      dispatch({
-        type: USER_LOGOUT_FAIL,
-        error: "로그아웃이 실패했습니다. "
-      })
-    } else {
-      throw new Error()
-    }
 
   } catch (err) {
     dispatch({
-        type: USER_LOGIN_FAIL,
+        type: USER_LOGOUT_FAIL,
         error: "에러가 발생했습니다. 다시 시도해주세요" 
       })
   }
