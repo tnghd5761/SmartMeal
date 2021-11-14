@@ -1,10 +1,22 @@
 import React from "react"
+import { useDispatch, useSelector } from "react-redux"
 import Logo from '../../img/Logo.png'
+import { logout } from "../../store/actions/userActions"
 import Button from "../Button/Button"
 
 import './Header.scss'
 
-const Header = () => {
+const Header = ({history}) => {
+
+    const { isLogin } = useSelector(state=>state.user)
+    
+    const dispatch = useDispatch()
+
+    const handleLogout = () => {
+        dispatch(logout())
+    }
+
+
     return (
         <div className="header-component">
             <div className="header-first-section">
@@ -17,10 +29,10 @@ const Header = () => {
                 </div>
             <div>
             <div className="header-second-section">
-                    <Button text="로그인" link="/login" size="13px" color="#666666"/>
-                    <Button text="회원가입" link="/signup" size="13px" color="#666666"/>
-                    <Button text="장바구니" size="13px" color="#666666"/>
-                    <Button text="마이페이지" size="13px" color="#666666"/>
+                    {isLogin?<Button text="로그아웃" size="13px" color="#666666" onClick={handleLogout}/>:<Button text="로그인" link="/login" size="13px" color="#666666"/>}
+                    {!isLogin&&<Button text="회원가입" link="/signup" size="13px" color="#666666"/>}
+                    {isLogin&&<Button text="장바구니" size="13px" color="#666666"/>}
+                    {isLogin&&<Button text="마이페이지" size="13px" color="#66666"/>}
                 </div>
             </div>
             </div>
