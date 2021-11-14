@@ -1,0 +1,16 @@
+.ItemList{
+
+	.list_container{
+		padding-left: 50px;
+		padding-right: 50px;
+
+		.list_box{
+			height: 360px;
+
+			.item_image{
+				background-color: gray;
+				height: 300px;
+			}
+		}	
+	}
+}
