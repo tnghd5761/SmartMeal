@@ -20,7 +20,7 @@ const Header = () => {
                     <Button text="로그인" color="#666666"/>
                     <Button text="회원가입" color="#666666"/>
                     <Button text="장바구니" color="#666666"/>
-                    <Button text="마이페이지" link="/mypage" size="13px" color="#666666"/>
+                    <Button text="마이페이지" color="#666666"/>
                 </div>
             </div>
             </div>
