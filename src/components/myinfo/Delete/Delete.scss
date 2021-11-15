@@ -1,0 +1,46 @@
+.navbar-container{
+    box-sizing: content-box;
+    height: fit-content;
+    margin: 100px 100px 100px 100px;
+    font-size: xxx-large;
+    color: rgb(83, 88, 86);
+
+    .mypage-menu{
+        display: flex;
+        padding: 0px 0px 0px 30px;
+        border-bottom: 2px solid #9DF3C4;
+
+        .button-container{
+            margin-right: 50px;
+        }
+    }
+    .mypage-delete-component{
+        display: flex;
+        flex-direction: column;
+        padding: 20px 250px 20px 250px;
+        font-size: xx-large;
+
+
+        .check-userinfo{
+            padding: 90px 0px 150px 0px;
+            outline: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            line-height: normal;
+
+            .check-pw{
+                display: flex;
+                flex-direction: column;
+                padding: 20px 0px 30px 0px;
+                font-size: medium;
+                color: red;
+            }
+        }
+        
+        .delete-button{
+            padding: 20px 0px 30px 0px;
+        }
+
+    }
+} 
