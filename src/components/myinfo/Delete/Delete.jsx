@@ -3,9 +3,18 @@ import Button from "../../Button/Button";
 import './Delete.scss'
 
 const Delete = () => {
+    var confirmpw = null;
+    const [user, setuser] = useState({
+        Nickname: '홍길동',
+        ID: 'dlrdktks1004@naver.com',
+        PW: '123456789',
+        ConfirmPW: ' '
+    });
+
     const onClick = (e) => {
-        alert('정말 탈퇴하시겠습니까?');
+            alert('정말 탈퇴하시겠습니까?');
     };
+
     return (
         <div className="navbar-container">
             <p classname="mypage-title">마이 페이지</p>
@@ -25,7 +34,7 @@ const Delete = () => {
                             placeholder="PassWord을 입력하시오."
                         ></input>
                     <div className="delete-button">
-                    <Button color="#9CC094" text="탈퇴" link="/" size="25px" onClick={onClick}/>
+                    <Button color="#9CC094" text="탈퇴" link="/" size="20px" onClick={onClick}/>
                     </div>
                 </div>
             </div>

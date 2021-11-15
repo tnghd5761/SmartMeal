@@ -46,7 +46,7 @@ const Update = () => {
                         </p>  
                     </div>
                     <div className="mypage-userinfo">
-                        <p className="new-id"> 아이디:
+                        <p className="new-id"> 아이디(이메일):
                             <input 
                                 type="text"
                                 placeholder="새로운 ID을 입력하시오."
@@ -77,7 +77,7 @@ const Update = () => {
                         </p>   
                     </div>
                     <div className="update-save-button">
-                        <Button color="#9CC094" text="저장" link="/mypage" size="25px" onClick = {onClick}/>
+                        <Button color="#9CC094" text="저장" link="/mypage" size="20px" onClick = {onClick}/>
                     </div>
                 </div>
             </div>

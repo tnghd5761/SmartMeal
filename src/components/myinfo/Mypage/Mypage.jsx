@@ -1,13 +1,11 @@
 import React, { useState } from "react";
 import Button from "../../Button/Button";
-// import Update from './components/myinfo/Mypage/Update/Update';
-// import Read from './components/myinfo/Mypage/Read/Read';
 
 import './Mypage.scss'
 
 const Mypage = () => {
 
-    const [user, setuser] = useState({
+    const [user] = useState({
         Nickname: '홍길동',
         ID: 'dlrdktks1004@naver.com',
         PW: '123456789',
@@ -26,10 +24,10 @@ const Mypage = () => {
                 <p className="mypage-staus">내 회원정보 </p>
                 <div className="mypage-info">
                     <div className="mypage-userinfo">
-                        <p className="nickname">닉네임: {user.Nickname}</p>
+                        <p className="nickname">닉네임:  {user.Nickname}</p>
                     </div>
                     <div className="mypage-userinfo">
-                        <p className="id">아이디: {user.ID}</p>
+                        <p className="id">아이디(이메일): {user.ID}</p>
                     </div>
                     <div className="mypage-userinfo">
                         <p className="password">비밀번호: {user.PW}</p>

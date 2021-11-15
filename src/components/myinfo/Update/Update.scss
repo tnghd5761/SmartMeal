@@ -1,13 +1,11 @@
 .navbar-container{
-    box-sizing: content-box;
-    height: fit-content;
-    margin: 100px 100px 100px 100px;
+    margin: 50px 200px 100px 200px;
     font-size: xxx-large;
     color: rgb(83, 88, 86);
 
     .mypage-menu{
         display: flex;
-        padding: 0px 0px 0px 30px;
+        padding: 15px 0px 0px 30px;
         border-bottom: 2px solid #9DF3C4;
 
         .button-container{
@@ -15,25 +13,22 @@
         }
     }
     .mypage-update-component{
-        display: flex;
-        flex-direction: column;
-        padding: 20px 250px 20px 250px;
+        padding: 20px 250px 0px 250px;
         font-size: xx-large;
 
 
         .mypage-info{
-            padding: 90px 170px 150px 250px;
-            outline: auto;
+            padding: 90px 170px 75px 250px;
+            outline: groove;
+            font-size: x-large;
+
             .mypage-userinfo{
-                display: flex;
-                flex-direction: column;
-                padding: 0px 0px 50px 0;
+                padding: 0px 0px 35px 0;
             }
         }
         .update-save-button{
             display: flex;
-            padding: 0px 0px 0px 0px;
-            justify-content: center;
+            padding: 0px 0px 0px 250px;
         }
 
     }
