@@ -7,7 +7,7 @@ const Mypage = () => {
 
     const [user] = useState({
         Nickname: '홍길동',
-        ID: 'dlrdktks1004@naver.com',
+        ID: 'ghdrlfehd1234@naver.com',
         PW: '123456789',
         ConfirmPW: '123456789'
     });
@@ -29,9 +29,9 @@ const Mypage = () => {
                     <div className="mypage-userinfo">
                         <p className="id">아이디(이메일): {user.ID}</p>
                     </div>
-                    <div className="mypage-userinfo">
+                    {/* <div className="mypage-userinfo">
                         <p className="password">비밀번호: {user.PW}</p>
-                    </div>
+                    </div> */}
                     <div className="update-button">
                     <Button color="#9CC094" text="수정" link="/mypage/update" size="20px" />
                     </div>

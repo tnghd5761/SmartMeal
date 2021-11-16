@@ -5,7 +5,7 @@ import './Update.scss'
 const Update = () => {
     const [user, setuser] = useState({
         Nickname: '홍길동',
-        ID: 'dlrkdtks1004@naver.com',
+        ID: 'ghdrlfehd1234@naver.com',
         PW: '123456789',
         ConfirmPW: '123456789'
     });
@@ -59,7 +59,7 @@ const Update = () => {
                     <div className="mypage-userinfo">
                         <p className="new-password">비밀번호:   
                             <input 
-                                type="text"
+                                type="password"
                                 placeholder="new PassWord를 입력하시오."
                                 name="PW"
                                 value={user.PW}
@@ -68,7 +68,7 @@ const Update = () => {
                         </p>   
                         <p className="confirmpassword">비밀번호 확인: 
                             <input 
-                                type="text"
+                                type="password"
                                 placeholder="new PassWord를 확인하시오."
                                 name="ConfirmPW"
                                 value={user.ConfirmPW}

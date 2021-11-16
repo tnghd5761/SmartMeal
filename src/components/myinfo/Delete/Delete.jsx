@@ -30,7 +30,7 @@ const Delete = () => {
                         <p>-Check Your PassWord-</p>
                     </div>
                         <input 
-                            type="text"
+                            type="password"
                             placeholder="PassWord을 입력하시오."
                         ></input>
                     <div className="delete-button">
