@@ -1,7 +1,7 @@
 import { USER_ADD_BAG_FAIL, USER_ADD_BAG_REQUEST, USER_ADD_BAG_SUCCESS } from "../constants/cartConstants"
 
 // @response  { }
-export const addCart = (item) => async (dispatch) => {
+export const addCart = (item_name) => async (dispatch) => {
     try {
       dispatch({ type: USER_ADD_BAG_REQUEST })
   
@@ -10,7 +10,7 @@ export const addCart = (item) => async (dispatch) => {
         headers:{
           'Content-Type': 'application/json'
         },
-        body:JSON.stringify(item)
+        body:JSON.stringify(item_name)
       }
   
       const res = await fetch(`/users/add_bag`, config)
