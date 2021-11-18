@@ -5,7 +5,7 @@ export const addCart = (item_name) => async (dispatch) => {
       dispatch({ type: USER_ADD_BAG_REQUEST })
   
       const config = {
-        method:'GET',
+        method:'POST',
         headers:{
           'Content-Type': 'application/json'
         },
