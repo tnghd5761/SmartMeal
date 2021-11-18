@@ -1,6 +1,5 @@
 import { USER_ADD_BAG_FAIL, USER_ADD_BAG_REQUEST, USER_ADD_BAG_SUCCESS } from "../constants/cartConstants"
 
-// @response  { }
 export const addCart = (item_name) => async (dispatch) => {
     try {
       dispatch({ type: USER_ADD_BAG_REQUEST })

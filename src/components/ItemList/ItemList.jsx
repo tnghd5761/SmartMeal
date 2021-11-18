@@ -8,14 +8,15 @@ import { resetErrorSuccess } from '../../store/actions/userActions';
 
 const ItemList = (list) => {
 
-	const { isLogin, error } = useSelector(state=>state.user)
-
+	const { isLogin } = useSelector(state=>state.user)
+	const { error, loading, success } = useSelector(state=>state.cart)
 	const [modalOpen, setModalOpen] = useState('')
 	const [formError, setFormError] = useState('')
 
 	const dispatch = useDispatch()
 
 	const handleAddCart = (name) => {
+		setModalOpen('open')
 		if (!isLogin){
 			setFormError("로그인이 필요합니다.")
 			return
@@ -34,15 +35,18 @@ const ItemList = (list) => {
 
 	return (
 		<>
-			<Modal
-				modalOpen={modalOpen}
-				buttonText="확인"
-				buttonSize="16px"
-				onClick={handleModalClick}
-				>
-				{error && error.split(".").map((msg, idx) => <p key={idx}>{msg}</p>)}
-				{formError && formError.split(".").map((msg, idx) => <p key={idx}>{msg}</p>)}
-			</Modal>
+            {!loading &&
+            <Modal
+                modalOpen={modalOpen}
+                buttonText="확인"
+                buttonSize="16px"
+                onClick={handleModalClick}
+                >
+                {success && success.split(".").map((msg, idx) => <p key={idx}>{msg}</p>)}
+                {error && error.split(".").map((msg, idx) => <p key={idx}>{msg}</p>)}
+                {formError && formError.split(".").map((msg, idx) => <p key={idx}>{msg}</p>)}
+            </Modal>
+            }
 			<div className="ItemList">
 				<Grid container spacing={3} className="list_container">
 					{list.list.map((c) => (
@@ -51,7 +55,7 @@ const ItemList = (list) => {
 								<div className="item_image">상품 이미지</div>
 								<div className="item_name_cart">
 									<p>{c.name}</p>
-									<i class="fas fa-cart-plus fa-2x" onClick={()=>handleAddCart(c.name)}></i>
+									<i onClick={()=>handleAddCart(c.name)} className="fas fa-cart-plus fa-2x" ></i>
 								</div>
 								<div className="item_price">{c.price}</div>
 							</div>
