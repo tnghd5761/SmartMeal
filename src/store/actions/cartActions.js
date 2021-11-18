@@ -9,7 +9,7 @@ export const addCart = (item_name) => async (dispatch) => {
         headers:{
           'Content-Type': 'application/json'
         },
-        body:JSON.stringify(item_name)
+        body:JSON.stringify({item_name})
       }
   
       const res = await fetch(`/users/add_bag`, config)
