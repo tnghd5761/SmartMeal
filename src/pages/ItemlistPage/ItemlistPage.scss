@@ -41,14 +41,38 @@
 			padding-right: 3px;
 			width: 100px;
 		}
+		.save_button{
+            display: flex;
+            justify-content: right;
+			margin-right: 20px;
+			margin-bottom: 10px;
+            
+            .button-container{
+                background-color: #1979FF;
+                border-radius: 10px;
+                width: 100px;
+                height: 40px;
+                font-family: NotoSansKRBold;
+            }
+        }
 	}
 	.list_container{
 		width: 1200px;
 
 		.item_priority{
 			margin-top: 50px;
+			margin-bottom: 10px;
 			text-align: right;
-			margin-right: 30px;
+			margin-right: 20px;
+
+			.select{
+				width: 140px;
+				text-align: center;
+			}
 		}
+	}
+	.paging{
+		margin-top: 10px;
+		margin-bottom: 20px;
 	}
 }

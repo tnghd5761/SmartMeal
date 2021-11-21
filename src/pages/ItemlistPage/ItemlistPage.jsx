@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import ItemList from '../../components/ItemList/ItemList';
-import { styled, Slider, Table, TableRow, TableCell, Checkbox, FormControlLabel } from '@material-ui/core';
+import Paging from '../../components/Paging/Paging';
+import { styled, Slider, Table, TableRow, TableCell, Checkbox, FormControlLabel, Select, MenuItem } from '@material-ui/core';
 
 import "./ItemlistPage.scss";
+import Button from '../../components/Button/Button';
 
 function ItemlistPage() {
 	const prac_list = [
@@ -32,6 +34,23 @@ function ItemlistPage() {
 	const handleCalorie = (event, newValue) => {
 		setCalorie(newValue);
 	};
+	const [priority, setPriority] = useState("");
+	const handlePriority = (event, newValue) => {
+		setPriority(newValue);
+	}
+	const [page, setPage] = useState(1);
+	const handlePage = (newValue) => {
+		console.log(newValue);
+		setPage(newValue);
+	};
+	const postsPerPage = 8;
+	const indexOfLast = page * postsPerPage;
+	const indexOfFirst = indexOfLast - postsPerPage;
+	function currentPosts(tmp) {
+		let currentPosts = 0;
+		currentPosts = tmp.slice(indexOfFirst, indexOfLast);
+		return currentPosts;
+	  };
 	const MyTableCell = styled(TableCell)({
 		borderBottom:"none",
 		padding: 5,
@@ -112,12 +131,28 @@ function ItemlistPage() {
 						</MyTableCell>
 					</TableRow>
 				</Table>
+				<div className="save_button">
+					<Button text="필터 저장" size="16px" color="#ffffff" />
+				</div>
 			</div>
 			<div className="list_container">
-				<div className="item_priority">정렬 방식</div>
-				<ItemList list={prac_list} />
+				<div className="item_priority">
+					{/*<Select className="select" value="popular" onChange={handlePriority}>
+						<MenuItem value="popular">인기순</MenuItem>
+						<MenuItem value="cheap">가격낮은순</MenuItem>
+						<MenuItem value="expensive">가격높은순</MenuItem>
+					</Select>*/}
+					<select className="select" value={priority} onChange={handlePriority}>
+						<option value="popular">인기순</option>
+						<option value="cheap">가격낮은순</option>
+						<option value="expensive">가격높은순</option>
+					</select>
+				</div>
+				<ItemList list={currentPosts(prac_list)} />
 			</div>
-			<div className="list_page">페이지 번호</div>
+			<div className="paging">
+				<Paging page={page} count={prac_list.length} setPage={handlePage}/>
+			</div>
 		</div>
 	)
 }
