@@ -1,22 +1,45 @@
-import React from "react"
+import React, { useEffect } from "react"
+import { useDispatch, useSelector } from "react-redux"
 import Block from '../../components/Block/Block'
 import Button from '../../components/Button/Button'
 import CartList from "../../components/CartList/CartList"
+import { callCart } from "../../store/actions/cartActions"
 
 import './MyCart.scss'
 
-const MyCart = () => {
+const MyCart = ({history}) => {
+
+    const dispatch = useDispatch()
+
+    const { isLogin } = useSelector(state=>state.user)
+    const { bagList } = useSelector(state=>state.cart)
+
+    // useEffect(()=>{
+    //     if(!isLogin){
+    //         history.push('/')
+    //     }
+    // })
+
+    useEffect(()=>{
+        dispatch(callCart())
+    },[bagList])
+
+    console.log(bagList) // 추후 삭제
+
     return (
         <div className="mycart-container">
             <p className="mycart-cart-desc">장바구니</p>
             <div className="mycart-first-section">
                 <Block>
+                    {bagList.map(item=>{
+                        <CartList name={item.item_name} count={item.item_count}/>
+                    })}
+                    {/* <CartList name="이동기" count="7"/>
                     <CartList name="이동기" count="7"/>
                     <CartList name="이동기" count="7"/>
                     <CartList name="이동기" count="7"/>
                     <CartList name="이동기" count="7"/>
-                    <CartList name="이동기" count="7"/>
-                    <CartList name="이동기" count="7"/>
+                    <CartList name="이동기" count="7"/> */}
                 </Block>
             </div>
             <div className="mycart-second-section">
