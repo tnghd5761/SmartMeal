@@ -21,7 +21,7 @@ const ItemList = (list) => {
 			setFormError("로그인이 필요합니다.")
 			return
 		}
-		dispatch(addCart(name))
+		dispatch(addCart(name,1))
 	}
 
 	const handleModalClick = () => {

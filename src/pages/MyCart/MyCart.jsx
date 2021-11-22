@@ -21,10 +21,8 @@ const MyCart = ({history}) => {
     // })
 
     useEffect(()=>{
-        if(!bagListLoading && bagList){
-            dispatch(callCart())
-        }
-    },[bagList, bagListLoading])
+        dispatch(callCart())
+    },[])
 
     console.log(bagList) // 추후 삭제
 
@@ -33,7 +31,7 @@ const MyCart = ({history}) => {
             <p className="mycart-cart-desc">장바구니</p>
             <div className="mycart-first-section">
                 <Block>
-                    {bagList.map(item=>{
+                    {bagList.length>0&&bagList.map(item=>{
                         <CartList name={item.item_name} count={item.item_count}/>
                     })}
                     {/* <CartList name="이동기" count="7"/>
