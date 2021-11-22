@@ -45,11 +45,12 @@ export const deleteCart = (item_name) => async (dispatch) => {
     }
 
     const res = await fetch(`/users/delete_bag`, config)
+    const { bagList } = await res.json()
 
     if(res.status === 200) {
       dispatch({
         type: USER_DELETE_BAG_SUCCESS,
-        success: "장바구니에 물품을 삭제하였습니다."
+        payload:{ bagList },
       })
     } else {
       throw new Error()
@@ -75,13 +76,12 @@ export const callCart = () => async (dispatch) => {
     }
 
     const res = await fetch(`/users/list_bag`, config)
-    const bagList = await res.json()
+    const { bagList } = await res.json()
 
     if(res.status === 200) {
       dispatch({
         type: USER_CALL_BAG_SUCCESS,
         payload:{ bagList },
-        success: "장바구니 물품을 불러왔습니다."
       })
     } else {
       throw new Error()

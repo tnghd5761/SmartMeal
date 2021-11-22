@@ -34,21 +34,22 @@ const cartReducer = (state = initialState, action) => {
         case USER_DELETE_BAG_REQUEST:
             return {
                 ...state,
-                loading: true,
+                bagListLoading: true,
                 success: null,
                 error: null,
             }
         case USER_DELETE_BAG_SUCCESS:
             return {
                 ...state,
-                loading: false,
+                bagList: action.payload.bagList,
+                bagListLoading: false,
                 success: action.success,
                 error: null,
             }
         case USER_DELETE_BAG_FAIL:
             return {
                 ...state,
-                loading: false,
+                bagListLoading: false,
                 success: null,
                 error: action.error
             }
@@ -73,7 +74,7 @@ const cartReducer = (state = initialState, action) => {
                 bagListLoading: false,
                 loading: false,
                 success: null,
-                error: action.error
+                error: action.error,
             }
         default:
             return state
