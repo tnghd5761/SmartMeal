@@ -14,11 +14,11 @@ const MyCart = ({history}) => {
     const { isLogin } = useSelector(state=>state.user)
     const { bagList, bagListLoading } = useSelector(state=>state.cart)
 
-    // useEffect(()=>{
-    //     if(!isLogin){
-    //         history.push('/')
-    //     }
-    // })
+    useEffect(()=>{
+        if(!isLogin){
+            history.push('/')
+        }
+    })
 
     useEffect(()=>{
         if(!bagListLoading){
