@@ -14,32 +14,26 @@ const MyCart = ({history}) => {
     const { isLogin } = useSelector(state=>state.user)
     const { bagList, bagListLoading } = useSelector(state=>state.cart)
 
-    // useEffect(()=>{
-    //     if(!isLogin){
-    //         history.push('/')
-    //     }
-    // })
+    useEffect(()=>{
+        if(!isLogin){
+            history.push('/')
+        }
+    })
 
     useEffect(()=>{
-        dispatch(callCart())
-    },[])
-
-    console.log(bagList) // 추후 삭제
+        if(!bagListLoading){
+            dispatch(callCart())
+        }
+    },[bagListLoading])
 
     return (
         <div className="mycart-container">
             <p className="mycart-cart-desc">장바구니</p>
             <div className="mycart-first-section">
                 <Block>
-                    {bagList.length>0&&bagList.map(item=>{
-                        <CartList name={item.item_name} count={item.item_count}/>
+                    {bagList.map(item=>{
+                        return (<CartList name={item.item_name} count={item.item_count}/>)
                     })}
-                    {/* <CartList name="이동기" count="7"/>
-                    <CartList name="이동기" count="7"/>
-                    <CartList name="이동기" count="7"/>
-                    <CartList name="이동기" count="7"/>
-                    <CartList name="이동기" count="7"/>
-                    <CartList name="이동기" count="7"/> */}
                 </Block>
             </div>
             <div className="mycart-second-section">
