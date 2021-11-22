@@ -31,7 +31,7 @@ const Header = () => {
             <div className="header-second-section">
                     {isLogin?<Button text="로그아웃" size="13px" color="#666666" onClick={handleLogout}/>:<Button text="로그인" link="/login" size="13px" color="#666666"/>}
                     {!isLogin&&<Button text="회원가입" link="/signup" size="13px" color="#666666"/>}
-                    {!isLogin&&<Button link="/mycart" text="장바구니" size="13px" color="#666666"/>}
+                    {isLogin&&<Button link="/mycart" text="장바구니" size="13px" color="#666666"/>}
                     {isLogin&&<Button text="마이페이지" size="13px" color="#66666"/>}
                 </div>
             </div>

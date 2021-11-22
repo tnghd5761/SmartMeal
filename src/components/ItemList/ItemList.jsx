@@ -15,13 +15,13 @@ const ItemList = (list) => {
 
 	const dispatch = useDispatch()
 
-	const handleAddCart = (name) => {
+	const handleAddCart = (name,price) => {
 		setModalOpen('open')
 		if (!isLogin){
 			setFormError("로그인이 필요합니다.")
 			return
 		}
-		dispatch(addCart(name,1))
+		dispatch(addCart(name,1,price))
 	}
 
 	const handleModalClick = () => {
@@ -55,7 +55,7 @@ const ItemList = (list) => {
 								<div className="item_image">상품 이미지</div>
 								<div className="item_name_cart">
 									<p>{c.name}</p>
-									<i onClick={()=>handleAddCart(c.name)} className="fas fa-cart-plus fa-2x" ></i>
+									<i onClick={()=>handleAddCart(c.name,c.price)} className="fas fa-cart-plus fa-2x" ></i>
 								</div>
 								<div className="item_price">{c.price}</div>
 							</div>
