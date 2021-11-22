@@ -12,7 +12,7 @@ const MyCart = ({history}) => {
     const dispatch = useDispatch()
 
     const { isLogin } = useSelector(state=>state.user)
-    const { bagList } = useSelector(state=>state.cart)
+    const { bagList, bagListLoading } = useSelector(state=>state.cart)
 
     // useEffect(()=>{
     //     if(!isLogin){
@@ -21,8 +21,10 @@ const MyCart = ({history}) => {
     // })
 
     useEffect(()=>{
-        dispatch(callCart())
-    },[bagList])
+        if(!bagListLoading && bagList){
+            dispatch(callCart())
+        }
+    },[bagList, bagListLoading])
 
     console.log(bagList) // 추후 삭제
 

@@ -4,6 +4,7 @@ const initialState = {
     loading: false,
     success: null,
     error: null,
+    bagListLoading: false,
     bagList: [],
 }
 
@@ -54,14 +55,14 @@ const cartReducer = (state = initialState, action) => {
         case USER_CALL_BAG_REQUEST:
             return {
                 ...state,
-                loading: true,
+                bagListLoading: true,
                 success: null,
                 error: null,
             }
         case USER_CALL_BAG_SUCCESS:
             return {
                 ...state,
-                loading: false,
+                bagListLoading: false,
                 success: action.success,
                 bagList: action.payload.bagList,
                 error: null,
@@ -69,6 +70,7 @@ const cartReducer = (state = initialState, action) => {
         case USER_CALL_BAG_FAIL:
             return {
                 ...state,
+                bagListLoading: false,
                 loading: false,
                 success: null,
                 error: action.error
