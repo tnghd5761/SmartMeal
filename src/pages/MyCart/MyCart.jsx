@@ -14,17 +14,17 @@ const MyCart = ({history}) => {
     const { isLogin } = useSelector(state=>state.user)
     const { bagList, bagListLoading } = useSelector(state=>state.cart)
 
-    useEffect(()=>{
-        if(!isLogin){
-            history.push('/')
-        }
-    })
+    // useEffect(()=>{
+    //     if(!isLogin){
+    //         history.push('/')
+    //     }
+    // })
 
     useEffect(()=>{
         if(!bagListLoading){
             dispatch(callCart())
         }
-    },[bagListLoading])
+    },[JSON.stringify(bagList)])
 
     return (
         <div className="mycart-container">
@@ -32,7 +32,7 @@ const MyCart = ({history}) => {
             <div className="mycart-first-section">
                 <Block>
                     {bagList.map(item=>{
-                        return (<CartList name={item.item_name} count={item.item_count}/>)
+                        return (<CartList name={item.item_name} count={item.item_count} price={item.item_price}/>)
                     })}
                 </Block>
             </div>
