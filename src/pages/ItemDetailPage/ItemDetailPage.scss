@@ -1,0 +1,105 @@
+.detailpage_container{
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	align-content: center;
+
+	.main_container{
+		margin-top: 30px;
+		display: flex;
+		width: 1200px;
+		text-align: center;
+		align-content: center;
+		height: 500px;
+
+		.item_image{
+			width: 50%;
+			height: 100%;
+			background-color: gray;
+		}
+		.content{
+			width: 50%;
+			height: 100%;
+			.name, .cost{
+				height: 30%;
+				margin-left: 14.5%;
+				text-align: left;
+				font-size: 1.2em;
+				font-weight: 550;
+				font-family: "Noto Sans KR", Arial;
+			}
+			.name{
+				padding-top: 15%;
+			}
+			.count{
+				height: 20%;
+				display: flex;
+
+				.count_field{
+					height: 50%;
+					display: flex;
+					width: 71%;
+					margin-left: 14.5%;
+					margin-right: 14.5%;
+					background-color: #E9F7FB;
+					border: 1px solid #1979FF;
+					border-radius: 5px;
+
+					.amount_container{	
+						display: flex;
+						margin-top: 10px;
+						padding-left: 10px;
+						.plusminus_btn, .amount_num{
+							height: 30px;
+							width: 30px;
+							background-color: white;
+							border: 1px solid #1979FF;
+							border-radius: 0;
+						}
+						.plusminus_btn:hover{
+							background-color: #99CCFF;
+							transition-duration: 0.4s;
+						}
+					}
+					.final_price{
+						margin-left: 240px;
+						text-align: right;
+						padding-top: 12.5px;
+					}
+				}
+			}
+			.decise_btn{
+				height: 20%;
+				display: flex;
+				width: auto;
+
+				.in_bag, .buy_now{
+					width: 50%;
+					//padding: 5%;
+					//background-color: #66A6FF;
+				}
+			}
+		}
+	}
+	.explain_container{
+		width: 1200px;
+		margin-top: 30px;
+		margin-bottom: 30px;
+		
+		.explain_title{
+			font-size: 1.1em;
+			font-weight: 550;
+			font-family: "Noto Sans KR", Arial;
+			margin-bottom: 10px;
+		}
+		.nutrient_container{
+			display: flex;
+			font-family: "Noto Sans KR", Arial;
+			.nutrient_table{
+				width: 600px;
+				border: 1px solid black;
+			}
+		}
+	}
+}
