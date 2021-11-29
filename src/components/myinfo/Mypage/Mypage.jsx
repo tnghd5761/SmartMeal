@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import Button from "../../Button/Button";
 
 import './Mypage.scss'
@@ -6,10 +7,10 @@ import './Mypage.scss'
 const Mypage = () => {
 
     const [user] = useState({
-        Nickname: '홍길동',
-        ID: 'ghdrlfehd1234@naver.com',
-        PW: '123456789',
-        ConfirmPW: '123456789'
+        name: '홍길동',
+        id: 'ghdrlfehd1234@naver.com',
+        password: '123456789',
+        Confirmpw: '123456789'
     });
 
     return (
@@ -24,8 +25,8 @@ const Mypage = () => {
                 <p className="mypage-staus">내 회원정보 </p>
                 <div className="mypage-info">
                     <div className="mypage-userinfo">
-                        <p className="nickname">닉네임: {user.Nickname}</p>
-                        <p className="id">아이디(이메일): {user.ID}</p>
+                        <p className="nickname">닉네임: {user.name}</p>
+                        <p className="id">아이디(이메일): {user.id}</p>
                     </div>
                     <div className="update-button">
                     <Button color="#9CC094" text="수정" link="/mypage/update" size="20px" />

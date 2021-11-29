@@ -1,14 +1,15 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import Button from "../../Button/Button";
 import './Delete.scss'
 
 const Delete = () => {
     var confirmpw = null;
     const [user, setuser] = useState({
-        Nickname: '홍길동',
-        ID: 'dlrdktks1004@naver.com',
-        PW: '123456789',
-        ConfirmPW: ' '
+        name: '홍길동',
+        id: 'dlrdktks1004@naver.com',
+        password: '123456789',
+        Confirmpw: ' '
     });
 
     const onClick = (e) => {

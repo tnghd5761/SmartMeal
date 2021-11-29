@@ -1,13 +1,14 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import Button from "../../Button/Button";
 import './Update.scss'
 
 const Update = () => {
     const [user, setuser] = useState({
-        Nickname: '홍길동',
-        ID: 'ghdrlfehd1234@naver.com',
-        PW: '123456789',
-        ConfirmPW: '123456789'
+        name: '홍길동',
+        id: 'ghdrlfehd1234@naver.com',
+        password: '123456789',
+        Confirmpw: '123456789'
     });
 
     const onChange = (e) => {
@@ -39,8 +40,8 @@ const Update = () => {
                             <input className="new-data"
                                 type="text"
                                 placeholder="새로운 닉네임을 입력하시오."
-                                name="Nickname"
-                                value={user.Nickname}
+                                name="name"
+                                value={user.name}
                                 onChange={onChange}
                             ></input>
                         </p>
@@ -48,8 +49,8 @@ const Update = () => {
                             <input className="new-data"
                                 type="text"
                                 placeholder="새로운 ID을 입력하시오."
-                                name="ID"
-                                value={user.ID}
+                                name="id"
+                                value={user.id}
                                 onChange={onChange}
                             ></input>
                         </p>
@@ -57,8 +58,8 @@ const Update = () => {
                             <input className="new-data"
                                 type="password"
                                 placeholder="숫자,영어,특수문자를 포함한 8자 이상 입력"
-                                name="PW"
-                                value={user.PW}
+                                name="password"
+                                value={user.password}
                                 onChange={onChange}
                             ></input>
                         </p>   
@@ -66,8 +67,8 @@ const Update = () => {
                             <input className="new-data"
                                 type="password"
                                 placeholder="new PassWord를 확인하시오."
-                                name="ConfirmPW"
-                                value={user.ConfirmPW}
+                                name="Confirmpw"
+                                value={user.Confirmpw}
                                 onChange={onChange}
                             ></input>
                         </p>      
