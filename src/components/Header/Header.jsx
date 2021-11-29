@@ -38,7 +38,7 @@ const Header = ({history}) => {
             </div>
             <div className="header-menu-bar">
                 <Button text="브랜드" color="#666666" size="20px"/>
-                <Button text="체성분" color="#666666" size="20px"/>
+                <Button text="체성분" link="/inbody"color="#666666" size="20px"/>
                 <Button text="상품소개" color="#666666" size="20px"/>
                 <Button text="이벤트" color="#666666" size="20px"/>
                 <Button text="마이페이지" color="#666666" size="20px"/>
