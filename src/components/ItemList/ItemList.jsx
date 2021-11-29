@@ -51,14 +51,16 @@ const ItemList = (list) => {
 				<Grid container spacing={3} className="list_container">
 					{list.list.map((c) => (
 						<Grid item xs={3}>
-							<div className="list_box">
-								<div className="item_image">상품 이미지</div>
-								<div className="item_name_cart">
-									<p>{c.name}</p>
-									<i onClick={()=>handleAddCart(c.name,c.price)} className="fas fa-cart-plus fa-2x" ></i>
+							<a href='/detail'>
+								<div className="list_box">
+									<div className="item_image">상품 이미지</div>
+									<div className="item_name_cart">
+										<p>{c.name}</p>
+										<i onClick={()=>handleAddCart(c.name,c.price)} className="fas fa-cart-plus fa-2x" ></i>
+									</div>
+									<div className="item_price">{c.price}&nbsp;원</div>
 								</div>
-								<div className="item_price">{c.price}</div>
-							</div>
+							</a>
 						</Grid>
 					))}
 				</Grid>

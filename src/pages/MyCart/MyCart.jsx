@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import Block from '../../components/Block/Block'
 import Button from '../../components/Button/Button'
@@ -14,6 +14,8 @@ const MyCart = ({history}) => {
     const { isLogin } = useSelector(state=>state.user)
     const { bagList, bagListLoading } = useSelector(state=>state.cart)
 
+    const [sumOfPrice,setSumOfPrice] = useState()
+
     useEffect(()=>{
         if(!isLogin){
             history.push('/')
@@ -24,7 +26,13 @@ const MyCart = ({history}) => {
         if(!bagListLoading){
             dispatch(callCart())
         }
+        let priceOfAllCartList = 0
+        bagList.map(item=>{
+            priceOfAllCartList+=(item.item_count*item.item_price)
+        })
+        setSumOfPrice(priceOfAllCartList)
     },[JSON.stringify(bagList)])
+
 
     return (
         <div className="mycart-container">
@@ -40,11 +48,11 @@ const MyCart = ({history}) => {
                 <Block>
                     <p>결제 예정 금액</p>
                     <div className="mycart-calculate-cost">
-                        <p>총 상품 가격 0원</p>
+                        <p>총 상품 가격 {sumOfPrice}원</p>
                         <i class="fas fa-plus"></i>
                         <p>총 배송비 0원</p>
                         <i class="fas fa-equals"></i>
-                        <p>총 주문금액 0원</p>
+                        <p>총 주문금액 {sumOfPrice}원</p>
                     </div>
                 </Block>
             </div>

@@ -6,7 +6,7 @@ import "slick-carousel/slick/slick-theme.css";
 
 import './main.scss';
 
-function main() {
+function Main() {
 	const prac_list = [
 		{ name : "1번 상품", price : 7000 },
 		{ name : "2번 상품", price : 8000 },
@@ -45,10 +45,12 @@ function main() {
 					<div className="blue">인기</div>
 					<div className="black">상품</div>
 				</div>
-				<ItemList list={prac_list} />
+				<div className="prefer_list">
+					<ItemList list={prac_list} />
+				</div>
 			</div>
 		</div>
 	)
 }
 
-export default main;
+export default Main;
