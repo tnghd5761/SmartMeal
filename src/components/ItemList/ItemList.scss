@@ -1,10 +1,8 @@
 .ItemList{
 	display: flex;
 	justify-content: center;
-	
+
 	.list_container{
-		padding-left: 50px;
-		padding-right: 50px;
 		
 		a:link, a:visited, a:hover, a:active{
 			text-decoration:none;

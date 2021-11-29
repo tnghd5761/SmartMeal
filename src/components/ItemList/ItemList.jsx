@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Grid } from '@material-ui/core';
-import { Link } from "react-router-dom";
 import Modal from '../Modal/Modal'
 import './ItemList.scss';
 import { useDispatch, useSelector } from 'react-redux';
@@ -50,20 +49,20 @@ const ItemList = (list) => {
             }
 			<div className="ItemList">
 				<Grid container spacing={3} className="list_container">
-					<Link to='/detail'>
-						{list.list.map((c) => (
-							<Grid item xs={3}>
+					{list.list.map((c) => (
+						<Grid item xs={3}>
+							<a href='/detail'>
 								<div className="list_box">
 									<div className="item_image">상품 이미지</div>
 									<div className="item_name_cart">
 										<p>{c.name}</p>
 										<i onClick={()=>handleAddCart(c.name,c.price)} className="fas fa-cart-plus fa-2x" ></i>
 									</div>
-									<div className="item_price">{c.price}</div>
+									<div className="item_price">{c.price}&nbsp;원</div>
 								</div>
-							</Grid>
-						))}
-					</Link>
+							</a>
+						</Grid>
+					))}
 				</Grid>
 			</div>
 		</>

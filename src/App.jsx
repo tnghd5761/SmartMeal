@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
-import MainPage from './pages/MainPage/main';
+import MainPage from './pages/MainPage/Main';
 import Login from './containers/Login/Login';
 import Signup from './containers/Signup/Signup';
 import MyCart from './pages/MyCart/MyCart'
