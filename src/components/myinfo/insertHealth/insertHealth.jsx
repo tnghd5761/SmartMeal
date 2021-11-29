@@ -8,9 +8,9 @@ function InsertHelalth (){
     const [Health] = useState({
         birth: '990517',
         gender: '남자',
-        stature: 178,
+        height: 178,
         weight: 75,
-        skeletal: 150,
+        muscle: 150,
         fat: 123
     });
 

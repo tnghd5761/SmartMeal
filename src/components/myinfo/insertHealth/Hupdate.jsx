@@ -6,13 +6,11 @@ function Hupdate (props){
     const [Health, setHealth] = useState({
         birth:props.Health. birth,
         gender:props.Health.gender,
-        stature:props.Health.stature,
+        height:props.Health.height,
         weight: props.Health.weight,
-        skeletal: props.Health.skeletal,
+        muscle: props.Health.muscle,
         fat: props.Health.fat
     });
-
-    const {weight, skeletal, fat} = Health;
 
     const onChange = e => {
         const nextHealth = {
@@ -49,12 +47,12 @@ function Hupdate (props){
                     onChange={onChange}
                 ></input>
             </p>     
-            <p className="new-stature"> 키(cm):  
+            <p className="new-height"> 키(cm):  
                 <input className="new-data"
                     type="text"
                     placeholder="키를 입력하시오."
-                    name="stature"
-                    value={Health.stature}
+                    name="height"
+                    value={Health.height}
                     onChange={onChange}
                 ></input>
             </p> 
@@ -67,12 +65,12 @@ function Hupdate (props){
                     onChange={onChange}
                 ></input>
             </p>         
-            <p className="new-skeletal"> 골격근량(kg):
+            <p className="new-muscle"> 골격근량(kg):
                 <input className="new-data"
                     type="text"
                     placeholder="골격근량을 입력하시오."
-                    name="skeletal"
-                    value={Health.skeletal}
+                    name="muscle"
+                    value={Health.muscle}
                     onChange={onChange}
                 ></input>
             </p>     
