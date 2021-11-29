@@ -1,0 +1,67 @@
+.navbar-container{
+    margin: 50px 200px 100px 200px;
+    font-size: xxx-large;
+    color: rgb(83, 88, 86);
+
+    .mypage-menu{
+        display: flex;
+        padding: 15px 0px 0px 30px;
+        border-bottom: 2px solid #9DF3C4;
+
+        .button-container{
+            margin-right: 50px;
+        }
+    }
+    .mypage-update-component{
+        padding: 20px 250px 0px 250px;
+        font-size: xx-large;
+
+
+        .mypage-info{
+            padding: 90px 200px 75px 250px;
+            outline: groove;
+            font-size: x-large;
+
+            .mypage-userinfo{
+                padding: 0px 10px 30px 10px;
+                .nickname{
+                    padding: 0px 10px 30px 10px;
+                    .new-data{
+                        font-size: medium;
+                        width:300px;
+                        margin: 0px 0px 0px 110px;
+                    }
+                }
+                .new-id{
+                    padding: 0px 10px 30px 10px;
+                    .new-data{
+                        font-size: medium;
+                        width:300px;
+                        margin: 0px 0px 0px 25px;
+                    }
+                }
+                .new-password{
+                    padding: 0px 10px 30px 10px;
+                    .new-data{
+                        font-size: medium;
+                        width:300px;
+                        margin: 0px 0px 0px 90px;
+                    }
+                }
+                .confirmpassword{
+                    padding: 0px 10px 30px 10px;
+                    .new-data{
+                        font-size: medium;
+                        width:300px;
+                        margin: 0px 0px 0px 40px;
+                    }
+                }
+            }
+        }
+        .update-save-button{
+            display: flex;
+            padding: 0px 250px 0px 250px;
+        }
+
+    }
+} 
