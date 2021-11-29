@@ -3,21 +3,38 @@
 	justify-content: center;
 	
 	.list_container{
-		.link_container{
-			a:link, a:visited, a:hover, a:active{
-				text-decoration:none;
-				background-color:transparent;
-				color: #000000;
+		padding-left: 50px;
+		padding-right: 50px;
+		
+		a:link, a:visited, a:hover, a:active{
+			text-decoration:none;
+			background-color:transparent;
+			color: #000000;
+		}
+
+		.list_box{
+			height: 360px;
+			margin-bottom: 20px;
+			
+			.item_image{
+				background-color: gray;
+				height: 240px;
 			}
 
-			.list_box{
-				height: 300px;
-	
-				.item_image{
-					background-color: gray;
-					height: 240px;
+			.item_name_cart{
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				margin-top: 10px;
+				p{
+					font-size: 24px;
 				}
-			}	
-		}
+				i{
+					color: #3D56B2;
+					margin-right: 15px;
+					cursor: pointer;
+				}
+			}
+		}	
 	}
 }
