@@ -33,6 +33,7 @@ const Header = ({history}) => {
                     {!isLogin&&<Button text="회원가입" link="/signup" size="13px" color="#666666"/>}
                     {isLogin&&<Button text="장바구니" size="13px" color="#666666"/>}
                     {isLogin&&<Button text="마이페이지" size="13px" color="#66666"/>}
+                    <Button text="마이페이지" link="/mypage" size="13px" color="#666666"/>
                 </div>
             </div>
             </div>

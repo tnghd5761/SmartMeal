@@ -1,0 +1,62 @@
+.health-insert-update{
+    padding: 75px 250px 0px 250px;
+    font-size: xx-large;
+    outline: groove;
+    
+    .new-birth{
+        padding: 20px 10px 0px 10px;
+
+        .new-data{
+            font-size: large;
+            width:200px;
+            margin: 0px 0px 0px 110px;
+        }
+    }
+    .new-gender{
+        padding: 20px 10px 0px 10px;
+        .new-data{
+            font-size: large;
+            width:200px;
+            margin: 0px 0px 0px 170px;
+        }
+    }
+    .new-stature{
+        padding: 20px 10px 0px 10px;
+        .new-data{
+            font-size: large;
+            width:200px;
+            margin: 0px 0px 0px 130px;
+        }
+    }
+    .new-weight{
+        padding: 20px 10px 0px 10px;
+        .new-data{
+            font-size: large;
+            width:200px;
+            margin: 0px 0px 0px 110px;
+        }
+    }
+    .new-skeletal{
+        padding: 20px 10px 0px 10px;
+        .new-data{
+            font-size: large;
+            width:200px;
+            margin: 0px 0px 0px 50px;
+        }
+    }
+    .new-fat{
+        padding: 20px 10px 0px 10px;
+        .new-data{
+            font-size: large;
+            width:200px;
+            margin: 0px 0px 0px 57px;
+        }
+    }
+
+    .health-save-button{
+        display: flex;
+        justify-content: space-evenly;
+        padding: 100px 0px 75px 0px;
+        font-size: x-large;
+    }
+}
