@@ -3,14 +3,21 @@
 	justify-content: center;
 	
 	.list_container{
-
-		.list_box{
-			height: 300px;
-
-			.item_image{
-				background-color: gray;
-				height: 240px;
+		.link_container{
+			a:link, a:visited, a:hover, a:active{
+				text-decoration:none;
+				background-color:transparent;
+				color: #000000;
 			}
-		}	
+
+			.list_box{
+				height: 300px;
+	
+				.item_image{
+					background-color: gray;
+					height: 240px;
+				}
+			}	
+		}
 	}
 }

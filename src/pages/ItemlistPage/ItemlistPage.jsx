@@ -137,11 +137,6 @@ function ItemlistPage() {
 			</div>
 			<div className="list_container">
 				<div className="item_priority">
-					{/*<Select className="select" value="popular" onChange={handlePriority}>
-						<MenuItem value="popular">인기순</MenuItem>
-						<MenuItem value="cheap">가격낮은순</MenuItem>
-						<MenuItem value="expensive">가격높은순</MenuItem>
-					</Select>*/}
 					<select className="select" value={priority} onChange={handlePriority}>
 						<option value="popular">인기순</option>
 						<option value="cheap">가격낮은순</option>

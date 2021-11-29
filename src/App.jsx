@@ -6,6 +6,7 @@ import Login from './containers/Login/Login';
 import Signup from './containers/Signup/Signup';
 import MainPage from './pages/MainPage/Main';
 import ItemlistPage from './pages/ItemlistPage/ItemlistPage';
+import ItemDetailPage from './pages/ItemDetailPage/ItemDetailPage';
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
         <Route path='/signup' exact component={Signup} />
 		<Route path='/' exact component={MainPage} />
 		<Route path='/list' exact component={ItemlistPage} />
+		<Route path='/detail' exact component={ItemDetailPage} />
       </Switch>
       <Footer />
     </>
