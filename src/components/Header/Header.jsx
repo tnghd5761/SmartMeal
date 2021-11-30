@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import Logo from '../../img/Logo.png'
 import { logout } from "../../store/actions/userActions"
 import Button from "../Button/Button"
-import { CookiesProvider } from "react-cookie"
+
 
 import './Header.scss'
 
@@ -12,9 +12,7 @@ const Header = () => {
     const { isLogin } = useSelector(state=>state.user)
     
     const dispatch = useDispatch()
-    const [cookies,setCookie,removeCookie] = useCookies(['login_session'])
 
-    console.log(cookies)
 
     const handleLogout = () => {
         dispatch(logout())
