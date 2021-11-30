@@ -80,7 +80,7 @@ const Update = ({history}) => {
       
     /* 비밀번호 확인 체크 */
     useEffect(() => {
-        if (password === confirmPassword || confirmPassword === "") {
+        if (password === confirmPassword && confirmPassword !== "") {
           setErrorMessage({
             ...errorMessage,
             confirmPasswordError: "",

@@ -21,7 +21,7 @@ const Delete = () => {
 
 
     useEffect(() => {
-        if (password === confirmPassword || confirmPassword === "") {
+        if (password === confirmPassword && confirmPassword !== "") {
           setErrorMessage({
             ...errorMessage,
             confirmPasswordError: "",
@@ -34,9 +34,9 @@ const Delete = () => {
         }
     }, [confirmPassword]);
 
-      const onClick = (e) => {
+    const onClick = (e) => {
         alert('정말 탈퇴하시겠습니까?');
-};
+    };
 
     return (
         <div className="navbar-container">
