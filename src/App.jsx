@@ -18,8 +18,8 @@ const App = () => {
         <Route path='/login' exact component={Login} />
         <Route path='/signup' exact component={Signup} />
         <Route path='/mycart' exact component={MyCart} />
-		<Route path='/list' exact component={ItemlistPage} />
-		<Route path='/detail' exact component={ItemDetailPage} />
+        <Route path='/list' exact component={ItemlistPage} />
+        <Route path='/detail' exact component={ItemDetailPage} />
       </Switch>
       <Footer />
     </>

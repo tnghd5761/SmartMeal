@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addCart } from '../../store/actions/cartActions';
 import { resetErrorSuccess } from '../../store/actions/userActions';
 
-function ItemDetailPage() {
+const ItemDetailPage = () => {
 
 	const { success, error, loading } = useSelector(state=>state.cart)
 	const [modalOpen, setModalOpen] = useState('')
