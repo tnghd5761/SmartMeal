@@ -1,20 +1,42 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import React, { useState, useEffect, useCallback } from "react";
 import Button from "../../Button/Button";
 import './Delete.scss'
 
-const Delete = () => {
-    var confirmpw = null;
-    const [user, setuser] = useState({
-        name: '홍길동',
-        id: 'dlrdktks1004@naver.com',
-        password: '123456789',
-        Confirmpw: ' '
-    });
+// import { useSelector, useDispatch } from "react-redux";
 
-    const onClick = (e) => {
-            alert('정말 탈퇴하시겠습니까?');
-    };
+const Delete = () => {
+    // const [user] = useState({
+    //     name: '홍길동',
+    //     id: 'dlrdktks1004@naver.com',
+    //     password: '123456789',
+    //     Confirmpw: ' '
+    // });
+    const [password, setpassword] = useState('123456789')
+    const [confirmPassword, setconfirmPassword] = useState('')
+    const [errorMessage, setErrorMessage] = useState({
+        confirmPasswordError: "",
+    });
+    
+    const { confirmPasswordError } = errorMessage;
+
+
+    useEffect(() => {
+        if (password === confirmPassword || confirmPassword === "") {
+          setErrorMessage({
+            ...errorMessage,
+            confirmPasswordError: "",
+          });
+        } else {
+          setErrorMessage({
+            ...errorMessage,
+            confirmPasswordError: "비밀번호가 일치하지 않습니다.",
+          });
+        }
+    }, [confirmPassword]);
+
+      const onClick = (e) => {
+        alert('정말 탈퇴하시겠습니까?');
+};
 
     return (
         <div className="navbar-container">
@@ -33,7 +55,12 @@ const Delete = () => {
                         <input className="new-data"
                             type="password"
                             placeholder="PassWord을 입력하시오."
+                            value={confirmPassword}
+                            onChange={(e)=>setconfirmPassword(e.target.value)}
                         ></input>
+                        <p className="error">
+                                {confirmPasswordError ? <errorMessage>{confirmPasswordError}</errorMessage> : ""}
+                        </p> 
                     <div className="delete-button">
                     <Button color="#9CC094" text="탈퇴" link="/" size="20px" onClick={onClick}/>
                     </div>

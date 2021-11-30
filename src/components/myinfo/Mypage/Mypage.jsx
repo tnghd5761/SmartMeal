@@ -6,13 +6,6 @@ import './Mypage.scss'
 
 const Mypage = () => {
 
-    const [user] = useState({
-        name: '홍길동',
-        id: 'ghdrlfehd1234@naver.com',
-        password: '123456789',
-        Confirmpw: '123456789'
-    });
-
     return (
         <div className="navbar-container">
             <p classname="mypage-title">마이 페이지</p>
@@ -25,8 +18,8 @@ const Mypage = () => {
                 <p className="mypage-staus">내 회원정보 </p>
                 <div className="mypage-info">
                     <div className="mypage-userinfo">
-                        <p className="nickname">닉네임: {user.name}</p>
-                        <p className="id">아이디(이메일): {user.id}</p>
+                        <p className="nickname">닉네임: </p>
+                        <p className="id">아이디(이메일): </p>
                     </div>
                     <div className="update-button">
                     <Button color="#9CC094" text="수정" link="/mypage/update" size="20px" />

@@ -18,7 +18,7 @@
 
 
         .mypage-info{
-            padding: 90px 200px 75px 250px;
+            padding: 90px 150px 75px 250px;
             outline: groove;
             font-size: x-large;
 
@@ -34,11 +34,7 @@
                 }
                 .new-id{
                     padding: 0px 10px 30px 10px;
-                    .new-data{
-                        font-size: medium;
-                        width:300px;
-                        margin: 0px 0px 0px 25px;
-                    }
+                    word-spacing: 20px;
                 }
                 .new-password{
                     padding: 0px 10px 30px 10px;
@@ -55,6 +51,11 @@
                         width:300px;
                         margin: 0px 0px 0px 40px;
                     }
+                }
+                .error{
+                    font-size: small;
+                    color: red;
+                    padding: 0px 0px 0px 183px;
                 }
             }
         }
