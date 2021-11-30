@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Block from '../../components/Block/Block'
 import Button from "../../components/Button/Button";
@@ -19,6 +19,13 @@ const Login = ({history}) => {
     const dispatch = useDispatch()
     const { loading, success, error } = useSelector(state=>state.user)
 
+    useEffect(() => {
+        if(success) {
+          dispatch(resetErrorSuccess())
+          history.push('/')
+        } 
+      },[success, history])
+
     const handleSubmit = (e) => {
         e.preventDefault()
         setModalOpen('open')
@@ -29,7 +36,7 @@ const Login = ({history}) => {
             setFormError("올바른 이메일 형식이 아닙니다")
             return
         }
-
+        console.log(error)
         submittedUserData = {
             user_id: userInput,
             password
@@ -42,7 +49,7 @@ const Login = ({history}) => {
         
     
         dispatch(login(submittedUserData))
-        history.push('/')
+
     }
 
     const handleModalClick = () => {
@@ -93,12 +100,13 @@ const Login = ({history}) => {
                             <Button color="#9CC094" text="아이디(이메일)/비밀번호 찾기>" size="12px"/>
                         </div>
                         <div className="login-button">
+                            {!loading&&
                             <Button
                                 type={(modalOpen==="open" || formError)? "" : "submit"}
                                 text="로그인" 
                                 size="22px" 
                                 color="#ffffff"
-                            />
+                            />}
                         </div>
                     </form>
                 </Block>
