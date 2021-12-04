@@ -1,16 +1,23 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import Logo from '../../img/Logo.png'
 import { logout } from "../../store/actions/userActions"
 import Button from "../Button/Button"
+import { Cookies } from 'react-cookie'
 
 import './Header.scss'
 
 const Header = () => {
 
     const { isLogin } = useSelector(state=>state.user)
+
     
     const dispatch = useDispatch()
+    
+    const cookies = new Cookies()
+    useEffect(()=>{
+        const loginHandle = cookies.get('login_session')
+    },[])
 
     const handleLogout = () => {
         dispatch(logout())
@@ -29,10 +36,10 @@ const Header = () => {
                 </div>
             <div>
             <div className="header-second-section">
-                    {isLogin?<Button text="로그아웃" size="13px" color="#666666" onClick={handleLogout}/>:<Button text="로그인" link="/login" size="13px" color="#666666"/>}
-                    {!isLogin&&<Button text="회원가입" link="/signup" size="13px" color="#666666"/>}
-                    {isLogin&&<Button link="/mycart" text="장바구니" size="13px" color="#666666"/>}
-                    {isLogin&&<Button text="마이페이지" size="13px" color="#66666"/>}
+                    {loginHandle?<Button text="로그아웃" size="13px" color="#666666" onClick={handleLogout}/>:<Button text="로그인" link="/login" size="13px" color="#666666"/>}
+                    {!loginHandle&&<Button text="회원가입" link="/signup" size="13px" color="#666666"/>}
+                    {loginHandle&&<Button link="/mycart" text="장바구니" size="13px" color="#666666"/>}
+                    {loginHandle&&<Button text="마이페이지" size="13px" color="#66666"/>}
                 </div>
             </div>
             </div>
