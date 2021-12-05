@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import Button from "../../Button/Button";
 import UserList from "../../UserList/UserList"
@@ -12,11 +12,11 @@ const Mypage = (history) => {
     
     const { isLogin, userList, userListLoading } = useSelector(state=>state.user)
 
-    // useEffect(()=>{
-    //     if(!isLogin){
-    //         history.push('/')
-    //     }
-    // })
+    useEffect(()=>{
+        if(!isLogin){
+            history.push('/')
+        }
+    })
 
     useEffect(()=>{
         if(!userListLoading){

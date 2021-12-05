@@ -205,7 +205,7 @@ export const info = () => async (dispatch) => {
       },
     }
 
-    const res = await fetch(`/users/info`, config)
+    const res = await fetch(`/users/info`, config)  
     const { userList } = await res.json()
 
     if(res.status === 200) {
