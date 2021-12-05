@@ -24,11 +24,11 @@ function PurchasePage({ history, match, location }) {
         setIsPopupOpen(false)
     }
 
-	//useEffect(()=>{
-    //    if(!isLogin){
-    //        history.push('/')
-    //    }
-    //})
+	useEffect(()=>{
+        if(!isLogin){
+            history.push('/')
+        }
+    })
 
 	useEffect(()=>{
 		if(match.params.id === "cart"){
