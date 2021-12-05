@@ -4,6 +4,7 @@ import Block from '../../components/Block/Block'
 import Button from '../../components/Button/Button'
 import CartList from "../../components/CartList/CartList"
 import { callCart } from "../../store/actions/cartActions"
+import { Link } from 'react-router-dom';
 
 import './MyCart.scss'
 
@@ -56,9 +57,11 @@ const MyCart = ({history}) => {
                     </div>
                 </Block>
             </div>
-            <div className="mycart-order-button">
-                <Button text="주문하기" size="22px" color="#ffffff"/>
-            </div>
+			<Link to={`/purchase/${"cart"}`}>
+				<div className="mycart-order-button">
+					<Button text="주문하기" size="22px" color="#ffffff"/>
+				</div>
+			</Link>
         </div>
     )
 }

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { styled, Button, Table, TableRow, TableCell } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 import './ItemDetailPage.scss';
 
 function ItemDetailPage({ match }) {
@@ -62,16 +63,18 @@ function ItemDetailPage({ match }) {
 							</Button>
 						</div>
 						<div className="buy_now">
-							<Button
-								style={{
-									backgroundColor: "#1979FF",
-									border: "2px solid #66A6FF",
-									color: "#E9F7FB",
-									padding: "8px 28px",
-									fontSize: "18px"
-								}}>
-								즉시구매
-							</Button>
+							<Link to={{ pathname: `/purchase/${"immediate"}`, state: { item: item, count: amount} }}>
+								<Button
+									style={{
+										backgroundColor: "#1979FF",
+										border: "2px solid #66A6FF",
+										color: "#E9F7FB",
+										padding: "8px 28px",
+										fontSize: "18px"
+									}}>
+									즉시구매
+								</Button>
+							</Link>
 						</div>
 					</div>
 				</div>
