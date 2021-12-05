@@ -1,11 +1,10 @@
 import React, { useState, useEffect, useCallback } from "react";
 import Button from "../../Button/Button";
-// import { useSelector } from "react-redux";
-import './Update.scss'
+import { useSelector, useDispatch } from "react-redux";
+import Modal from "../../Modal/Modal.jsx";
+import { checkIsDuplicateUsername} from "../../../store/actions/userActions.js";
 
-import { useDispatch } from "react-redux";
-// import Modal from "src/components/Modal/Modal.jsx";
-// import { checkIsDuplicateUsername, resetUsernameDuplicateCheck} from "src/store/actions/userActions.js";
+import './Update.scss'
 
 const Update = ({history}) => {
     // const [user, setuser] = useState({
@@ -14,17 +13,21 @@ const Update = ({history}) => {
     //     PW: '123456789',
     //     ConfirmPW: '123456789'
     // });
-    const [user, setuser] = useState();
-    const [name, setname] = useState('홍길동')
-    const [email, setemaill] = useState('ghdrlfehd1234@naver.com')
-    const [password, setpassword] = useState('123456789')
-    const [confirmPassword, setconfirmPassword] = useState('123456789')
+    
+    const [name, setname] = useState('')
+    const [email, setemaill] = useState('')
+    const [password, setpassword] = useState('')
+    const [confirmPassword, setconfirmPassword] = useState('')
     const [errorMessage, setErrorMessage] = useState({
         nameError: "",
         passwordError: "",
         confirmPasswordError: "",
     });
 
+    const [modalOpen, setModalOpen] = useState('close')
+    const [formError, setFormError] = useState('')
+
+    const { loading, success, error, isUsernameDupChecked } = useSelector(state=>state.user)
     const dispatch = useDispatch()
     const { nameError, passwordError, confirmPasswordError } = errorMessage;
 
@@ -93,10 +96,10 @@ const Update = ({history}) => {
         }
       }, [confirmPassword]);
 
-    // const checkDupUsername = () => {
-    //   setModalOpen('open')
-    //   dispatch(checkIsDuplicateUsername(username))
-    // }
+      const checkDupUsername = () => {
+        setModalOpen('open')
+        dispatch(checkIsDuplicateUsername(name))
+      }
     
       const onUpdate = () => {
         if (!name || !password || !confirmPassword) {
@@ -113,19 +116,22 @@ const Update = ({history}) => {
         } else if (confirmPasswordError) {
             alert("비밀번호 확인이 일치하지 않습니다.");
             return;
+        } else if(!isUsernameDupChecked) {
+          setFormError("닉네임 중복확인을. 하지 않으셨습니다")
+          return
         }
 
-        // const updateUserData = {
-        //     user_name: name,
-        //     user_id: email,
-        //     password: password,
-        // }
+        const updateUserData = {
+            user_name: name,
+            user_id: email,
+            password: password,
+        }
     
-        // dispatch(onUpdate(updateUserData));
+        dispatch(onUpdate(updateUserData));
 
         alert("회원 정보 수정 완료");
         history.push("/mypage");
-    };
+      }
 
     // const onChange = (e) => {
     //     const nextuser = {
@@ -143,18 +149,18 @@ const Update = ({history}) => {
 
     return (
       <>
-        {/* {!loading &&
+        {!loading &&
         <Modal
           modalOpen={modalOpen}
           buttonText="확인"
           buttonSize="16px"
-          onClick={handleModalClick}
+          // onClick={handleModalClick}
           >
           {success && success.split(".").map((msg, idx) => <p key={idx}>{msg}</p>)}
           {error && error.split(".").map((msg, idx) => <p key={idx}>{msg}</p>)}
           {formError && formError.split(".").map((msg, idx) => <p key={idx}>{msg}</p>)}
         </Modal>
-        } */}
+        }
         <div className="navbar-container">
             <p classname="mypage-title">마이 페이지</p>
             <div className="mypage-menu">
@@ -172,7 +178,7 @@ const Update = ({history}) => {
                                 value={name}
                                 onChange={(e)=>setname(e.target.value)}
                             ></input>
-                            {/* <Button text="중복확인" size="12px" color="#ffffff" onClick={checkDupUsername} /> */}
+                            <Button text="중복확인" size="12px" color="#ffffff" onClick={checkDupUsername} />
                             <p className="error">
                                 {nameError ? <errorMessage>{nameError}</errorMessage> : ""}
                             </p>

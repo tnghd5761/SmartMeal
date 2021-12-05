@@ -1,4 +1,4 @@
-import { USER_REGISTER_REQUEST, USER_REGISTER_SUCCESS, USER_REGISTER_FAIL, USER_DUPLICATE_USERNAME_REQUEST, USER_DUPLICATE_USERNAME_SUCCESS, USER_DUPLICATE_USERNAME_FAIL, USER_DUPLICATE_EMAIL_REQUEST, USER_DUPLICATE_EMAIL_SUCCESS, USER_DUPLICATE_EMAIL_FAIL, USER_RESET_EMAIL_DUPLICATE_CHECK, USER_RESET_USERNAME_DUPLICATE_CHECK, USER_ERROR_SUCCESS_RESET, USER_LOGIN_REQUEST, USER_LOGIN_SUCCESS, USER_LOGIN_FAIL, USER_LOGOUT_REQUEST, USER_LOGOUT_SUCCESS, USER_LOGOUT_FAIL } from "../constants/userConstants"
+import { USER_REGISTER_REQUEST, USER_REGISTER_SUCCESS, USER_REGISTER_FAIL, USER_DUPLICATE_USERNAME_REQUEST, USER_DUPLICATE_USERNAME_SUCCESS, USER_DUPLICATE_USERNAME_FAIL, USER_DUPLICATE_EMAIL_REQUEST, USER_DUPLICATE_EMAIL_SUCCESS, USER_DUPLICATE_EMAIL_FAIL, USER_RESET_EMAIL_DUPLICATE_CHECK, USER_RESET_USERNAME_DUPLICATE_CHECK, USER_ERROR_SUCCESS_RESET, USER_LOGIN_REQUEST, USER_LOGIN_SUCCESS, USER_LOGIN_FAIL, USER_LOGOUT_REQUEST, USER_LOGOUT_SUCCESS, USER_LOGOUT_FAIL, USER_INFO_REQUEST, USER_INFO_SUCCESS, USER_INFO_FAIL, USER_INFO_UPDATE_REQUEST, USER_INFO_UPDATE_SUCCESS, USER_INFO_UPDATE_FAIL, } from "../constants/userConstants"
 
 
 const initialState = {
@@ -8,6 +8,8 @@ const initialState = {
     isEmailDupChecked: false,
     isUsernameDupChecked: false,
     isLogin: false,
+    userListLoading: false,
+    userList: [],
 }
 
 const userReducer = (state = initialState, action) => {
@@ -139,6 +141,49 @@ const userReducer = (state = initialState, action) => {
                 success: null,
                 error: action.error,
             }
+        case USER_INFO_REQUEST:
+            return {
+                ...state,
+                userListLoading: true,
+                success: null,
+                error: null,
+            }
+        case USER_INFO_SUCCESS:
+            return {
+                ...state,
+                userListLoading: false,
+                success: action.success,
+                userList: action.payload.userList,
+                error: null,
+            }
+        case USER_INFO_FAIL:
+            return {
+                ...state,
+                userListLoading: false,
+                success: null,
+                error: action.error,
+            }
+        case USER_INFO_UPDATE_REQUEST:
+            return {
+                ...state,
+                loading: true,
+                success: null,
+                error: null,
+            }
+        case USER_INFO_UPDATE_SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                success: action.success,
+                error: null,
+            }
+        case USER_INFO_UPDATE_FAIL:
+            return {
+                ...state,
+                loading: false,
+                success: null,
+                error: action.error,
+            }    
         default:
             return state
     }

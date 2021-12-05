@@ -1,10 +1,28 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux"
 import Button from "../../Button/Button";
+import UserList from "../../UserList/UserList"
+import { info } from "../../../store/actions/userActions"
 
 import './Mypage.scss'
 
-const Mypage = () => {
+const Mypage = (history) => {
+
+    const dispatch = useDispatch()
+    
+    const { isLogin, userList, userListLoading } = useSelector(state=>state.user)
+
+    // useEffect(()=>{
+    //     if(!isLogin){
+    //         history.push('/')
+    //     }
+    // })
+
+    useEffect(()=>{
+        if(!userListLoading){
+            dispatch(info())
+        }
+    },[JSON.stringify(userList)])
 
     return (
         <div className="navbar-container">
@@ -17,10 +35,9 @@ const Mypage = () => {
             <div className= "mypage-component">
                 <p className="mypage-staus">내 회원정보 </p>
                 <div className="mypage-info">
-                    <div className="mypage-userinfo">
-                        <p className="nickname">닉네임: </p>
-                        <p className="id">아이디(이메일): </p>
-                    </div>
+                    {userList.map(user=>{
+                        return (<UserList name={user.user_name} id={user.user_id}/>)
+                    })}
                     <div className="update-button">
                     <Button color="#9CC094" text="수정" link="/mypage/update" size="20px" />
                     </div>
