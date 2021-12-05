@@ -1,12 +1,21 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from "react"
 import ItemList from '../../components/ItemList/ItemList';
 import Paging from '../../components/Paging/Paging';
-import { styled, Slider, Table, TableRow, TableCell, Checkbox, FormControlLabel, Select, MenuItem } from '@material-ui/core';
+import { styled, Slider, Table, TableRow, TableCell, Checkbox, FormControlLabel } from '@material-ui/core';
 
 import "./ItemlistPage.scss";
 import Button from '../../components/Button/Button';
 
 function ItemlistPage() {
+	const [data, setData] = useState([]);
+
+	useEffect(() => {
+		fetch("http://localhost:8080/foods")
+			.then((res)=>res.json())
+			.then((data)=>setData(data));
+    },[])
+	console.log(data);
+
 	const prac_list = [
 		{ name : "1번 상품", price : 7000 }, { name : "2번 상품", price : 8000 }, { name : "3번 상품", price : 7000 }, { name : "4번 상품", price : 4000 },
 		{ name : "5번 상품", price : 7000 }, { name : "6번 상품", price : 3000 }, { name : "7번 상품", price : 6000 }, { name : "8번 상품", price : 2800 },
@@ -30,7 +39,7 @@ function ItemlistPage() {
 	const handleFat = (event, newValue) => {
 		setFat(newValue);
 	};
-	const [calorie, setCalorie] = useState([0, 500]);
+	const [calorie, setCalorie] = useState([0, 1000]);
 	const handleCalorie = (event, newValue) => {
 		setCalorie(newValue);
 	};
@@ -143,10 +152,10 @@ function ItemlistPage() {
 						<option value="expensive">가격높은순</option>
 					</select>
 				</div>
-				<ItemList list={currentPosts(prac_list)} />
+				<ItemList list={currentPosts(data)} />
 			</div>
 			<div className="paging">
-				<Paging page={page} count={prac_list.length} setPage={handlePage}/>
+				<Paging page={page} count={data.length} setPage={handlePage}/>
 			</div>
 		</div>
 	)

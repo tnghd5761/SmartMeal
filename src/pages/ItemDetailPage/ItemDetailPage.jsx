@@ -1,20 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { styled, Button, Table, TableRow, TableCell } from '@material-ui/core';
 import './ItemDetailPage.scss';
 
-function ItemDetailPage() {
-	const item = {
-		name: "닭가슴살 볶음밥",
-		price: 7800,
-		nutrient: {
-			carlorie: 200,
-			carbohydrate: 47,
-			sugar: 2,
-			protein: 12,
-			fat: 3.3,
-			s_fat: 0.5
+function ItemDetailPage({ match }) {
+	const [item, setItem] = useState(
+		{
+			name: "",
+			price: "",
 		}
-	}
+	);
+	const itemID = match.params.id;
+	useEffect(async() => {
+		await fetch(`http://localhost:8080/foods?code=${itemID}`)
+			.then((res)=>res.json())
+			.then((data)=>setItem(data[0]));
+    },[])
+	console.log(item);
+
 	const [amount, setAmount] = useState(1);
 	const amountPlus = (event) => {
 		setAmount(amount+1);
@@ -80,34 +82,34 @@ function ItemDetailPage() {
 					<Table className="nutrient_table">
 						<TableRow>
 							<MyTableCell align="left" width="200px">열량</MyTableCell>
-							<MyTableCell align="right" width="200px">{item.nutrient.carlorie}&nbsp;kcal</MyTableCell>
+							<MyTableCell align="right" width="200px">{item.kcal}&nbsp;kcal</MyTableCell>
 							<MyTableCell align="right" width="200px">00&nbsp;%</MyTableCell>
 						</TableRow>
 						<TableRow>
 							<MyTableCell align="left" width="200px">탄수화물</MyTableCell>
-							<MyTableCell align="right" width="200px">{item.nutrient.carbohydrate}&nbsp;g</MyTableCell>
+							<MyTableCell align="right" width="200px">{item.carbohydrate}&nbsp;g</MyTableCell>
 							<MyTableCell align="right" width="200px">00&nbsp;%</MyTableCell>
 						</TableRow>
 						<TableRow>
 							<MyTableCell align="left" width="200px">당류</MyTableCell>
-							<MyTableCell align="right" width="200px">{item.nutrient.sugar}&nbsp;g</MyTableCell>
+							<MyTableCell align="right" width="200px">2.7&nbsp;g</MyTableCell>
 							<MyTableCell align="right" width="200px">00&nbsp;%</MyTableCell>
 						</TableRow>
 					</Table>
 					<Table className="nutrient_table">
 						<TableRow>
 							<MyTableCell align="left" width="200px">단백질</MyTableCell>
-							<MyTableCell align="right" width="200px">{item.nutrient.protein}&nbsp;g</MyTableCell>
+							<MyTableCell align="right" width="200px">{item.protein}&nbsp;g</MyTableCell>
 							<MyTableCell align="right" width="200px">00&nbsp;%</MyTableCell>
 						</TableRow>
 						<TableRow>
 							<MyTableCell align="left" width="200px">지방</MyTableCell>
-							<MyTableCell align="right" width="200px">{item.nutrient.fat}&nbsp;g</MyTableCell>
+							<MyTableCell align="right" width="200px">{item.fat}&nbsp;g</MyTableCell>
 							<MyTableCell align="right" width="200px">00&nbsp;%</MyTableCell>
 						</TableRow>
 						<TableRow>
 							<MyTableCell align="left" width="200px">포화지방</MyTableCell>
-							<MyTableCell align="right" width="200px">{item.nutrient.s_fat}&nbsp;g</MyTableCell>
+							<MyTableCell align="right" width="200px">2.2&nbsp;g</MyTableCell>
 							<MyTableCell align="right" width="200px">00&nbsp;%</MyTableCell>
 						</TableRow>
 					</Table>
