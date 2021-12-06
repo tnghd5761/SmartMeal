@@ -6,11 +6,11 @@ import { info } from "../../../store/actions/userActions"
 
 import './Mypage.scss'
 
-const Mypage = (history) => {
+const Mypage = ({history}) => {
 
     const dispatch = useDispatch()
     
-    const { isLogin, userList, userListLoading } = useSelector(state=>state.user)
+    const { isLogin, user:userList, userListLoading } = useSelector(state=>state.user)
 
     useEffect(()=>{
         if(!isLogin){
@@ -18,12 +18,16 @@ const Mypage = (history) => {
         }
     })
     
-    useEffect(()=>{
-        if(userListLoading){
-            dispatch(info())
-        }
-    }, [])
+    
 
+        useEffect(()=>{
+            if(!userListLoading){
+                dispatch(info())
+            }
+        },[])
+
+
+    console.log(userList)
     return (
         <div className="navbar-container">
             <p classname="mypage-title">마이 페이지</p>
@@ -35,9 +39,8 @@ const Mypage = (history) => {
             <div className= "mypage-component">
                 <p className="mypage-staus">내 회원정보 </p>
                 <div className="mypage-info">
-                    {userList.map(user=>{
-                        return (<infoList name={user.user_name} id={user.user_id}/>)
-                    })}
+                <p>{userList.user_name}</p>
+                <p>{userList.user_id}</p>
                     <div className="update-button">
                     <Button color="#9CC094" text="수정" link="/mypage/update" size="20px" />
                     </div>
