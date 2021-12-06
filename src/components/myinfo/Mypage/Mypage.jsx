@@ -36,7 +36,7 @@ const Mypage = (history) => {
             <div className= "mypage-component">
                 <p className="mypage-staus">내 회원정보 </p>
                 <div className="mypage-info">
-                    {infoList.map(user=>{
+                    {userList.map(user=>{
                         return (<infoList name={user.user_name} email={user.user_id}/>)
                     })}
                     <div className="update-button">
