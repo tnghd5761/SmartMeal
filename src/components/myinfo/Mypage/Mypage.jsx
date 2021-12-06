@@ -6,11 +6,11 @@ import { info } from "../../../store/actions/userActions"
 
 import './Mypage.scss'
 
-const Mypage = (history) => {
+const Mypage = ({history}) => {
 
     const dispatch = useDispatch()
     
-    const { isLogin, userList, userListLoading } = useSelector(state=>state.user)
+    const { isLogin, user:userList, userListLoading } = useSelector(state=>state.user)
 
     useEffect(()=>{
         if(!isLogin){
@@ -19,9 +19,7 @@ const Mypage = (history) => {
     })
     
     useEffect(()=>{
-        if(userListLoading){
-            dispatch(info())
-        }
+        dispatch(info())
     }, [])
 
     return (

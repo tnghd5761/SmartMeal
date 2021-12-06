@@ -206,12 +206,12 @@ export const info = () => async (dispatch) => {
     }
 
     const res = await fetch(`/users/info`, config)  
-    const { userList } = await res.json()
+    const { user } = await res.json()
 
     if(res.status === 200) {
       dispatch({
         type: USER_INFO_SUCCESS,
-        payload:{ userList },
+        payload:{ user },
       })
     } else {
       throw new Error()

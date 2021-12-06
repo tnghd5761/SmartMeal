@@ -9,7 +9,7 @@ const initialState = {
     isUsernameDupChecked: false,
     isLogin: false,
     userListLoading: false,
-    userList: [],
+    user: null,
 }
 
 const userReducer = (state = initialState, action) => {
@@ -153,7 +153,7 @@ const userReducer = (state = initialState, action) => {
                 ...state,
                 userListLoading: false,
                 success: action.success,
-                userList: action.payload.userList,
+                user: action.payload.user,
                 error: null,
             }
         case USER_INFO_FAIL:
