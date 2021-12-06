@@ -87,76 +87,76 @@ function ItemDetailPage({ match }) {
 								</div>
 							</div>
 						</div>
-					</div>
-					<div className="decise_btn">
-						<div className="in_bag">
-							<Button
-								style={{
-									backgroundColor: "#E9F7FB",
-									border: "2px solid #1979FF",
-									color: "#1979FF",
-									padding: "8px 28px",
-									fontSize: "18px"
-								}}
-								onClick={()=>handleAddCart(item.name,amount,item.price)}
-							>
-								장바구니
-							</Button>
-						</div>
-						<div className="buy_now">
-							<Link to={{ pathname: `/purchase/${"immediate"}`, state: { item: item, count: amount} }}>
+						<div className="decise_btn">
+							<div className="in_bag">
 								<Button
 									style={{
-										backgroundColor: "#1979FF",
-										border: "2px solid #66A6FF",
-										color: "#E9F7FB",
+										backgroundColor: "#E9F7FB",
+										border: "2px solid #1979FF",
+										color: "#1979FF",
 										padding: "8px 28px",
 										fontSize: "18px"
-									}}>
-									즉시구매
+									}}
+									onClick={()=>handleAddCart(item.name,amount,item.price)}
+								>
+									장바구니
 								</Button>
-							</Link>
+							</div>
+							<div className="buy_now">
+								<Link to={{ pathname: `/purchase/${"immediate"}`, state: { item: item, count: amount} }}>
+									<Button
+										style={{
+											backgroundColor: "#1979FF",
+											border: "2px solid #66A6FF",
+											color: "#E9F7FB",
+											padding: "8px 28px",
+											fontSize: "18px"
+										}}>
+										즉시구매
+									</Button>
+								</Link>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-			<div className="explain_container">
-				<div className="explain_title">상품 정보</div>
-				<div className="nutrient_container">
-					<Table className="nutrient_table">
-						<TableRow>
-							<MyTableCell align="left" width="200px">열량</MyTableCell>
-							<MyTableCell align="right" width="200px">{item.kcal}&nbsp;kcal</MyTableCell>
-							<MyTableCell align="right" width="200px">00&nbsp;%</MyTableCell>
-						</TableRow>
-						<TableRow>
-							<MyTableCell align="left" width="200px">탄수화물</MyTableCell>
-							<MyTableCell align="right" width="200px">{item.carbohydrate}&nbsp;g</MyTableCell>
-							<MyTableCell align="right" width="200px">00&nbsp;%</MyTableCell>
-						</TableRow>
-						<TableRow>
-							<MyTableCell align="left" width="200px">당류</MyTableCell>
-							<MyTableCell align="right" width="200px">2.7&nbsp;g</MyTableCell>
-							<MyTableCell align="right" width="200px">00&nbsp;%</MyTableCell>
-						</TableRow>
-					</Table>
-					<Table className="nutrient_table">
-						<TableRow>
-							<MyTableCell align="left" width="200px">단백질</MyTableCell>
-							<MyTableCell align="right" width="200px">{item.protein}&nbsp;g</MyTableCell>
-							<MyTableCell align="right" width="200px">00&nbsp;%</MyTableCell>
-						</TableRow>
-						<TableRow>
-							<MyTableCell align="left" width="200px">지방</MyTableCell>
-							<MyTableCell align="right" width="200px">{item.fat}&nbsp;g</MyTableCell>
-							<MyTableCell align="right" width="200px">00&nbsp;%</MyTableCell>
-						</TableRow>
-						<TableRow>
-							<MyTableCell align="left" width="200px">포화지방</MyTableCell>
-							<MyTableCell align="right" width="200px">2.2&nbsp;g</MyTableCell>
-							<MyTableCell align="right" width="200px">00&nbsp;%</MyTableCell>
-						</TableRow>
-					</Table>
+				<div className="explain_container">
+					<div className="explain_title">상품 정보</div>
+					<div className="nutrient_container">
+						<Table className="nutrient_table">
+							<TableRow>
+								<MyTableCell align="left" width="200px">열량</MyTableCell>
+								<MyTableCell align="right" width="200px">{item.kcal}&nbsp;kcal</MyTableCell>
+								<MyTableCell align="right" width="200px">00&nbsp;%</MyTableCell>
+							</TableRow>
+							<TableRow>
+								<MyTableCell align="left" width="200px">탄수화물</MyTableCell>
+								<MyTableCell align="right" width="200px">{item.carbohydrate}&nbsp;g</MyTableCell>
+								<MyTableCell align="right" width="200px">00&nbsp;%</MyTableCell>
+							</TableRow>
+							<TableRow>
+								<MyTableCell align="left" width="200px">당류</MyTableCell>
+								<MyTableCell align="right" width="200px">2.7&nbsp;g</MyTableCell>
+								<MyTableCell align="right" width="200px">00&nbsp;%</MyTableCell>
+							</TableRow>
+						</Table>
+						<Table className="nutrient_table">
+							<TableRow>
+								<MyTableCell align="left" width="200px">단백질</MyTableCell>
+								<MyTableCell align="right" width="200px">{item.protein}&nbsp;g</MyTableCell>
+								<MyTableCell align="right" width="200px">00&nbsp;%</MyTableCell>
+							</TableRow>
+							<TableRow>
+								<MyTableCell align="left" width="200px">지방</MyTableCell>
+								<MyTableCell align="right" width="200px">{item.fat}&nbsp;g</MyTableCell>
+								<MyTableCell align="right" width="200px">00&nbsp;%</MyTableCell>
+							</TableRow>
+							<TableRow>
+								<MyTableCell align="left" width="200px">포화지방</MyTableCell>
+								<MyTableCell align="right" width="200px">2.2&nbsp;g</MyTableCell>
+								<MyTableCell align="right" width="200px">00&nbsp;%</MyTableCell>
+							</TableRow>
+						</Table>
+					</div>
 				</div>
 			</div>
 		</>
