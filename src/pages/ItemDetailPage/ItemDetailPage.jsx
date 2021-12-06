@@ -2,6 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { styled, Button, Table, TableRow, TableCell } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import './ItemDetailPage.scss';
+import Modal from '../../components/Modal/Modal'
+import { useDispatch, useSelector } from 'react-redux';
+import { addCart } from '../../store/actions/cartActions';
+import { resetErrorSuccess } from '../../store/actions/userActions';
 
 function ItemDetailPage({ match }) {
 	const [item, setItem] = useState(
@@ -27,25 +31,60 @@ function ItemDetailPage({ match }) {
 			setAmount(amount-1);
 		}
 	};
+
+	const { success, error, loading } = useSelector(state=>state.cart)
+	const [modalOpen, setModalOpen] = useState('')
+	const [formError, setFormError] = useState('')
+
+	const dispatch = useDispatch()
+
+	const handleAddCart = (name,amount,price) => {
+		setModalOpen('open')
+		dispatch(addCart(name,amount,price))
+	}
+
 	const MyTableCell = styled(TableCell)({
 		borderBottom:"1px solid black",
 	})
+
+	const handleModalClick = () => {
+        setModalOpen('close')
+        dispatch(resetErrorSuccess())
+        setTimeout(() => {
+            setFormError(prevState => '')  
+        }, 500);
+    }
+
+
 	return (
-		<div className="detailpage_container">
-			<div className="main_container">
-				<div className="item_image">상품 이미지</div>
-				<div className="content">
-					<div className="name">{item.name}</div>
-					<div className="cost">{item.price}&nbsp;원</div>
-					<div className="count">
-						<div className="count_field">
-							<div className="amount_container">
-								<button className="plusminus_btn" onClick={amountMinus}>-</button>
-								<div className="amount_num">{amount}</div>
-								<button className="plusminus_btn" onClick={amountPlus}>+</button>
-							</div>
-							<div className="final_price">
-								{(item.price * amount)}&nbsp;원
+		<>
+			{!loading &&
+            <Modal
+                modalOpen={modalOpen}
+                buttonText="확인"
+                buttonSize="16px"
+                onClick={handleModalClick}
+                >
+                {success && success.split(".").map((msg, idx) => <p key={idx}>{msg}</p>)}
+                {error && error.split(".").map((msg, idx) => <p key={idx}>{msg}</p>)}
+                {formError && formError.split(".").map((msg, idx) => <p key={idx}>{msg}</p>)}
+            </Modal>}
+			<div className="detailpage_container">
+				<div className="main_container">
+					<div className="item_image">상품 이미지</div>
+					<div className="content">
+						<div className="name">{item.name}</div>
+						<div className="cost">{item.price}&nbsp;원</div>
+						<div className="count">
+							<div className="count_field">
+								<div className="amount_container">
+									<button className="plusminus_btn" onClick={amountMinus}>-</button>
+									<div className="amount_num">{amount}</div>
+									<button className="plusminus_btn" onClick={amountPlus}>+</button>
+								</div>
+								<div className="final_price">
+									{(item.price * amount)}&nbsp;원
+								</div>
 							</div>
 						</div>
 					</div>
@@ -58,7 +97,9 @@ function ItemDetailPage({ match }) {
 									color: "#1979FF",
 									padding: "8px 28px",
 									fontSize: "18px"
-								}}>
+								}}
+								onClick={()=>handleAddCart(item.name,amount,item.price)}
+							>
 								장바구니
 							</Button>
 						</div>
@@ -118,7 +159,7 @@ function ItemDetailPage({ match }) {
 					</Table>
 				</div>
 			</div>
-		</div>
+		</>
 	)
 }
 

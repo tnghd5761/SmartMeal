@@ -6,8 +6,11 @@ import './ItemList.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { addCart } from '../../store/actions/cartActions';
 import { resetErrorSuccess } from '../../store/actions/userActions';
+import { useHistory } from 'react-router';
 
 const ItemList = (list) => {
+
+	const history = useHistory();
 
 	const { isLogin } = useSelector(state=>state.user)
 	const { error, loading, success } = useSelector(state=>state.cart)
