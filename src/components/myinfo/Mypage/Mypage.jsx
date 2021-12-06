@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import Button from "../../Button/Button";
-import UserList from "../../UserList/UserList"
+import infoList from "../../infoList/infoList"
 import { info } from "../../../store/actions/userActions"
 
 import './Mypage.scss'
@@ -17,12 +17,13 @@ const Mypage = (history) => {
             history.push('/')
         }
     })
-
+    
     useEffect(()=>{
-        if(!userListLoading){
-            dispatch(info())
-        }
-    },[JSON.stringify(userList)])
+        // if(!userListLoading){
+            
+        // }
+        dispatch(info())
+    },[])
 
     return (
         <div className="navbar-container">
@@ -35,8 +36,8 @@ const Mypage = (history) => {
             <div className= "mypage-component">
                 <p className="mypage-staus">내 회원정보 </p>
                 <div className="mypage-info">
-                    {userList.map(user=>{
-                        return (<UserList name={user.user_name} id={user.user_id}/>)
+                    {infoList.map(user=>{
+                        return (<infoList name={user.user_name} email={user.user_id}/>)
                     })}
                     <div className="update-button">
                     <Button color="#9CC094" text="수정" link="/mypage/update" size="20px" />
