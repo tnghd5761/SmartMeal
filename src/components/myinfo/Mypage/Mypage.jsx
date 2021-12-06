@@ -19,7 +19,9 @@ const Mypage = (history) => {
     })
     
     useEffect(()=>{
-        dispatch(info())
+        if(userListLoading){
+            dispatch(info())
+        }
     }, [])
 
     return (
