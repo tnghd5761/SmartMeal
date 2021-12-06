@@ -5,8 +5,11 @@ import './ItemList.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { addCart } from '../../store/actions/cartActions';
 import { resetErrorSuccess } from '../../store/actions/userActions';
+import { useHistory } from 'react-router';
 
 const ItemList = (list) => {
+
+	const history = useHistory();
 
 	const { isLogin } = useSelector(state=>state.user)
 	const { error, loading, success } = useSelector(state=>state.cart)
@@ -51,8 +54,7 @@ const ItemList = (list) => {
 				<Grid container spacing={3} className="list_container">
 					{list.list.map((c) => (
 						<Grid item xs={3}>
-							<a href='/detail'>
-								<div className="list_box">
+								<div onClick={()=>{history.push('/detail')}} className="list_box">
 									<div className="item_image">상품 이미지</div>
 									<div className="item_name_cart">
 										<p>{c.name}</p>
@@ -60,7 +62,6 @@ const ItemList = (list) => {
 									</div>
 									<div className="item_price">{c.price}&nbsp;원</div>
 								</div>
-							</a>
 						</Grid>
 					))}
 				</Grid>
