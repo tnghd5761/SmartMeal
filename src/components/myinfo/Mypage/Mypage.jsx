@@ -19,11 +19,8 @@ const Mypage = (history) => {
     })
     
     useEffect(()=>{
-        // if(!userListLoading){
-            
-        // }
         dispatch(info())
-    },[])
+    }, [])
 
     return (
         <div className="navbar-container">
@@ -37,7 +34,7 @@ const Mypage = (history) => {
                 <p className="mypage-staus">내 회원정보 </p>
                 <div className="mypage-info">
                     {userList.map(user=>{
-                        return (<infoList name={user.user_name} email={user.user_id}/>)
+                        return (<infoList name={user.user_name} id={user.user_id}/>)
                     })}
                     <div className="update-button">
                     <Button color="#9CC094" text="수정" link="/mypage/update" size="20px" />
