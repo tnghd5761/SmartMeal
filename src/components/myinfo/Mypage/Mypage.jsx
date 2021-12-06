@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import Button from "../../Button/Button";
-import infoList from "../../infoList/infoList"
 import { info } from "../../../store/actions/userActions"
 
 import './Mypage.scss'
@@ -19,8 +18,10 @@ const Mypage = ({history}) => {
     })
     
     useEffect(()=>{
-        dispatch(info())
-    }, [])
+
+            dispatch(info())
+        
+    })
 
     return (
         <div className="navbar-container">
