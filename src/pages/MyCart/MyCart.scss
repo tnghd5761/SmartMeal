@@ -72,4 +72,9 @@
             font-family: NotoSansKRBold;
         }
     }
+	.link, a:link, a:visited, a:hover, a:active{
+		text-decoration:none;
+		background-color:transparent;
+		color: #000000;
+	}
 }

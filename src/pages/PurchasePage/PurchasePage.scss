@@ -1,0 +1,150 @@
+.purchase_container{
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	align-content: center;
+
+	.content{
+		width: 1200px;
+	
+		.item_section{
+			margin-top: 30px;
+			margin-bottom: 40px;
+			overflow-y: auto;
+			background-color: #fafafa;
+			border-radius: 20px;
+			height: 400px;
+			p{
+				color: #3E7C17;
+				width: fit-content;
+				font-size: 24px;
+				font-family: NotoSansKRBold;
+			}
+			&::-webkit-scrollbar {
+				width: 45px;
+				background-color: transparent;
+			}
+				&::-webkit-scrollbar-track {
+				margin: 16px;
+			}
+				&::-webkit-scrollbar-thumb {
+				background-color: #ddd;
+				width: 2px;
+				background-clip: padding-box;
+				border: 18px solid transparent;
+				border-radius: 40px;
+			}
+			.item_block{
+				display: flex;
+				margin: 20px;
+				padding: 20px;
+				background-color: #FFF;
+				border-radius: 10px;
+				.item_name{
+					margin-left: 10px;
+					width: 300px;
+				}
+				.item_count, .item_price, .item_equals, .item_price_sum{
+					width: 225px;
+					text-align: right;
+				}
+				.item_count, .item_price, .item_equals{
+					width: 175px;
+				}
+			}
+		}
+		.price_section{
+			margin-bottom: 40px;
+			.block-container{
+				height: 200px;
+				p{
+					color: #3E7C17;
+					width: fit-content;
+					font-size: 24px;
+					font-family: NotoSansKRBold;
+				}
+				.price_sum{
+					display: flex;
+					justify-content: space-evenly;
+					margin-top: 40px;
+					align-items: center;
+					p{
+						color: #66806A;
+					}
+				}
+			}
+		}
+		.delivery_section{
+			margin-bottom: 40px;
+			.block-container{
+				height: 270px;
+				p{
+					color: #3E7C17;
+					width: fit-content;
+					font-size: 24px;
+					font-family: NotoSansKRBold;
+				}
+				.input_block{
+					display: flex;
+					margin: 20px;
+					padding: 20px;
+					background-color: #FFF;
+					border-radius: 10px;
+					
+					.input_title{
+						width: 120px;
+						margin-left: 10px;
+					}
+					.address{
+						width: 300px;
+					}
+					.address_search{
+						margin-left: 10px;
+						width: 100px;
+						font-family: "Noto Sans KR", Arial;
+					}
+				}
+			}
+		}
+		.payment_section{
+			margin-bottom: 40px;
+			.block-container{
+				height: 350px;
+				p{
+					color: #3E7C17;
+					width: fit-content;
+					font-size: 24px;
+					font-family: NotoSansKRBold;
+				}
+				.input_block{
+					display: flex;
+					margin: 20px;
+					padding: 20px;
+					background-color: #FFF;
+					border-radius: 10px;
+				}
+				.input_title{
+					width: 120px;
+					margin-left: 10px;
+				}
+				.credit_month, .credit_year, .credit_password{
+					width: 100px;
+				}
+				.address_search{
+					margin-left: 10px;
+					width: 100px;
+					font-family: "Noto Sans KR", Arial;
+				}
+			}
+		}
+		.button_section{
+			text-align: right;
+			margin-bottom: 30px;
+
+			.pay_btn{
+				margin-right: 30px;
+			}
+		}
+    }
+}
