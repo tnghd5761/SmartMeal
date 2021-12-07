@@ -25,11 +25,25 @@
             .mypage-userinfo{
                 padding: 0px 10px 30px 10px;
                 .nickname{
-                    padding: 0px 10px 30px 10px;
+                    padding: 0px 10px 0px 10px;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+
                     .new-data{
                         font-size: medium;
                         width:300px;
-                        margin: 0px 0px 0px 110px;
+                        margin: 0px 0px 0px 90px;
+                    }
+                    .button-container{
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        background-color: #9CC094;
+                        border-radius: 40px;
+                        width: 60px;
+                        height: 22px;
+                        font-family: NotoSansKRRegular;
                     }
                 }
                 .new-id{
@@ -56,6 +70,11 @@
                     font-size: small;
                     color: red;
                     padding: 0px 0px 0px 183px;
+                }
+                .error1{
+                    font-size: small;
+                    color: red;
+                    padding: 0px 0px 0px 190px;
                 }
             }
         }

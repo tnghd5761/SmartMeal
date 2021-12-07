@@ -176,9 +176,9 @@ const Update = ({history}) => {
                                 onChange={(e)=>setname(e.target.value)}
                             ></input>
                             <Button text="중복확인" size="12px" color="#ffffff" onClick={checkDupUsername} />
-                            <p className="error">
-                                {nameError ? <errorMessage>{nameError}</errorMessage> : ""}
-                            </p>
+                        </p>
+                        <p className="error1">
+                                {nameError ? <errorMessage>{nameError}</errorMessage> : ""} 
                         </p>
                         <p className="new-id"> 아이디(이메일): {user.user_id} </p>
                         <p className="new-password">비밀번호:   
