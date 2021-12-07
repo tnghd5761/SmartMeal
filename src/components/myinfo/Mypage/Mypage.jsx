@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import Button from "../../Button/Button";
-import infoList from "../../infoList/infoList"
 import { info } from "../../../store/actions/userActions"
 
 import './Mypage.scss'
@@ -10,24 +9,20 @@ const Mypage = ({history}) => {
 
     const dispatch = useDispatch()
     
-    const { isLogin, user:userList, userListLoading } = useSelector(state=>state.user)
+    const { isLogin, user, userListLoading } = useSelector(state=>state.user)
 
     useEffect(()=>{
-        if(!isLogin){
+         if(!isLogin){
             history.push('/')
-        }
+         }
     })
     
-    
+    useEffect(()=>{
+        if(!userListLoading){
+            dispatch(info())
+        }
+    },[])
 
-        useEffect(()=>{
-            if(!userListLoading){
-                dispatch(info())
-            }
-        },[])
-
-
-    console.log(userList)
     return (
         <div className="navbar-container">
             <p classname="mypage-title">마이 페이지</p>
@@ -38,13 +33,13 @@ const Mypage = ({history}) => {
 
             <div className= "mypage-component">
                 <p className="mypage-staus">내 회원정보 </p>
-                <div className="mypage-info">
-                <p>{userList.user_name}</p>
-                <p>{userList.user_id}</p>
+                    <div className="mypage-info">
+                        <p className="nickname">닉네임: {user.user_name} </p>
+                        <p className="id">아이디(이메일): {user.user_id} </p>
+                    </div>
                     <div className="update-button">
                     <Button color="#9CC094" text="수정" link="/mypage/update" size="20px" />
                     </div>
-                </div>
             </div>
         </div>
     );

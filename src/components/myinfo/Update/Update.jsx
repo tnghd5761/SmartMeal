@@ -2,20 +2,14 @@ import React, { useState, useEffect, useCallback } from "react";
 import Button from "../../Button/Button";
 import { useSelector, useDispatch } from "react-redux";
 import Modal from "../../Modal/Modal.jsx";
-import { checkIsDuplicateUsername} from "../../../store/actions/userActions.js";
+import { checkIsDuplicateUsername, resetErrorSuccess} from "../../../store/actions/userActions.js";
+import { info, infoUpdate } from "../../../store/actions/userActions"
 
 import './Update.scss'
 
 const Update = ({history}) => {
-    // const [user, setuser] = useState({
-    //     Nickname: '홍길동',
-    //     ID: 'ghdrlfehd1234@naver.com',
-    //     PW: '123456789',
-    //     ConfirmPW: '123456789'
-    // });
     
     const [name, setname] = useState('')
-    const [email, setemaill] = useState('')
     const [password, setpassword] = useState('')
     const [confirmPassword, setconfirmPassword] = useState('')
     const [errorMessage, setErrorMessage] = useState({
@@ -27,10 +21,16 @@ const Update = ({history}) => {
     const [modalOpen, setModalOpen] = useState('close')
     const [formError, setFormError] = useState('')
 
-    const { loading, success, error, isUsernameDupChecked } = useSelector(state=>state.user)
+    const { loading, success, error, isUsernameDupChecked, userListLoading, user} = useSelector(state=>state.user)
     const dispatch = useDispatch()
     const { nameError, passwordError, confirmPasswordError } = errorMessage;
 
+    useEffect(()=>{
+      if(!userListLoading){
+          dispatch(info())
+      }
+    },[])
+    
     const inputRegexs = {
         nameReg: /[~!@#$%^&*()_+|<>?:{}]/,
         passwordReg: /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+]).{8,}$/
@@ -101,7 +101,7 @@ const Update = ({history}) => {
         dispatch(checkIsDuplicateUsername(name))
       }
     
-      const onUpdate = () => {
+      const onUpdate = ( name, email, password, confirmPassword) => {
         if (!name || !password || !confirmPassword) {
           alert("모든 값을 정확하게 입력해주세요");
           return;
@@ -127,25 +127,22 @@ const Update = ({history}) => {
             password: password,
         }
     
-        dispatch(onUpdate(updateUserData));
+        dispatch(infoUpdate(updateUserData));
 
         alert("회원 정보 수정 완료");
         history.push("/mypage");
       }
 
-    // const onChange = (e) => {
-    //     const nextuser = {
-    //       ...user, // 기존의 값 복사 (spread operator)
-    //       [e.target.name]: e.target.value, // 덮어쓰기
-    //     };
-    //     setuser(nextuser);
-    // };
-
-    // const onClick = (e) => {
-    //     alert('저장하시겠습니까?');
-    //     setuser({[e.target.name]: e.target.value
-    //     });
-    // };
+      const handleModalClick = () => {
+        if(success === '확인되었습니다') {
+        } 
+    
+        setModalOpen(prevState => 'close')
+        dispatch(resetErrorSuccess())
+        setTimeout(() => {
+        setFormError(prevState => '')  
+        }, 500);  
+      }  
 
     return (
       <>
@@ -154,7 +151,7 @@ const Update = ({history}) => {
           modalOpen={modalOpen}
           buttonText="확인"
           buttonSize="16px"
-          // onClick={handleModalClick}
+          onClick={handleModalClick}
           >
           {success && success.split(".").map((msg, idx) => <p key={idx}>{msg}</p>)}
           {error && error.split(".").map((msg, idx) => <p key={idx}>{msg}</p>)}
@@ -183,7 +180,7 @@ const Update = ({history}) => {
                                 {nameError ? <errorMessage>{nameError}</errorMessage> : ""}
                             </p>
                         </p>
-                        <p className="new-id"> 아이디(이메일): {email} </p>
+                        <p className="new-id"> 아이디(이메일): {user.user_id} </p>
                         <p className="new-password">비밀번호:   
                             <input className="new-data"
                                 type="password"
@@ -208,7 +205,7 @@ const Update = ({history}) => {
                         </p>  
                     </div>  
                     <div className="update-save-button">
-                        <Button color="#9CC094" text="저장" size="20px" onClick={onUpdate}/>
+                        <Button color="#9CC094" text="저장" size="20px" onClick={()=>onUpdate(name,user.user_id,password,confirmPassword)}/>
                     </div>
                 </div>
             </div>

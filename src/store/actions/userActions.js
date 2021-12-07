@@ -1,4 +1,4 @@
-import { USER_REGISTER_REQUEST, USER_REGISTER_SUCCESS, USER_REGISTER_FAIL, USER_DUPLICATE_USERNAME_REQUEST, USER_DUPLICATE_USERNAME_SUCCESS, USER_DUPLICATE_USERNAME_FAIL, USER_DUPLICATE_EMAIL_REQUEST, USER_DUPLICATE_EMAIL_SUCCESS, USER_DUPLICATE_EMAIL_FAIL, USER_RESET_EMAIL_DUPLICATE_CHECK, USER_RESET_USERNAME_DUPLICATE_CHECK, USER_ERROR_SUCCESS_RESET, USER_LOGIN_FAIL, USER_LOGIN_SUCCESS, USER_LOGIN_REQUEST, USER_LOGOUT_REQUEST, USER_LOGOUT_SUCCESS, USER_LOGOUT_FAIL, USER_INFO_REQUEST, USER_INFO_SUCCESS, USER_INFO_FAIL, USER_INFO_UPDATE_REQUEST, USER_INFO_UPDATE_SUCCESS, USER_INFO_UPDATE_FAIL, } from "../constants/userConstants"
+import { USER_REGISTER_REQUEST, USER_REGISTER_SUCCESS, USER_REGISTER_FAIL, USER_DUPLICATE_USERNAME_REQUEST, USER_DUPLICATE_USERNAME_SUCCESS, USER_DUPLICATE_USERNAME_FAIL, USER_DUPLICATE_EMAIL_REQUEST, USER_DUPLICATE_EMAIL_SUCCESS, USER_DUPLICATE_EMAIL_FAIL, USER_RESET_EMAIL_DUPLICATE_CHECK, USER_RESET_USERNAME_DUPLICATE_CHECK, USER_ERROR_SUCCESS_RESET, USER_LOGIN_FAIL, USER_LOGIN_SUCCESS, USER_LOGIN_REQUEST, USER_LOGOUT_REQUEST, USER_LOGOUT_SUCCESS, USER_LOGOUT_FAIL, USER_INFO_REQUEST, USER_INFO_SUCCESS, USER_INFO_FAIL, USER_INFO_UPDATE_REQUEST, USER_INFO_UPDATE_SUCCESS, USER_INFO_UPDATE_FAIL, USER_INFO_DELETE_REQUEST, USER_INFO_DELETE_SUCCESS, USER_INFO_DELETE_FAIL, USER_INBODY_UPDATE_REQUEST, USER_INBODY_UPDATE_SUCCESS, USER_INBODY_UPDATE_FAIL, } from "../constants/userConstants"
 
 // @desc      Sign up
 // @request   /users/signup
@@ -238,7 +238,6 @@ export const infoUpdate = (updateUserData) => async (dispatch) => {
     }
 
     const res = await fetch(`/users/update`, config)
-    const { userList } = await res.json()
 
     if(res.status === 200) {
       dispatch({
@@ -248,7 +247,7 @@ export const infoUpdate = (updateUserData) => async (dispatch) => {
     } else if(res.status === 409){
       dispatch({
         type: USER_INFO_UPDATE_FAIL,
-        error: "회원정보 수정에 실패하였습니다. 입력한 내용을 다시 확인해주세요" 
+        error: "회원정보 수정이 실패하였습니다. 입력한 내용을 다시 확인해주세요" 
       })
     } else {
       throw new Error()
@@ -257,6 +256,79 @@ export const infoUpdate = (updateUserData) => async (dispatch) => {
   } catch (err) {
     dispatch({
         type: USER_INFO_UPDATE_FAIL,
+        error: "에러가 발생했습니다. 다시 시도해주세요" 
+      })
+  }
+}
+
+export const infoDelete = (deleteUserData) => async (dispatch) => {
+  try {
+    
+    dispatch({ type: USER_INFO_DELETE_REQUEST })
+      
+    const config = {
+      method:'POST',
+      headers:{
+        'Content-Type': 'application/json'
+      },
+      body:JSON.stringify(deleteUserData)
+    }
+    
+    const res = await fetch(`/users/signout`, config)
+
+    if(res.status === 200) {
+      dispatch({
+        type: USER_INFO_DELETE_SUCCESS,
+        success: "회원탈퇴가 완료되었습니다"
+      })
+    } else if(res.status === 409){
+      dispatch({
+        type: USER_INFO_DELETE_FAIL,
+        error: "회원탈퇴를 실패하였습니다. " 
+      })
+    } else {
+      throw new Error()
+    }
+
+  } catch (err) {
+    dispatch({
+        type: USER_INFO_DELETE_FAIL,
+        error: "에러가 발생했습니다. 다시 시도해주세요" 
+      })
+  }
+}
+
+export const inbodyUpdate = (updateInbody) => async (dispatch) => {
+  try {
+    dispatch({ type: USER_INBODY_UPDATE_REQUEST })
+
+    const config = {
+      method:'POST',
+      headers:{
+        'Content-Type': 'application/json'
+      },
+      body:JSON.stringify(updateInbody)
+    }
+
+    const res = await fetch(`/users/inbody`, config)
+
+    if(res.status === 200) {
+      dispatch({
+        type: USER_INBODY_UPDATE_SUCCESS,
+        success: "건강정보 수정이 완료되었습니다"
+      })
+    } else if(res.status === 409){
+      dispatch({
+        type: USER_INBODY_UPDATE_FAIL,
+        error: "건강정보 수정이 실패하였습니다. 입력한 내용을 다시 확인해주세요" 
+      })
+    } else {
+      throw new Error()
+    }
+
+  } catch (err) {
+    dispatch({
+        type: USER_INBODY_UPDATE_FAIL,
         error: "에러가 발생했습니다. 다시 시도해주세요" 
       })
   }

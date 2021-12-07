@@ -1,40 +1,60 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import Button from "../../Button/Button";
+import { useSelector, useDispatch } from "react-redux";
+import { info, infoDelete } from "../../../store/actions/userActions"
+
 import './Delete.scss'
 
-// import { useSelector, useDispatch } from "react-redux";
-
-const Delete = () => {
-    // const [user] = useState({
-    //     name: '홍길동',
-    //     id: 'dlrdktks1004@naver.com',
-    //     password: '123456789',
-    //     Confirmpw: ' '
-    // });
-    const [password, setpassword] = useState('123456789')
+const Delete = ({history}) => {
     const [confirmPassword, setconfirmPassword] = useState('')
-    const [errorMessage, setErrorMessage] = useState({
-        confirmPasswordError: "",
-    });
-    
-    const { confirmPasswordError } = errorMessage;
+    const dispatch = useDispatch()
 
+    const { isLogin, user, userListLoading} = useSelector(state=>state.user)
 
-    useEffect(() => {
-        if (password === confirmPassword && confirmPassword !== "") {
-          setErrorMessage({
-            ...errorMessage,
-            confirmPasswordError: "",
-          });
-        } else {
-          setErrorMessage({
-            ...errorMessage,
-            confirmPasswordError: "비밀번호가 일치하지 않습니다.",
-          });
+    useEffect(()=>{
+        if(!isLogin){
+           history.push('/')
         }
-    }, [confirmPassword]);
+    })
 
-    const onClick = (e) => {
+    useEffect(()=>{
+        if(!userListLoading){
+            dispatch(info())
+        }
+    },[])
+
+    // const [errorMessage, setErrorMessage] = useState({
+    //     confirmPasswordError: "",
+    // });
+    
+    // const { confirmPasswordError } = errorMessage;
+
+
+    // useEffect(() => {
+    //     if (password === confirmPassword && confirmPassword !== "") {
+    //       setErrorMessage({
+    //         ...errorMessage,
+    //         confirmPasswordError: "",
+    //       });
+    //     } else {
+    //       setErrorMessage({
+    //         ...errorMessage,
+    //         confirmPasswordError: "비밀번호가 일치하지 않습니다.",
+    //       });
+    //     }
+    // }, [confirmPassword]);
+
+    const onDelete = (password, confirmPassword) => {
+        if(password === confirmPassword && confirmPassword !== ""){
+            alert('비밀번호가 일치하지 않습니다. 다시 입력해주세요')
+        }
+
+        const deleteUserData = {
+            password: confirmPassword,
+        }
+    
+        dispatch(infoDelete(deleteUserData));
+
         alert('정말 탈퇴하시겠습니까?');
     };
 
@@ -58,11 +78,8 @@ const Delete = () => {
                             value={confirmPassword}
                             onChange={(e)=>setconfirmPassword(e.target.value)}
                         ></input>
-                        <p className="error">
-                                {confirmPasswordError ? <errorMessage>{confirmPasswordError}</errorMessage> : ""}
-                        </p> 
                     <div className="delete-button">
-                    <Button color="#9CC094" text="탈퇴" link="/" size="20px" onClick={onClick}/>
+                        <Button color="#9CC094" text="탈퇴" link="/" size="20px" onClick={()=>onDelete(user.user_password, confirmPassword)}/>
                     </div>
                 </div>
             </div>
