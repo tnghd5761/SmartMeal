@@ -4,13 +4,14 @@
 
 	.list_container{
 		
-		a:link, a:visited, a:hover, a:active{
+		.link, a:link, a:visited, a:hover, a:active{
 			text-decoration:none;
 			background-color:transparent;
 			color: #000000;
 		}
 
 		.list_box{
+			cursor: pointer;
 			height: 360px;
 			margin-bottom: 20px;
 			
