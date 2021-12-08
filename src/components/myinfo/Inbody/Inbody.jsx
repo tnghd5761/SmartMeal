@@ -38,7 +38,7 @@ function Inbody({history}) {
             ...Health,
             data: [user.weight, user.muscle, user.fat],
           });
-    }, []);
+    }, [user.weight, user.muscle, user.fat]);
 
     const [inputType] = useState({
         inbodyType1: "저체중 허약형",
@@ -62,7 +62,7 @@ function Inbody({history}) {
               typemessage: "적절한 탄수화물+고단백+저지방",
             });
         }
-    }, []);
+    }, [user.inbody_type]);
 
     return(
         <div className = "My-Inbody-info">
