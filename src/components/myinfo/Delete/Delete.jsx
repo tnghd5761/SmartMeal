@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Button from "../../Button/Button";
 import { useSelector, useDispatch } from "react-redux";
-import { info, infoDelete } from "../../../store/actions/userActions"
+import { info, infoDelete, logout } from "../../../store/actions/userActions"
 
 import './Delete.scss'
 
@@ -23,27 +23,6 @@ const Delete = ({history}) => {
         }
     },[])
 
-    // const [errorMessage, setErrorMessage] = useState({
-    //     confirmPasswordError: "",
-    // });
-    
-    // const { confirmPasswordError } = errorMessage;
-
-
-    // useEffect(() => {
-    //     if (password === confirmPassword && confirmPassword !== "") {
-    //       setErrorMessage({
-    //         ...errorMessage,
-    //         confirmPasswordError: "",
-    //       });
-    //     } else {
-    //       setErrorMessage({
-    //         ...errorMessage,
-    //         confirmPasswordError: "비밀번호가 일치하지 않습니다.",
-    //       });
-    //     }
-    // }, [confirmPassword]);
-
     const onDelete = (password, confirmPassword) => {
         if(password === confirmPassword && confirmPassword !== ""){
             alert('비밀번호가 일치하지 않습니다. 다시 입력해주세요')
@@ -54,6 +33,8 @@ const Delete = ({history}) => {
         }
     
         dispatch(infoDelete(deleteUserData));
+
+        dispatch(logout())
 
         alert('정말 탈퇴하시겠습니까?');
     };

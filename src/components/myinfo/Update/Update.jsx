@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import Button from "../../Button/Button";
 import { useSelector, useDispatch } from "react-redux";
 import Modal from "../../Modal/Modal.jsx";
-import { checkIsDuplicateUsername, resetErrorSuccess} from "../../../store/actions/userActions.js";
+import { checkIsDuplicateUsername, resetErrorSuccess, resetUsernameDuplicateCheck } from "../../../store/actions/userActions.js";
 import { info, infoUpdate } from "../../../store/actions/userActions"
 
 import './Update.scss'
@@ -12,7 +12,7 @@ const Update = ({history}) => {
     const [name, setname] = useState('')
     const [password, setpassword] = useState('')
     const [confirmPassword, setconfirmPassword] = useState('')
-    const [errorMessage, setErrorMessage] = useState({
+    const [errorMessage, seterrorMessage] = useState({
         nameError: "",
         passwordError: "",
         confirmPasswordError: "",
@@ -23,6 +23,7 @@ const Update = ({history}) => {
 
     const { loading, success, error, isUsernameDupChecked, userListLoading, user} = useSelector(state=>state.user)
     const dispatch = useDispatch()
+
     const { nameError, passwordError, confirmPasswordError } = errorMessage;
 
     useEffect(()=>{
@@ -53,12 +54,12 @@ const Update = ({history}) => {
 
     useEffect(() => {
         if (!(validationCheck(name, inputRegexs.nameReg) || name === "")) {
-          setErrorMessage({
+          seterrorMessage({
             ...errorMessage,
             nameError: "",
           });
         } else {
-          setErrorMessage({
+          seterrorMessage({
             ...errorMessage,
             nameError: "올바른 닉네임 형식이 아닙니다",
           });
@@ -68,12 +69,12 @@ const Update = ({history}) => {
     /* 비밀번호 체크 */
     useEffect(() => {
         if (validationCheck(password, inputRegexs.passwordReg) && password !== "") {
-          setErrorMessage({
+          seterrorMessage({
             ...errorMessage,
             passwordError: "",
           });
         } else {
-          setErrorMessage({
+          seterrorMessage({
             ...errorMessage,
             passwordError:
               "비밀번호는 숫자, 영어, 특수문자를. 포함하며 8자 이상이어야 합니다",
@@ -84,12 +85,12 @@ const Update = ({history}) => {
     /* 비밀번호 확인 체크 */
     useEffect(() => {
         if (password === confirmPassword && confirmPassword !== "") {
-          setErrorMessage({
+          seterrorMessage({
             ...errorMessage,
             confirmPasswordError: "",
           });
         } else {
-          setErrorMessage({
+          seterrorMessage({
             ...errorMessage,
             confirmPasswordError: "비밀번호 확인이 일치하지 않습니다.",
           });
@@ -99,6 +100,11 @@ const Update = ({history}) => {
       const checkDupUsername = () => {
         setModalOpen('open')
         dispatch(checkIsDuplicateUsername(name))
+      }
+
+      const handleUserInputChange = (e) => {
+        setname(e.target.value)
+        dispatch(resetUsernameDuplicateCheck())
       }
     
       const onUpdate = ( name, email, password, confirmPassword) => {
@@ -135,6 +141,7 @@ const Update = ({history}) => {
 
       const handleModalClick = () => {
         if(success === '확인되었습니다') {
+          dispatch(resetErrorSuccess())
         } 
     
         setModalOpen(prevState => 'close')
@@ -173,7 +180,7 @@ const Update = ({history}) => {
                                 type="text"
                                 placeholder="새로운 닉네임을 입력하시오."
                                 value={name}
-                                onChange={(e)=>setname(e.target.value)}
+                                onChange={handleUserInputChange}
                             ></input>
                             <Button text="중복확인" size="12px" color="#ffffff" onClick={checkDupUsername} />
                         </p>

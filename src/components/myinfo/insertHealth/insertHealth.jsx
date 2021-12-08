@@ -61,8 +61,7 @@ function InsertHelalth ({history}){
                 <div className = "health-insert-update">
                     <p className="new-birth"> 생년월일:
                         <input className="new-data"
-                            type="text"
-                            placeholder="ex)970304" 
+                            type="Date"
                             value={birth}
                             onChange={(e)=>setbirth(e.target.value)}
                         ></input>
