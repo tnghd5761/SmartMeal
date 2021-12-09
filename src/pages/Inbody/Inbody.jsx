@@ -21,11 +21,11 @@ function Inbody({history}) {
         typemessage: "",
     });
     
-    // useEffect(()=>{
-    //     if(!isLogin){
-    //         history.push('/')
-    //     }
-    // })
+    useEffect(()=>{
+        if(!isLogin){
+            history.push('/')
+        }
+    })
     
     useEffect(()=>{
         if(!userListLoading){
