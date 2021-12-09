@@ -1,0 +1,40 @@
+.My-Inbody-info{
+    margin: 50px 200px 100px 200px;
+    font-size: xxx-large;
+    color: rgb(63, 65, 64);
+
+    .Inbody-title{
+        display: flex;
+        padding: 15px 0px 0px 30px;
+        border-bottom: 2px solid #9DF3C4;
+        flex-direction: column;
+
+        .Inbody-subtitle{
+            font-size: x-large;
+            padding: 0px 0px 10px 30px;
+        }
+    }
+    .health-condition{
+        padding: 20px 100px 0px 100px;
+        font-size: xx-large;
+
+        .health-chart{
+            padding: 20px 100px 20px 150px;
+        }
+    }
+    .need-health{
+        font-size: xx-large;
+        padding: 20px 100px 0px 100px;
+
+        .need-health-point{
+            color: red;
+        }
+    }
+    .health-update-button{
+        display: flex;
+        justify-content: center;
+        padding: 100px 0px 0px 0px;
+        font-size: x-large;
+    }
+
+} 
