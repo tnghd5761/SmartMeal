@@ -15,7 +15,7 @@ const MyCart = ({history}) => {
     const { isLogin } = useSelector(state=>state.user)
     const { bagList, bagListLoading } = useSelector(state=>state.cart)
 
-    const [sumOfPrice,setSumOfPrice] = useState()
+    const [sumOfPrice,setSumOfPrice] = useState(0)
 
     useEffect(()=>{
         if(!isLogin){
@@ -49,11 +49,11 @@ const MyCart = ({history}) => {
                 <Block>
                     <p>결제 예정 금액</p>
                     <div className="mycart-calculate-cost">
-                        <p>총 상품 가격 {sumOfPrice}원</p>
+                        <p>총 상품 가격 {sumOfPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원</p>
                         <i class="fas fa-plus"></i>
                         <p>총 배송비 0원</p>
                         <i class="fas fa-equals"></i>
-                        <p>총 주문금액 {sumOfPrice}원</p>
+                        <p>총 주문금액 {sumOfPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원</p>
                     </div>
                 </Block>
             </div>
