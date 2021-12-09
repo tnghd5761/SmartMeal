@@ -36,10 +36,10 @@ const Main = () => {
 			<div className="promotion_container">
 				<Slider {...settings}>
 					<div>
-						<img src="https://wiseux.speedgabia.com/imdak/contents/main_banner_promotion/20210831_1630394465.jpg" />
+						<img className="promotion_img" src="https://wiseux.speedgabia.com/imdak/contents/main_banner_promotion/20210831_1630394465.jpg" />
 					</div>
 					<div>
-						<img src="https://wiseux.speedgabia.com/imdak/contents/main_banner_promotion/20210205_1612495481.jpg" />
+						<img className="promotion_img" src="https://wiseux.speedgabia.com/imdak/contents/main_banner_promotion/20210205_1612495481.jpg" />
 					</div>
 				</Slider>
 			</div>

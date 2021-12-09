@@ -88,11 +88,11 @@ function ItemlistPage() {
 							<FormControlLabel control={<Checkbox defaultChecked size="small" />} label="기타" />
 						</MyTableCell>
 					</TableRow>
-					<MySlider index={0} value={price} max={50000} setValue={setPrice} />
-					<MySlider index={1} value={carbohydrate} max={100} setValue={setCarbohydrate} />
-					<MySlider index={2} value={protein} max={100} setValue={setProtein} />
-					<MySlider index={3} value={fat} max={100} setValue={setPrice} />
-					<MySlider index={4} value={calorie} max={2000} setValue={setCalorie} />
+					<MySlider index={0} value={price} max={60000} setValue={setPrice} />
+					<MySlider index={1} value={carbohydrate} max={250} setValue={setCarbohydrate} />
+					<MySlider index={2} value={protein} max={150} setValue={setProtein} />
+					<MySlider index={3} value={fat} max={250} setValue={setPrice} />
+					<MySlider index={4} value={calorie} max={3000} setValue={setCalorie} />
 				</Table>
 				<div className="save_button">
 					<Button text="필터 적용" size="16px" color="#ffffff" onClick={handleFilter}/>

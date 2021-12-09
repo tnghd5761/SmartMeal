@@ -24,8 +24,10 @@ const Mypage = ({history}) => {
     },[])
 
     return (
-        <div className="navbar-container">
-            <p classname="mypage-title">마이 페이지</p>
+        <div className="mypage-container">
+			<div className="mypage-title">
+				<p>마이 페이지</p>
+			</div>
             <div className="mypage-menu">
                 <Button color="#1FAB89" text="회원 정보" link="/mypage" size="20px"/>
                 <Button color="#1FAB89" text="회원 탈퇴" link="/mypage/delete" size="20px"/>
@@ -40,7 +42,7 @@ const Mypage = ({history}) => {
                                     <p>닉네임: </p>
                                 </div>
                                 <div className="name_text">
-                                    <p>{user.user_name} </p>
+                                    <p className="user_info_text">{user.user_name} </p>
                                 </div>
                             </div>
                             <div className = "id_info">
@@ -48,7 +50,7 @@ const Mypage = ({history}) => {
                                     <p>아이디(이메일): </p>
                                 </div>
                                 <div className="id_text">
-                                    <p>{user.user_id} </p>
+                                    <p className="user_info_text">{user.user_id} </p>
                                 </div>
                             </div>
                             <div className="update-button">                             

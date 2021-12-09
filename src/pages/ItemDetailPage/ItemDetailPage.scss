@@ -11,15 +11,17 @@
 		width: 1200px;
 		text-align: center;
 		align-content: center;
+		flex-direction: row;
 		height: 500px;
 
 		.item_image{
-			width: 50%;
+			width: 600px;
 			height: 100%;
+			border-radius: 20px;
 			background-color: gray;
 		}
 		.content{
-			width: 50%;
+			width: 600px;
 			height: 100%;
 			.name, .cost{
 				height: 30%;

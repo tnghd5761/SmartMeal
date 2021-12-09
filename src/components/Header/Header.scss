@@ -47,6 +47,11 @@
         .button-container{
             margin-right: 20px;
         }
+		.link, a:link, a:visited, a:hover, a:active{
+			text-decoration:none;
+			background-color:transparent;
+			color: #666666;
+		}
     }
 
     .header-menu-bar{

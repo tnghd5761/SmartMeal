@@ -42,8 +42,10 @@ const Delete = ({history}) => {
     };
 
     return (
-        <div className="navbar-container">
-            <p classname="mypage-title">마이 페이지</p>
+        <div className="delete-container">
+            <div className="mypage-title">
+				<p>마이 페이지</p>
+			</div>
             <div className="mypage-menu">
                 <Button color="#1FAB89" text="회원 정보" link="/mypage" size="20px"/>
                 <Button color="#1FAB89" text="회원 탈퇴" link="/mypage/delete" size="20px"/>
@@ -55,12 +57,12 @@ const Delete = ({history}) => {
                     <div className="check-pw">
                         <p>-Check Your PassWord-</p>
                     </div>
-                        <input className="check-password"
-                            type="password"
-                            placeholder="PassWord을 입력하시오."
-                            value={confirmPassword}
-                            onChange={(e)=>setconfirmPassword(e.target.value)}
-                        ></input>
+					<input className="check-password"
+						type="password"
+						placeholder="PassWord을 입력하시오."
+						value={confirmPassword}
+						onChange={(e)=>setconfirmPassword(e.target.value)}
+					/>
                     <div className="delete-button">
                         <Button color="#9CC094" text="탈퇴" size="20px" onClick={()=>onDelete(user.user_password, confirmPassword)}/>
                     </div>

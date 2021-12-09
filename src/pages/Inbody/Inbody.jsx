@@ -68,7 +68,7 @@ function Inbody({history}) {
             });
         } 
     }, [user.inbody_type]);
-
+	console.log(user);
     return(
         <div className = "My-Inbody-info">
             <div className = "Inbody-title">

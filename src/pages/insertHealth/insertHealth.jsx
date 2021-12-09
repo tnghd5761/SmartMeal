@@ -70,7 +70,7 @@ function InsertHelalth ({history}){
             <div className = "Inbody-update">
                 <div className = "health-insert-update">
                     <div className="info_birth">
-                        <p>생년월일:</p>
+                        <p className="info_subtitle">생년월일 :</p>
                         <input className="birth-data"
                             type="Date"
                             value={birth}
@@ -78,7 +78,7 @@ function InsertHelalth ({history}){
                         ></input>
                     </div>
                     <div className="info_gender">
-                        <p>성별:</p>
+						<p className="info_subtitle">성별 :</p>
                         <input className="gender-data"
                             type="text"
                             placeholder="ex) 남자 or 여자"
@@ -87,7 +87,7 @@ function InsertHelalth ({history}){
                         ></input>
                     </div>  
                     <div className="info_height">
-                        <p>키(cm):</p>
+                        <p className="info_subtitle">키(cm) :</p>
                         <input className="height-data"
                             type="text"
                             placeholder="키를 입력하시오."
@@ -96,7 +96,7 @@ function InsertHelalth ({history}){
                         ></input>
                     </div>  
                     <div className="info_weight">
-                        <p>체중(kg):</p>
+                        <p className="info_subtitle">체중(kg) :</p>
                         <input className="weight-data"
                             type="text"
                             placeholder="체중을 입력하시오."
@@ -105,7 +105,7 @@ function InsertHelalth ({history}){
                         ></input>
                     </div>  
                     <div className="info_muscle">
-                        <p>골격근량(kg):</p>
+                        <p className="info_subtitle">골격근량(kg) :</p>
                         <input className="muscle-data"
                             type="text"
                             placeholder="골격근량을 입력하시오."
@@ -114,12 +114,12 @@ function InsertHelalth ({history}){
                         ></input>
                     </div> 
                     <div className="info_fat">
-                        <p>체지방률(%):</p>
+                        <p className="info_subtitle">체지방률(%) :</p>
                         <input className="fat-data"
                             type="text"
-                            placeholder="골격근량을 입력하시오."
-                            value={muscle}
-                            onChange={(e)=>setmuscle(e.target.value)}
+                            placeholder="체지방률을 입력하시오."
+                            value={fat}
+                            onChange={(e)=>setfat(e.target.value)}
                         ></input>
                     </div>   
                     <div className="health-save-button">
