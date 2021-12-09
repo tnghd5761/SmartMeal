@@ -5,11 +5,11 @@ import Header from './components/Header/Header';
 import MainPage from './pages/MainPage/main';
 import Login from './containers/Login/Login';
 import Signup from './containers/Signup/Signup';
-import Mypage from './components/myinfo/Mypage/Mypage';
-import Update from './components/myinfo/Update/Update';
-import Delete from './components/myinfo/Delete/Delete';
-import Inbody from './components/myinfo/Inbody/Inbody';
-import insertHealth from './components/myinfo/insertHealth/insertHealth';
+import Mypage from './pages/Mypage/Mypage';
+import Update from './pages/Update/Update';
+import Delete from './pages/Delete/Delete';
+import Inbody from './pages/Inbody/Inbody';
+import insertHealth from './pages/insertHealth/insertHealth';
 import MyCart from './pages/MyCart/MyCart'
 import ItemlistPage from './pages/ItemlistPage/ItemlistPage';
 import ItemDetailPage from './pages/ItemDetailPage/ItemDetailPage';

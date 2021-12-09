@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useCallback } from "react";
-import Button from "../../Button/Button";
+import Button from '../../components/Button/Button'
 import { useSelector, useDispatch } from "react-redux";
-import Modal from "../../Modal/Modal.jsx";
-import { checkIsDuplicateUsername, resetErrorSuccess, resetUsernameDuplicateCheck } from "../../../store/actions/userActions.js";
-import { info, infoUpdate } from "../../../store/actions/userActions"
+import Modal from "../../components/Modal/Modal.jsx";
+import { checkIsDuplicateUsername, resetErrorSuccess, resetUsernameDuplicateCheck } from "../../store/actions/userActions.js";
+import { info, infoUpdate } from "../../store/actions/userActions"
 
 import './Update.scss'
 

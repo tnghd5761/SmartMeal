@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from "react-redux"
 import HighCharts from './High';
-import Button from "../../Button/Button";
-import { info } from "../../../store/actions/userActions"
+import Button from '../../components/Button/Button'
+import { info } from "../../store/actions/userActions"
 
 import './Inbody.scss'
 
@@ -21,11 +21,11 @@ function Inbody({history}) {
         typemessage: "",
     });
     
-    useEffect(()=>{
-        if(!isLogin){
-            history.push('/')
-        }
-    })
+    // useEffect(()=>{
+    //     if(!isLogin){
+    //         history.push('/')
+    //     }
+    // })
     
     useEffect(()=>{
         if(!userListLoading){

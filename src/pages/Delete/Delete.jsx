@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import Button from "../../Button/Button";
+import Button from '../../components/Button/Button'
 import { useSelector, useDispatch } from "react-redux";
-import { info, infoDelete, logout } from "../../../store/actions/userActions"
+import { info, infoDelete, logout } from "../../store/actions/userActions"
 
 import './Delete.scss'
 

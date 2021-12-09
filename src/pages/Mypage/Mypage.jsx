@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"
-import Button from "../../Button/Button";
-import { info } from "../../../store/actions/userActions"
+import Button from '../../components/Button/Button'
+import { info } from "../../store/actions/userActions"
 
 import './Mypage.scss'
 

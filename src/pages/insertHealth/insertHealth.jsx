@@ -1,7 +1,7 @@
 import React, { useState, useEffect} from 'react';
 import { useSelector, useDispatch } from "react-redux";
-import { info, inbodyUpdate } from "../../../store/actions/userActions"
-import Button from "../../Button/Button";
+import { info, inbodyUpdate } from "../../store/actions/userActions"
+import Button from '../../components/Button/Button'
 
 import './insertHealth.scss'
 
