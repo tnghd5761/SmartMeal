@@ -23,6 +23,16 @@ function InsertHelalth ({history}){
         }
     },[])
 
+    useEffect(()=>{
+        setbirth(user.birth)
+        setgender(user.gender)
+        setheight(user.height)
+        setweight(user.weight)
+        setmuscle(user.muscle)
+        setfat(user.fat)
+    },[user.birth, user.gender, user.height, user.weight, user.muscle, user.fat])
+
+
     const oninbodyUpdate = (birth, gender, height, weight, muscle, fat )=> {
         if (!birth || !gender || !height || !weight || !muscle || !fat) {
             alert("모든 값을 정확하게 입력해주세요");
@@ -42,7 +52,7 @@ function InsertHelalth ({history}){
         dispatch(inbodyUpdate(updateInbody));
 
         alert('저장하시겠습니까?');
-        history.push("/inbody");
+        history.push('/inbody');
     };
 
 
@@ -59,56 +69,61 @@ function InsertHelalth ({history}){
             </div>
             <div className = "Inbody-update">
                 <div className = "health-insert-update">
-                    <p className="new-birth"> 생년월일:
-                        <input className="new-data"
+                    <div className="info_birth">
+                        <p>생년월일:</p>
+                        <input className="birth-data"
                             type="Date"
                             value={birth}
                             onChange={(e)=>setbirth(e.target.value)}
                         ></input>
-                    </p>     
-                    <p className="new-gender"> 성별:
-                        <input className="new-data"
+                    </div>
+                    <div className="info_gender">
+                        <p>성별:</p>
+                        <input className="gender-data"
                             type="text"
                             placeholder="ex) 남자 or 여자"
                             value={gender}
                             onChange={(e)=>setgender(e.target.value)}
                         ></input>
-                    </p>     
-                    <p className="new-height"> 키(cm):  
-                        <input className="new-data"
+                    </div>  
+                    <div className="info_height">
+                        <p>키(cm):</p>
+                        <input className="height-data"
                             type="text"
                             placeholder="키를 입력하시오."
                             value={height}
                             onChange={(e)=>setheight(e.target.value)}
                         ></input>
-                    </p> 
-                    <p className="new-weight"> 체중(kg):  
-                        <input className="new-data"
+                    </div>  
+                    <div className="info_weight">
+                        <p>체중(kg):</p>
+                        <input className="weight-data"
                             type="text"
                             placeholder="체중을 입력하시오."
                             value={weight}
                             onChange={(e)=>setweight(e.target.value)}
                         ></input>
-                    </p>         
-                    <p className="new-muscle"> 골격근량(kg):
-                        <input className="new-data"
+                    </div>  
+                    <div className="info_muscle">
+                        <p>골격근량(kg):</p>
+                        <input className="muscle-data"
                             type="text"
                             placeholder="골격근량을 입력하시오."
                             value={muscle}
                             onChange={(e)=>setmuscle(e.target.value)}
                         ></input>
-                    </p>     
-                    <p className="new-fat"> 체지방률(%):
-                        <input className="new-data"
+                    </div> 
+                    <div className="info_fat">
+                        <p>체지방률(%):</p>
+                        <input className="fat-data"
                             type="text"
-                            placeholder="체지방률을 입력하시오."
-                            value={fat}
-                            onChange={(e)=>setfat(e.target.value)}
+                            placeholder="골격근량을 입력하시오."
+                            value={muscle}
+                            onChange={(e)=>setmuscle(e.target.value)}
                         ></input>
-                    </p>
+                    </div>   
                     <div className="health-save-button">
                         <Button color="#9CC094" text="저장" size="26px" onClick = {()=>oninbodyUpdate(birth, gender, height, weight, muscle, fat)}/>
-                        <Button color="#9CC094" text="분석" link="/inbody"/>
                     </div>     
                 </div>
             </div>

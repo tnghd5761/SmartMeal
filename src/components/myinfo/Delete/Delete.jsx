@@ -11,11 +11,11 @@ const Delete = ({history}) => {
 
     const { isLogin, user, userListLoading} = useSelector(state=>state.user)
 
-    useEffect(()=>{
-        if(!isLogin){
-           history.push('/')
-        }
-    })
+    // useEffect(()=>{
+    //     if(!isLogin){
+    //        history.push('/')
+    //     }
+    // })
 
     useEffect(()=>{
         if(!userListLoading){
@@ -26,6 +26,7 @@ const Delete = ({history}) => {
     const onDelete = (password, confirmPassword) => {
         if(password === confirmPassword && confirmPassword !== ""){
             alert('비밀번호가 일치하지 않습니다. 다시 입력해주세요')
+            return;
         }
 
         const deleteUserData = {
@@ -36,7 +37,8 @@ const Delete = ({history}) => {
 
         dispatch(logout())
 
-        alert('정말 탈퇴하시겠습니까?');
+        alert('회원탈퇴가 완료되었습니다.');
+        history.push('/');
     };
 
     return (
@@ -53,14 +55,14 @@ const Delete = ({history}) => {
                     <div className="check-pw">
                         <p>-Check Your PassWord-</p>
                     </div>
-                        <input className="new-data"
+                        <input className="check-password"
                             type="password"
                             placeholder="PassWord을 입력하시오."
                             value={confirmPassword}
                             onChange={(e)=>setconfirmPassword(e.target.value)}
                         ></input>
                     <div className="delete-button">
-                        <Button color="#9CC094" text="탈퇴" link="/" size="20px" onClick={()=>onDelete(user.user_password, confirmPassword)}/>
+                        <Button color="#9CC094" text="탈퇴" size="20px" onClick={()=>onDelete(user.user_password, confirmPassword)}/>
                     </div>
                 </div>
             </div>

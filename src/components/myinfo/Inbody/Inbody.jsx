@@ -47,21 +47,26 @@ function Inbody({history}) {
 
     useEffect(() => {
         if (user.inbody_type === inputType.inbodyType1) {
+            setHealthMessage({
+              ...HealthMessage,
+              typemessage: "적당한 포만감을 주는 양의 건강한 일반식을 4시간마다 섭취",
+            });
+        }else if(user.inbody_type === inputType.inbodyType2){
+            setHealthMessage({
+              ...HealthMessage,
+              typemessage: "저탄수화물+고단백+저지방",
+            });
+        }else if(user.inbody_type === ""){
           setHealthMessage({
             ...HealthMessage,
-            typemessage: "적당한 포만감을 주는 양의 건강한 일반식을 4시간마다 섭취",
+            typemessage: "",
           });
-        } else if(user.inbody_type === inputType.inbodyType2){
-          setHealthMessage({
-            ...HealthMessage,
-            typemessage: "저탄수화물+고단백+저지방",
-          });
-        } else {
+        }else {
             setHealthMessage({
               ...HealthMessage,
               typemessage: "적절한 탄수화물+고단백+저지방",
             });
-        }
+        } 
     }, [user.inbody_type]);
 
     return(

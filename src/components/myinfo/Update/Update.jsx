@@ -26,12 +26,17 @@ const Update = ({history}) => {
 
     const { nameError, passwordError, confirmPasswordError } = errorMessage;
 
-    useEffect(()=>{
-      if(!userListLoading){
-          dispatch(info())
-      }
-    },[])
+    // useEffect(()=>{
+    //   if(!userListLoading){
+    //       dispatch(info())
+    //   }
+    // },[])
     
+    useEffect(() => {
+      setname(user.user_name)
+      setpassword(user.password)
+    }, [user.user_name, user.password]);
+
     const inputRegexs = {
         nameReg: /[~!@#$%^&*()_+|<>?:{}]/,
         passwordReg: /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+]).{8,}$/
@@ -124,7 +129,7 @@ const Update = ({history}) => {
             return;
         } else if(!isUsernameDupChecked) {
           setFormError("닉네임 중복확인을. 하지 않으셨습니다")
-          return
+          return;
         }
 
         const updateUserData = {
@@ -136,7 +141,7 @@ const Update = ({history}) => {
         dispatch(infoUpdate(updateUserData));
 
         alert("회원 정보 수정 완료");
-        history.push("/mypage");
+        history.push('/mypage');
       }
 
       const handleModalClick = () => {
@@ -166,54 +171,68 @@ const Update = ({history}) => {
         </Modal>
         }
         <div className="navbar-container">
-            <p classname="mypage-title">마이 페이지</p>
+          <p classname="mypage-title">마이 페이지</p>
             <div className="mypage-menu">
                 <Button color="#1FAB89" text="회원 정보" link="/mypage" size="20px"/>
                 <Button color="#1FAB89" text="회원 탈퇴" link="/mypage/delete" size="20px"/>
             </div>
             <div className= "mypage-update-component">
-                <p className="mypage-staus">내 회원정보 수정</p>
-                <div className="mypage-info">
-                    <div className="mypage-userinfo">
-                        <p className="nickname">닉네임: 
-                            <input className="new-data"
-                                type="text"
-                                placeholder="새로운 닉네임을 입력하시오."
-                                value={name}
-                                onChange={handleUserInputChange}
-                            ></input>
-                            <Button text="중복확인" size="12px" color="#ffffff" onClick={checkDupUsername} />
-                        </p>
-                        <p className="error1">
-                                {nameError ? <errorMessage>{nameError}</errorMessage> : ""} 
-                        </p>
-                        <p className="new-id"> 아이디(이메일): {user.user_id} </p>
-                        <p className="new-password">비밀번호:   
-                            <input className="new-data"
-                                type="password"
-                                placeholder="숫자,영어,특수문자를 포함한 8자 이상 입력"
-                                value={password}
-                                onChange={(e)=>setpassword(e.target.value)}
-                            ></input>
-                            <p className="error">
-                                {passwordError ? <errorMessage>{passwordError}</errorMessage> : ""} 
-                            </p>
-                        </p> 
-                        <p className="confirmpassword">비밀번호 확인: 
-                            <input className="new-data"
-                                type="password"
-                                placeholder="new PassWord를 확인하시오."
-                                value={confirmPassword}
-                                onChange={(e)=>setconfirmPassword(e.target.value)}
-                            ></input>
-                            <p className="error">
-                                {confirmPasswordError ? <errorMessage>{confirmPasswordError}</errorMessage> : ""}
-                            </p> 
-                        </p>  
-                    </div>  
-                    <div className="update-save-button">
-                        <Button color="#9CC094" text="저장" size="20px" onClick={()=>onUpdate(name,user.user_id,password,confirmPassword)}/>
+              <p> 내 회원정보 수정</p>
+                <div className="mypage-userinfo">
+                  <div className = "name_info">
+                    <div className="name">
+                      <p>닉네임: </p>
+                      <input className="new-name"
+                        type="text"
+                        placeholder="새로운 닉네임을 입력하시오."
+                        value={name}
+                        onChange={handleUserInputChange}
+                      ></input>
+                      <Button text="중복확인" size="12px" color="#ffffff" onClick={checkDupUsername} />
                     </div>
+                    <p className="error">
+                      {nameError ? <errorMessage>{nameError}</errorMessage> : ""} 
+                    </p>
+                  </div>
+                  <div className = "id_info">
+                    <div className="id">
+                      <p>아이디(이메일): </p>
+                      <div className= "id_text">
+                        <p> {user.user_id}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className = "password_info">
+                    <div className="password">
+                      <p>비밀번호: </p>
+                      <input className="new-password"
+                        type="password"
+                        placeholder="숫자,영어,특수문자를 포함한 8자 이상 입력"
+                        value={password}
+                        onChange={(e)=>setpassword(e.target.value)}
+                      ></input>
+                    </div>
+                    <p className="error">
+                      {passwordError ? <errorMessage>{passwordError}</errorMessage> : ""} 
+                    </p>
+                  </div>
+                  <div className = "confirmpassword_info">
+                    <div className="confirmpassword">
+                      <p>비밀번호 확인: </p>
+                      <input className="new-confirmpassword"
+                        type="password"
+                        placeholder="new PassWord를 확인하시오."
+                        value={confirmPassword}
+                        onChange={(e)=>setconfirmPassword(e.target.value)}
+                      ></input>
+                    </div>
+                    <p className="error">
+                      {confirmPasswordError ? <errorMessage>{confirmPasswordError}</errorMessage> : ""}
+                    </p>
+                  </div>
+                  <div className="update-save-button">
+                    <Button color="#9CC094" text="저장" size="20px" onClick={()=>onUpdate(name,user.user_id,password,confirmPassword)}/>
+                  </div>
                 </div>
             </div>
         </div>

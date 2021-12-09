@@ -11,11 +11,11 @@ const Mypage = ({history}) => {
     
     const { isLogin, user, userListLoading } = useSelector(state=>state.user)
 
-    useEffect(()=>{
-         if(!isLogin){
-            history.push('/')
-         }
-    })
+    // useEffect(()=>{
+    //      if(!isLogin){
+    //         history.push('/')
+    //      }
+    // })
     
     useEffect(()=>{
         if(!userListLoading){
@@ -34,10 +34,26 @@ const Mypage = ({history}) => {
             <div className= "mypage-component">
                 <p className="mypage-staus">내 회원정보 </p>
                     <div className="mypage-info">
-                        <p className="nickname">닉네임: {user.user_name} </p>
-                        <p className="id">아이디(이메일): {user.user_id} </p>
-                        <div className="update-button">
-                            <Button color="#9CC094" text="수정" link="/mypage/update" size="20px" />
+                        <div className = "mypage-userinfo">
+                            <div className = "name_info">
+                                <div className="name">
+                                    <p>닉네임: </p>
+                                </div>
+                                <div className="name_text">
+                                    <p>{user.user_name} </p>
+                                </div>
+                            </div>
+                            <div className = "id_info">
+                                <div className="id">
+                                    <p>아이디(이메일): </p>
+                                </div>
+                                <div className="id_text">
+                                    <p>{user.user_id} </p>
+                                </div>
+                            </div>
+                            <div className="update-button">
+                                <Button color="#9CC094" text="수정" link="/mypage/update" size="20px" />
+                            </div>
                         </div>
                     </div>
             </div>

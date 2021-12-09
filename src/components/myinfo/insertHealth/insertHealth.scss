@@ -22,65 +22,82 @@
         padding: 20px 250px 0px 250px;
         font-size: xx-large;
         .health-insert-update{
-            padding: 75px 250px 0px 250px;
+            padding: 75px 0px 0px 250px;
             font-size: xx-large;
             outline: groove;
             
-            .new-birth{
-                padding: 20px 10px 0px 10px;
+            .info_birth{
+                padding: 20px 10px 0px 60px;
+                display: flex;
+                flex-direction: row;
         
-                .new-data{
+                .birth-data{
                     font-size: large;
                     width:200px;
-                    margin: 0px 0px 0px 110px;
+                    margin: 0px 0px 0px 80px;
                 }
             }
-            .new-gender{
-                padding: 20px 10px 0px 10px;
-                .new-data{
+            .info_gender{
+                padding: 20px 10px 0px 60px;
+                display: flex;
+                flex-direction: row;
+        
+                .gender-data{
                     font-size: large;
                     width:200px;
-                    margin: 0px 0px 0px 170px;
+                    margin: 0px 0px 0px 140px;
                 }
             }
-            .new-height{
-                padding: 20px 10px 0px 10px;
-                .new-data{
+            .info_height{
+                padding: 20px 10px 0px 60px;
+                display: flex;
+                flex-direction: row;
+        
+                .height-data{
                     font-size: large;
                     width:200px;
-                    margin: 0px 0px 0px 130px;
+                    margin: 0px 0px 0px 100px;
                 }
             }
-            .new-weight{
-                padding: 20px 10px 0px 10px;
-                .new-data{
+            .info_weight{
+                padding: 20px 10px 0px 60px;
+                display: flex;
+                flex-direction: row;
+        
+                .weight-data{
                     font-size: large;
                     width:200px;
-                    margin: 0px 0px 0px 110px;
+                    margin: 0px 0px 0px 80px;
                 }
             }
-            .new-muscle{
-                padding: 20px 10px 0px 10px;
-                .new-data{
+            .info_muscle{
+                padding: 20px 0px 0px 60px;
+                display: flex;
+                flex-direction: row;
+        
+                .muscle-data{
                     font-size: large;
                     width:200px;
-                    margin: 0px 0px 0px 50px;
+                    margin: 0px 0px 0px 20px;
                 }
             }
-            .new-fat{
-                padding: 20px 10px 0px 10px;
-                .new-data{
+            .info_fat{
+                padding: 20px 10px 0px 60px;
+                display: flex;
+                flex-direction: row;
+        
+                .fat-data{
                     font-size: large;
                     width:200px;
-                    margin: 0px 0px 0px 57px;
+                    margin: 0px 0px 0px 30px;
                 }
             }
         
             .health-save-button{
                 display: flex;
-                justify-content: space-evenly;
-                padding: 100px 0px 75px 0px;
+                padding: 100px 250px 75px 0px;
                 font-size: x-large;
+                flex-direction: column;
             }
         }
     }

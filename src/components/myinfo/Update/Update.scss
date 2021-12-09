@@ -13,74 +13,88 @@
         }
     }
     .mypage-update-component{
-        padding: 20px 250px 0px 250px;
+        padding: 20px 250px 0px 180px;
         font-size: xx-large;
 
 
-        .mypage-info{
+        .mypage-userinfo{
             padding: 90px 150px 75px 250px;
             outline: groove;
             font-size: x-large;
-
-            .mypage-userinfo{
-                padding: 0px 10px 30px 10px;
-                .nickname{
-                    padding: 0px 10px 0px 10px;
-                    display: flex;
-                    flex-direction: row;
-                    justify-content: space-between;
-
-                    .new-data{
-                        font-size: medium;
-                        width:300px;
-                        margin: 0px 0px 0px 90px;
-                    }
-                    .button-container{
+                .name_info{
+                    padding: 0px 0px 30px 0px;
+                    .name{
+                        padding: 0px 0px 0px 0px;
                         display: flex;
-                        justify-content: center;
-                        align-items: center;
-                        background-color: #9CC094;
-                        border-radius: 40px;
-                        width: 60px;
-                        height: 22px;
-                        font-family: NotoSansKRRegular;
+                        flex-direction: row;
+    
+                        .new-name{
+                            font-size: medium;
+                            width:300px;
+                            margin: 0px 30px 0px 100px;
+                        }
+                        .button-container{
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            background-color: #9CC094;
+                            border-radius: 40px;
+                            width: 60px;
+                            height: 22px;
+                            font-family: NotoSansKRRegular;
+                        }
                     }
                 }
-                .new-id{
-                    padding: 0px 10px 30px 10px;
-                    word-spacing: 20px;
-                }
-                .new-password{
-                    padding: 0px 10px 30px 10px;
-                    .new-data{
-                        font-size: medium;
-                        width:300px;
-                        margin: 0px 0px 0px 90px;
+                .id_info{
+                    padding: 0px 0px 30px 0px;
+                    .id{
+                        padding: 0px 0px 0px 0px;
+                        display: flex;
+                        flex-direction: row;
+                    }
+                    .id_text{
+                        padding: 0px 0px 0px 15px;
                     }
                 }
-                .confirmpassword{
-                    padding: 0px 10px 30px 10px;
-                    .new-data{
-                        font-size: medium;
-                        width:300px;
-                        margin: 0px 0px 0px 40px;
+                .password_info{
+                    padding: 0px 0px 30px 0px;
+                    .password{
+                        padding: 0px 0px 0px 0px;
+                        display: flex;
+                        flex-direction: row;
+    
+                        .new-password{
+                            font-size: medium;
+                            width:300px;
+                            margin: 0px 0px 0px 80px;
+                        }
+                    }
+                }
+                .confirmpassword_info{
+                    padding: 0px 0px 30px 0px;
+                    .confirmpassword{
+                        padding: 0px 0px 0px 0px;
+                        display: flex;
+                        flex-direction: row;
+    
+                        .new-confirmpassword{
+                            font-size: medium;
+                            width:300px;
+                            margin: 0px 0px 0px 30px;
+                        }
                     }
                 }
                 .error{
                     font-size: small;
                     color: red;
-                    padding: 0px 0px 0px 183px;
+                    padding: 0px 0px 0px 173px;
                 }
-                .error1{
-                    font-size: small;
-                    color: red;
-                    padding: 0px 0px 0px 190px;
-                }
-            }
+            
         }
         .update-save-button{
             display: flex;
-            padding: 0px 250px 0px 250px;
+            padding: 0px 330px 0px 230px;
+            flex-direction: column;
         }
 
     }

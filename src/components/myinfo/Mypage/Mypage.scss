@@ -23,19 +23,29 @@
             
             .mypage-userinfo{
                 padding: 0px 0px 50px 0;
-                .nickname{
+                .name_info{
+                    display: flex;
+                    flex-direction: row;
                     padding: 0px 0px 50px 0;
-                    word-spacing: 110px;
+                    .name_text{
+                        padding: 0px 0px 0px 130px;
+                    }
+
                 }
-                .id{
-                    padding: 0px 0px 20px 0;
-                    word-spacing: 30px;
+                .id_info{
+                    display: flex;
+                    flex-direction: row;
+                    padding: 0px 0px 50px 0;
+                    .id_text{
+                        padding: 0px 0px 0px 50px;
+                    }
+                }
+                .update-button{
+                    display: flex;
+                    padding: 0px 0px 0px 250px;
+                    flex-direction: column;
                 }
             }
-        }
-        .update-button{
-            display: flex;
-            padding: 0px 0px 0px 250px;
         }
     }
 } 

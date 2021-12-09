@@ -21,6 +21,8 @@
             outline: groove;
             word-spacing: 25px;
             text-align: center;
+            display: flex;
+            flex-direction: column;
 
             .check-pw{
                 padding: 20px 0px 15px 0px;
@@ -28,16 +30,11 @@
                 font-size: medium;
                 color: red;
             }
-            .new-data{
+            .check-password{
                 font-size: large;
                 width:200px;
+                margin: 0px 0px 0px 151px;
             }
-        }
-        .error{
-            font-size: small;
-            color: red;
-            padding: 0px 0px 0px 0px;
-            word-spacing: 5px;
         }
     }
 } 
