@@ -1,0 +1,51 @@
+.navbar-container{
+    margin: 50px 200px 100px 200px;
+    font-size: xxx-large;
+    color: rgb(83, 88, 86);
+
+    .mypage-menu{
+        display: flex;
+        padding: 15px 0px 0px 30px;
+        border-bottom: 2px solid #9DF3C4;
+
+        .button-container{
+            margin-right: 50px;
+        }
+    }
+    .mypage-component{
+        padding: 20px 250px 0px 250px;
+        font-size: xx-large;
+
+        .mypage-info{
+            padding: 90px 170px 75px 250px;
+            outline: groove;
+            font-size: x-large;
+            
+            .mypage-userinfo{
+                padding: 0px 0px 50px 0;
+                .name_info{
+                    display: flex;
+                    flex-direction: row;
+                    padding: 0px 0px 50px 0;
+                    .name_text{
+                        padding: 0px 0px 0px 130px;
+                    }
+
+                }
+                .id_info{
+                    display: flex;
+                    flex-direction: row;
+                    padding: 0px 0px 50px 0;
+                    .id_text{
+                        padding: 0px 0px 0px 50px;
+                    }
+                }
+                .update-button{
+                    display: flex;
+                    padding: 0px 0px 0px 250px;
+                    flex-direction: column;
+                }
+            }
+        }
+    }
+} 
