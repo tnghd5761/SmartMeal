@@ -11,11 +11,11 @@ const Delete = ({history}) => {
 
     const { isLogin, user, userListLoading} = useSelector(state=>state.user)
 
-    // useEffect(()=>{
-    //     if(!isLogin){
-    //        history.push('/')
-    //     }
-    // })
+    useEffect(()=>{
+        if(!isLogin){
+           history.push('/')
+        }
+    })
 
     useEffect(()=>{
         if(!userListLoading){

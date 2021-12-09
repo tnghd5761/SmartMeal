@@ -35,7 +35,6 @@ const Header = () => {
                     {!isLogin&&<Button text="회원가입" link="/signup" size="13px" color="#666666"/>}
                     {isLogin&&<Button link="/mycart" text="장바구니" size="13px" color="#666666"/>}
                     {isLogin&&<Button link="/mypage" text="마이페이지" size="13px" color="#66666"/>}
-                    <Button link="/mypage" text="마이페이지" size="13px" color="#66666"/>
                 </div>
             </div>
             </div>

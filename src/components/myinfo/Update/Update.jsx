@@ -26,11 +26,11 @@ const Update = ({history}) => {
 
     const { nameError, passwordError, confirmPasswordError } = errorMessage;
 
-    // useEffect(()=>{
-    //   if(!userListLoading){
-    //       dispatch(info())
-    //   }
-    // },[])
+    useEffect(()=>{
+      if(!userListLoading){
+          dispatch(info())
+      }
+    },[])
     
     useEffect(() => {
       setname(user.user_name)
