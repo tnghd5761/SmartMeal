@@ -51,8 +51,8 @@ const Mypage = ({history}) => {
                                     <p>{user.user_id} </p>
                                 </div>
                             </div>
-                            <div className="update-button">
-                                <Button color="#9CC094" text="수정" link="/mypage/update" size="20px" />
+                            <div className="update-button">                             
+                                 <Button color="#9CC094" text="수정" link="/update" size="20px" />
                             </div>
                         </div>
                     </div>

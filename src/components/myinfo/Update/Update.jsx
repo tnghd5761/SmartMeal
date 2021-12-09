@@ -132,6 +132,7 @@ const Update = ({history}) => {
           return;
         }
 
+        
         const updateUserData = {
             user_name: name,
             user_id: email,

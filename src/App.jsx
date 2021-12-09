@@ -24,7 +24,7 @@ const App = () => {
         <Route path='/login' exact component={Login} />
         <Route path='/signup' exact component={Signup} />
         <Route path='/mypage' exact component={Mypage} /> 
-        <Route path='/mypage/update' exact component={Update} /> 
+        <Route path='/update' exact component={Update} /> 
         <Route path='/mypage/delete' exact component={Delete} /> 
         <Route path='/inbody' exact component={Inbody} />
         <Route path='/inbody/update' exact component={insertHealth} />
