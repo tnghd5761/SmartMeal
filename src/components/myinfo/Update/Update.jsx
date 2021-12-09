@@ -34,8 +34,7 @@ const Update = ({history}) => {
     
     useEffect(() => {
       setname(user.user_name)
-      setpassword(user.password)
-    }, [user.user_name, user.password]);
+    }, [user.user_name]);
 
     const inputRegexs = {
         nameReg: /[~!@#$%^&*()_+|<>?:{}]/,
@@ -128,7 +127,7 @@ const Update = ({history}) => {
             alert("비밀번호 확인이 일치하지 않습니다.");
             return;
         } else if(!isUsernameDupChecked) {
-          setFormError("닉네임 중복확인을. 하지 않으셨습니다")
+            alert("닉네임 중복확인을. 하지 않으셨습니다")
           return;
         }
 
