@@ -45,14 +45,6 @@ function ItemlistPage() {
 			return b.price - a.price;
 		});
 	}
-	
-	//const prac_list = [
-	//	{ name : "1번 상품", price : 7000 }, { name : "2번 상품", price : 8000 }, { name : "3번 상품", price : 7000 }, { name : "4번 상품", price : 4000 },
-	//	{ name : "5번 상품", price : 7000 }, { name : "6번 상품", price : 3000 }, { name : "7번 상품", price : 6000 }, { name : "8번 상품", price : 2800 },
-	//	{ name : "9번 상품", price : 7000 }, { name : "10번 상품", price : 3000 }, { name : "11번 상품", price : 6000 }, { name : "12번 상품", price : 2800 },
-	//	{ name : "13번 상품", price : 7000 }, { name : "14번 상품", price : 3000 }, { name : "15번 상품", price : 6000 }, { name : "16번 상품", price : 2800 },
-	//	{ name : "17번 상품", price : 7000 }, { name : "18번 상품", price : 3000 }, { name : "19번 상품", price : 6000 }, { name : "20번 상품", price : 2800 }
-	//];
 
 	const handlePriority = (e) => {
 		setPriority(e.target.value);
@@ -91,7 +83,7 @@ function ItemlistPage() {
 					<MySlider index={0} value={price} max={60000} setValue={setPrice} />
 					<MySlider index={1} value={carbohydrate} max={250} setValue={setCarbohydrate} />
 					<MySlider index={2} value={protein} max={150} setValue={setProtein} />
-					<MySlider index={3} value={fat} max={250} setValue={setPrice} />
+					<MySlider index={3} value={fat} max={250} setValue={setFat} />
 					<MySlider index={4} value={calorie} max={3000} setValue={setCalorie} />
 				</Table>
 				<div className="save_button">
