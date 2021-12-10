@@ -12,25 +12,33 @@
 
 		.list_box{
 			cursor: pointer;
+			padding-left: 18px;
 			height: 360px;
 			margin-bottom: 20px;
 			
 			.item_image{
 				background-color: gray;
 				height: 240px;
+				border-radius: 10px;
 			}
 
-			.item_name_cart{
+			.item_name{
 				display: flex;
 				justify-content: space-between;
-				align-items: center;
-				margin-top: 10px;
+				width: 240px;
+				height: 60px;
 				p{
-					font-size: 24px;
+					font-size: 18px;
+				}
+			}
+			.item_price_cart{
+				display: flex;
+				.item_price{
+					padding-top: 10px;
 				}
 				i{
+					margin-left: 140px;
 					color: #3D56B2;
-					margin-right: 15px;
 					cursor: pointer;
 				}
 			}
