@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Block from '../../components/Block/Block'
 import { callCart } from "../../store/actions/cartActions"
+import { info } from "../../store/actions/userActions"
 import PopupDom from './PopupDom.jsx';
 import PopupPostCode from './PopupPostCode.jsx';
 
@@ -11,9 +12,20 @@ import './PurchasePage.scss'
 function PurchasePage({ history, match, location }) {
 	const dispatch = useDispatch()
 
-	const { isLogin } = useSelector(state=>state.user)
+	const { isLogin, user, userListLoading } = useSelector(state=>state.user)
+	useEffect(()=>{
+        if(!userListLoading){
+            dispatch(info())
+        }
+    },[])
+	
 	const { bagList, bagListLoading } = useSelector(state=>state.cart)
 	const [sumOfPrice,setSumOfPrice] = useState(0)
+
+	const [cardNum, setCardNum] = useState("");
+	const [cardCVC, setCardCVC] = useState("");
+	const [cardMonth, setCardMonth] = useState("");
+	const [cardYear, setCardYear] = useState("");
 
 	const [address, setAddress] = useState("");
 	const [isPopupOpen, setIsPopupOpen] = useState(false)
@@ -23,6 +35,41 @@ function PurchasePage({ history, match, location }) {
     const closePostCode = () => {
         setIsPopupOpen(false)
     }
+
+	const handleCardNum = (e) => { setCardNum(e.target.value); }
+	const handleCardCVC = (e) => { setCardCVC(e.target.value); }
+	const handleCardMonth = (e) => { setCardMonth(e.target.value); }
+	const handleCardYear = (e) => { setCardYear(e.target.value); }
+
+	const handlePurchase = () => {
+		const config = {
+			method:'POST',
+			headers:{
+			  'Content-Type': 'application/json'
+			},
+			body:JSON.stringify({
+				oneTime:"True",
+				user_id:user.user_name,
+				email:user.user_id,
+				cardNumber:cardNum,
+				cardExpMonth:parseInt(cardMonth),
+				cardExpYear:cardYear,
+				cardCVC:cardCVC,
+				cardName:`${user.user_id}'s card`,
+				postal_code:"123456",
+				amount:(sumOfPrice > 0 ? sumOfPrice : (location.state.count * location.state.item.price))
+			})
+		}
+		console.log(config)
+		fetch(`http://localhost:8080/pay/createCharge`, config)
+			.then((res)=>{
+				if (res.status === 200){
+					alert("결제 성공")
+					history.push("/");
+				}
+				else alert("결제 실패")
+			})
+	}
 
 	useEffect(()=>{
         if(!isLogin){
@@ -129,15 +176,17 @@ function PurchasePage({ history, match, location }) {
 						<p>결제 정보 입력</p>
 						<div className="input_block">
 							<div className="input_title">카드 번호</div>
-							<input className="credit_num" type="password" />
+							<input className="credit_num" type="password" value={cardNum} onChange={handleCardNum}/>
 						</div>
 						<div className="input_block">
 							<div className="input_title">유효기간</div>
-							<input className="credit_month" placeholder="월" />&nbsp;/&nbsp;<input className="credit_year" placeholder="년도" />
+							<input className="credit_month" placeholder="월" value={cardMonth} onChange={handleCardMonth} />
+							&nbsp;/&nbsp;
+							<input className="credit_year" placeholder="년도" value={cardYear} onChange={handleCardYear} />
 						</div>
 						<div className="input_block">
 							<div className="input_title">카드 CVC번호</div>
-							<input className="credit_password" type="password" placeholder="" />
+							<input className="credit_password" type="password" placeholder="" value={cardCVC} onChange={handleCardCVC} />
 						</div>
 					</Block>
 				</div>
@@ -147,6 +196,7 @@ function PurchasePage({ history, match, location }) {
 						variant="contained"
 						color="secondary"
 						style={{ width: "100px", height: "40px", fontFamily: "Noto Sans KR", fontSize: "1.1em" }}
+						onClick={handlePurchase}
 						>
 						결제하기
 					</Button>
