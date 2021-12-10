@@ -17,7 +17,7 @@ const CartList = (props) => {
         <div className="cart-list-component">
             <p>{props.name}</p>
             <p>{props.count}</p>
-            <p>{props.price}</p>
+            <p>{props.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
             <i onClick={()=>handleDeleteProduct(props.name)} class="fas fa-times"></i>
         </div>
     )

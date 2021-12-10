@@ -13,7 +13,7 @@ function PurchasePage({ history, match, location }) {
 
 	const { isLogin } = useSelector(state=>state.user)
 	const { bagList, bagListLoading } = useSelector(state=>state.cart)
-	const [sumOfPrice,setSumOfPrice] = useState()
+	const [sumOfPrice,setSumOfPrice] = useState(0)
 
 	const [address, setAddress] = useState("");
 	const [isPopupOpen, setIsPopupOpen] = useState(false)
@@ -55,10 +55,10 @@ function PurchasePage({ history, match, location }) {
 									return (
 										<div className="item_block">
 											<div className="item_name">{item.item_name}</div>
-											<div className="item_price">{item.item_price}&nbsp;원</div>
+											<div className="item_price">{item.item_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}&nbsp;원</div>
 											<div className="item_count">× &nbsp;&nbsp;{item.item_count}&nbsp;개</div>
 											<div className="item_equals">=</div>
-											<div className="item_price_sum">{item.item_price * item.item_count}&nbsp;원</div>
+											<div className="item_price_sum">{(item.item_price * item.item_count).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}&nbsp;원</div>
 										</div>
 									)
 								})}
@@ -68,11 +68,11 @@ function PurchasePage({ history, match, location }) {
 							<Block>
 								<p>결제 예정 금액</p>
 								<div className="price_sum">
-									<p>총 상품 가격 {sumOfPrice}원</p>
+									<p>총 상품 가격 {sumOfPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원</p>
 									<i class="fas fa-plus"></i>
 									<p>총 배송비 0원</p>
 									<i class="fas fa-equals"></i>
-									<p>총 주문금액 {sumOfPrice}원</p>
+									<p>총 주문금액 {sumOfPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원</p>
 								</div>
 							</Block>
 						</div>
@@ -83,21 +83,21 @@ function PurchasePage({ history, match, location }) {
 						<div className="item_section">
 							<div className="item_block">
 								<div className="item_name">{location.state.item.name}</div>
-								<div className="item_price">{location.state.item.price}&nbsp;원</div>
+								<div className="item_price">{location.state.item.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}&nbsp;원</div>
 								<div className="item_count">× &nbsp;&nbsp;{location.state.count}&nbsp;개</div>
 								<div className="item_equals">=</div>
-								<div className="item_price_sum">{location.state.count * location.state.item.price}&nbsp;원</div>
+								<div className="item_price_sum">{(location.state.count * location.state.item.price).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}&nbsp;원</div>
 							</div>
 						</div>
 						<div className="price_section">
 							<Block>
 								<p>결제 예정 금액</p>
 								<div className="price_sum">
-									<p>총 상품 가격 {location.state.count * location.state.item.price}원</p>
+									<p>총 상품 가격 {(location.state.count * location.state.item.price).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원</p>
 									<i class="fas fa-plus"></i>
 									<p>총 배송비 0원</p>
 									<i class="fas fa-equals"></i>
-									<p>총 주문금액 {location.state.count * location.state.item.price}원</p>
+									<p>총 주문금액 {(location.state.count * location.state.item.price).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원</p>
 								</div>
 							</Block>
 						</div>

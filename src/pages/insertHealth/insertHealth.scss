@@ -1,9 +1,19 @@
 .My-Inbody-info{
-    margin: 50px 200px 100px 200px;
+    display: flex;
+	flex-direction: column;
+	align-items: center;
+	align-content: center;
+
+	margin-top: 30px;
+	margin-bottom: 50px;
     font-size: xxx-large;
-    color: rgb(63, 65, 64);
+    color: rgb(83, 88, 86);
 
     .Inbody-title{
+		width: 1200px;
+		.p{
+			text-align: left;
+		}
         display: flex;
         padding: 15px 0px 0px 30px;
         border-bottom: 2px solid #9DF3C4;
@@ -19,83 +29,34 @@
         }
     }
     .Inbody-update{
-        padding: 20px 250px 0px 250px;
+		width: 1160px;
+        padding: 20px 20px 0px 20px;
         font-size: xx-large;
         .health-insert-update{
-            padding: 75px 0px 0px 250px;
+			height: 580px;
+			padding-top: 50px;
+			display: flex;
+			flex-direction: column;
+			align-content: center;
+			align-items: center;
             font-size: xx-large;
             outline: groove;
             
-            .info_birth{
-                padding: 20px 10px 0px 60px;
+            .info_birth, .info_gender, .info_height, .info_weight, .info_muscle, .info_fat{
+				margin-bottom: 30px;
                 display: flex;
                 flex-direction: row;
-        
-                .birth-data{
+				.info_subtitle{
+					width: 220px;
+				}
+                .birth-data, .gender-data, .height-data, .weight-data, .muscle-data, .fat-data{
                     font-size: large;
                     width:200px;
-                    margin: 0px 0px 0px 80px;
-                }
-            }
-            .info_gender{
-                padding: 20px 10px 0px 60px;
-                display: flex;
-                flex-direction: row;
-        
-                .gender-data{
-                    font-size: large;
-                    width:200px;
-                    margin: 0px 0px 0px 140px;
-                }
-            }
-            .info_height{
-                padding: 20px 10px 0px 60px;
-                display: flex;
-                flex-direction: row;
-        
-                .height-data{
-                    font-size: large;
-                    width:200px;
-                    margin: 0px 0px 0px 100px;
-                }
-            }
-            .info_weight{
-                padding: 20px 10px 0px 60px;
-                display: flex;
-                flex-direction: row;
-        
-                .weight-data{
-                    font-size: large;
-                    width:200px;
-                    margin: 0px 0px 0px 80px;
-                }
-            }
-            .info_muscle{
-                padding: 20px 0px 0px 60px;
-                display: flex;
-                flex-direction: row;
-        
-                .muscle-data{
-                    font-size: large;
-                    width:200px;
-                    margin: 0px 0px 0px 20px;
-                }
-            }
-            .info_fat{
-                padding: 20px 10px 0px 60px;
-                display: flex;
-                flex-direction: row;
-        
-                .fat-data{
-                    font-size: large;
-                    width:200px;
-                    margin: 0px 0px 0px 27px;
                 }
             }
         
             .health-save-button{
                 display: flex;
-                padding: 100px 250px 75px 0px;
                 font-size: x-large;
                 flex-direction: column;
             }
