@@ -34,8 +34,13 @@
                     right: 30px;
                     margin: 0;
                     color: #9DF3C4;
+					cursor: pointer;
                 }
             }
+			.search_reset {
+				position: relative;
+				padding-top: 17.5px;
+			}
         }
     }
 
