@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import { Slider, TableRow, TableCell, styled } from '@material-ui/core';
 
 import "./MySlider.scss";

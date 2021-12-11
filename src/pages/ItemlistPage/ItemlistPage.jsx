@@ -1,31 +1,53 @@
 import React, { useEffect, useState } from "react"
+import { useSelector } from "react-redux"
 import ItemList from '../../components/ItemList/ItemList';
 import Paging from '../../components/Paging/Paging';
 import MySlider from "../../components/MySlider/MySlider";
-import { styled, Slider, Table, TableRow, TableCell, Checkbox, FormControlLabel } from '@material-ui/core';
+import { styled, Table, TableRow, TableCell, Checkbox, FormControlLabel } from '@material-ui/core';
 
 import "./ItemlistPage.scss";
 import Button from '../../components/Button/Button';
 
-function ItemlistPage() {
+function ItemlistPage({ match, location }) {
+	
 	const [data, setData] = useState([]);
 	const [priority, setPriority] = useState("sortbyname");
-	const [price, setPrice] = useState([0, 20000]);
-	const [carbohydrate, setCarbohydrate] = useState([0, 50]);
-	const [protein, setProtein] = useState([0, 50]);
-	const [fat, setFat] = useState([0, 50]);
-	const [calorie, setCalorie] = useState([0, 1000]);
-	
+	const [price, setPrice] = useState([0, 60000]);
+	const [carbohydrate, setCarbohydrate] = useState([0, 250]);
+	const [protein, setProtein] = useState([0, 150]);
+	const [fat, setFat] = useState([0, 250]);
+	const [calorie, setCalorie] = useState([0, 3000]);
+	const [page, setPage] = useState(1);
+
+	const { isLogin } = useSelector(state=>state.user)
+	useEffect(() => {
+		if (isLogin){
+			fetch("http://localhost:8080/filter_default")
+				.then((res)=>res.json())
+				.then((data)=>{
+					setCalorie([data.min_cal, data.max_cal]);
+					setCarbohydrate([data.min_tan, data.max_tan]);
+					setProtein([data.min_dan, data.max_dan]);
+					setFat([data.min_ji, data.max_ji]);
+					fetch(`http://localhost:8080/foods/fs?filter=price,carbohydrate,protein,fat,kcal&min=${price[0]},${data.min_tan},${data.min_dan},${data.min_ji},${data.min_cal}&max=${price[1]},${data.max_tan},${data.max_dan},${data.max_ji},${data.max_cal}`)
+						.then((res)=>res.json())
+						.then((data)=>setData(data.filter(info => info.price >= 1000)));
+				})
+		} else {
+			fetch(`http://localhost:8080/foods/fs?filter=price,carbohydrate,protein,fat,kcal&min=${price[0]},${carbohydrate[0]},${protein[0]},${fat[0]},${calorie[0]}&max=${price[1]},${carbohydrate[1]},${protein[1]},${fat[1]},${calorie[1]}`)
+				.then((res)=>res.json())
+				.then((data)=>setData(data.filter(info => info.price >= 1000)));
+		}
+		setPage(1);
+	},[])
+
 	const handleFilter = (e) => {
 		fetch(`http://localhost:8080/foods/fs?filter=price,carbohydrate,protein,fat,kcal&min=${price[0]},${carbohydrate[0]},${protein[0]},${fat[0]},${calorie[0]}&max=${price[1]},${carbohydrate[1]},${protein[1]},${fat[1]},${calorie[1]}`)
 			.then((res)=>res.json())
 			.then((data)=>setData(data.filter(info => info.price >= 1000)));
+		setPage(1);
 	};
-	useEffect(() => {
-		fetch(`http://localhost:8080/foods`)
-			.then((res)=>res.json())
-			.then((data)=>setData(data.filter(info => info.price >= 1000)));
-    },[])
+
 	if (priority === "sortbyname"){
 		data.sort(function(a, b) {
 			if(a.name > b.name) return 1;
@@ -48,8 +70,8 @@ function ItemlistPage() {
 
 	const handlePriority = (e) => {
 		setPriority(e.target.value);
+		setPage(1);
 	}
-	const [page, setPage] = useState(1);
 	const handlePage = (newValue) => {
 		setPage(newValue);
 	};
@@ -60,7 +82,7 @@ function ItemlistPage() {
 		let currentPosts = 0;
 		currentPosts = tmp.slice(indexOfFirst, indexOfLast);
 		return currentPosts;
-	  };
+	};
 	const MyTableCell = styled(TableCell)({
 		borderBottom:"none",
 		padding: 5,
@@ -99,10 +121,20 @@ function ItemlistPage() {
 						<option value="expensive">가격높은순</option>
 					</select>
 				</div>
-				<ItemList list={currentPosts(data)} />
+				{match.params.id === "search" &&
+					<ItemList list={currentPosts(data.filter(info => info.name.includes(location.state.search)))} />
+				}
+				{match.params.id === "base" &&
+					<ItemList list={currentPosts(data)} />
+				}
 			</div>
 			<div className="paging">
-				<Paging page={page} count={data.length} setPage={handlePage}/>
+				{match.params.id === "search" &&
+					<Paging page={page} count={data.filter(info => info.name.includes(location.state.search)).length} setPage={handlePage}/>
+				}
+				{match.params.id === "base" &&
+					<Paging page={page} count={data.length} setPage={handlePage}/>
+				}
 			</div>
 		</div>
 	)

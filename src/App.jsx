@@ -18,7 +18,9 @@ import PurchasePage from './pages/PurchasePage/PurchasePage';
 const App = () => {
   return (
     <>
-      <Header />
+	  <Switch>
+        <Header />
+	  </Switch>
       <Switch>
         <Route path='/' exact component={MainPage} />
         <Route path='/login' exact component={Login} />
@@ -29,9 +31,9 @@ const App = () => {
         <Route path='/inbody' exact component={Inbody} />
         <Route path='/inbody/update' exact component={insertHealth} />
         <Route path='/mycart' exact component={MyCart} />
-		      <Route path='/list' exact component={ItemlistPage} />
-		      <Route path='/detail/:id' exact component={ItemDetailPage} />
-		      <Route path='/purchase/:id' exact component={PurchasePage} />
+		<Route path='/list/:id' component={ItemlistPage} />
+		<Route path='/detail/:id' exact component={ItemDetailPage} />
+		<Route path='/purchase/:id' exact component={PurchasePage} />
       </Switch>
       <Footer />
     </>

@@ -1,14 +1,15 @@
-import React from "react"
+import React, { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import Logo from '../../img/Logo.png'
 import { logout } from "../../store/actions/userActions"
 import Button from "../Button/Button"
-
+import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 import './Header.scss'
 
-const Header = () => {
-
+const Header = ({ location, history }) => {
+	console.log(location);
     const { isLogin } = useSelector(state=>state.user)
     
     const dispatch = useDispatch()
@@ -17,7 +18,21 @@ const Header = () => {
     const handleLogout = () => {
         dispatch(logout())
     }
-
+	const [search, setSearch] = useState("");
+	const handleSearch = (e) => {
+		setSearch(e.target.value);
+	}
+	const handleEnter = (e) => {
+		if (e.key === "Enter") {
+			history.push({
+				pathname: `/list/search`,
+				state: {search: search}
+			})
+		}
+	}
+	const resetSearch = () => {
+		setSearch("");
+	}
 
     return (
         <div className="header-component">
@@ -25,9 +40,21 @@ const Header = () => {
                 <div className="header-logo-search">
                     <Button link="/" text={<img className="logo" src={Logo} />} />
                     <div class="search">
-                        <input type="text" placeholder="상품 검색"/>
-                        <i class="fas fa-search"></i>
+						<input type="text" placeholder="상품 검색" value={search} onChange={handleSearch} onKeyPress={handleEnter} />
+						<Link to={{ pathname: `/list/search`, state: { search: search } }}>
+                        	<i class="fas fa-search"></i>
+						</Link>
                     </div>
+					{location.pathname === "/list/search" &&
+						<Link to="/list/base" className="search_reset">
+							<Button text="검색 초기화" size="13px" onClick={resetSearch} />
+						</Link>
+					}
+					{location.pathname != "/list/search" &&
+						<div className="search_reset">
+							<Button text="검색 초기화" size="13px" onClick={resetSearch} />
+						</div>
+					}
                 </div>
             <div>
             <div className="header-second-section">
@@ -41,13 +68,13 @@ const Header = () => {
             <div className="header-menu-bar">
                 <Button text="브랜드" color="#666666" size="20px"/>
                 <Button text="체성분" link="/inbody" color="#666666" size="20px"/>
-                <Button text="상품소개" link="/list" color="#666666" size="20px"/>
+                <Button text="상품소개" link="/list/base" color="#666666" size="20px"/>
                 <Button text="이벤트" color="#666666" size="20px"/>
-                <Button text="마이페이지" color="#666666" size="20px"/>
+                {/*<Button text="마이페이지" color="#666666" size="20px"/>*/}
                 <Button text="고객센터" color="#666666" size="20px"/>
             </div>
         </div>
     )
 }
 
-export default Header
+export default withRouter(Header);
