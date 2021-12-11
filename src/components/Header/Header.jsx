@@ -9,7 +9,6 @@ import { withRouter } from 'react-router-dom';
 import './Header.scss'
 
 const Header = ({ location, history }) => {
-	console.log(location);
     const { isLogin } = useSelector(state=>state.user)
     
     const dispatch = useDispatch()
