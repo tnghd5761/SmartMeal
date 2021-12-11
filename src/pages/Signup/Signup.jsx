@@ -7,7 +7,7 @@ import './Signup.scss'
 import { checkEmailValidation, checkPasswordValidation, checkUsernameValidation } from '../../utils/authUtils'
 import { useDispatch } from "react-redux";
 import Modal from "../../components/Modal/Modal";
-import { checkIsDuplicateEmail, checkIsDuplicateUsername, resetEmailDuplicateCheck, resetErrorSuccess, resetUsernameDuplicateCheck, signup } from "../../store/actions/userActions";
+import { checkIsDuplicateEmail, checkIsDuplicateUsername, creditRegister, resetEmailDuplicateCheck, resetErrorSuccess, resetUsernameDuplicateCheck, signup } from "../../store/actions/userActions";
 
 const Signup = ({history}) => {
 
@@ -97,6 +97,7 @@ const Signup = ({history}) => {
         }
     
         dispatch(signup(submittedUserData))
+        dispatch(creditRegister(username,email))
 
       }
 
