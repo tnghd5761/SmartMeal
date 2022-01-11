@@ -170,8 +170,10 @@ const Update = ({history}) => {
           {formError && formError.split(".").map((msg, idx) => <p key={idx}>{msg}</p>)}
         </Modal>
         }
-        <div className="navbar-container">
-          <p classname="mypage-title">마이 페이지</p>
+        <div className="update-container">
+			<div className="mypage-title">
+				<p>마이 페이지</p>
+			</div>
             <div className="mypage-menu">
                 <Button color="#1FAB89" text="회원 정보" link="/mypage" size="20px"/>
                 <Button color="#1FAB89" text="회원 탈퇴" link="/mypage/delete" size="20px"/>

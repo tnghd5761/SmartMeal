@@ -12,10 +12,10 @@ function InsertHelalth ({history}){
 
     const [birth, setbirth] = useState('')
     const [gender, setgender] = useState('')
-    const [height, setheight] = useState()
-    const [weight, setweight] = useState()
-    const [muscle, setmuscle] = useState()
-    const [fat, setfat] = useState()
+    const [height, setheight] = useState(0)
+    const [weight, setweight] = useState(0)
+    const [muscle, setmuscle] = useState(0)
+    const [fat, setfat] = useState(0)
 
     useEffect(()=>{
         if(!userListLoading){
